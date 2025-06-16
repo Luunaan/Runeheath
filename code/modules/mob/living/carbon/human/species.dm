@@ -177,8 +177,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/datum/body_marking_set/bodyset
 	for(var/set_type in body_marking_sets)
 		bodyset = GLOB.body_marking_sets_by_type[set_type]
-		for(var/body_marking_type in bodyset.body_marking_list)
-			body_markings |= body_marking_type
+		if (bodyset)
+			for(var/body_marking_type in bodyset.body_marking_list)
+				body_markings |= body_marking_type
 
 /datum/species/New()
 	add_marking_sets_to_markings()
