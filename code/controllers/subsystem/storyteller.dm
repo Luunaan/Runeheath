@@ -186,6 +186,8 @@ SUBSYSTEM_DEF(gamemode)
 	var/roundvoteend = FALSE
 	var/reb_end_time = 0
 
+	var/list/datum/round_aspect/round_aspects = list()
+
 /datum/controller/subsystem/gamemode/Initialize(time, zlevel)
 #if defined(UNIT_TESTS) || defined(AUTOWIKI) // lazy way of doing this but idc
 	flags |= SS_NO_FIRE
@@ -1335,6 +1337,16 @@ SUBSYSTEM_DEF(gamemode)
 		if(S.name == god_name)
 			return SSgamemode.calculate_storyteller_influence(S.type)
 	return 0
+
+/datum/controller/subsystem/gamemode/proc/add_aspect(aspect)
+	var/datum/round_aspect/aspect_to_add 
+	if (ispath(aspect, /datum/round_aspect))
+		aspect_to_add = new
+	else
+		aspect_to_add = aspect
+
+	if (istype(aspect_to_add, /datum/round_aspect))
+		round_aspects.Add(aspect_to_add)
 
 #undef DEFAULT_STORYTELLER_VOTE_OPTIONS
 #undef MAX_POP_FOR_STORYTELLER_VOTE
