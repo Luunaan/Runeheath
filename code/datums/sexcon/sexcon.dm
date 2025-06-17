@@ -84,6 +84,26 @@
 	set_target(new_target)
 	show_ui()
 
+/datum/sex_controller/proc/has_nonconsent_protection()
+	// Always consensual with yourself
+	if (user == target)
+		return FALSE
+	// Neither user is defiant, so all is okay
+	if (!user.defiant && !target.defiant)
+		return FALSE
+
+	// From here on, at least one of our users is defiant, meaning the following are NOT allowed
+	// AFK clients
+	if (!target.mind || !target.mind.key || !target.client)
+		return TRUE
+	// Either user has combat mode enabled
+	if (target.cmode || user.cmode)
+		return TRUE
+	// Unconscious or surrendering
+	if (target.stat || target.surrendering)
+		return TRUE
+	return FALSE
+
 /datum/sex_controller/proc/cum_onto()
 	log_combat(user, target, "Came onto the target")
 	playsound(target, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
@@ -433,6 +453,8 @@
 		return
 	if(current_action != null)
 		try_stop_current_action()
+		return
+	if (has_nonconsent_protection())
 		return
 	if(!action_type)
 		return
