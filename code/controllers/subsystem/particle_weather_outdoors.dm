@@ -6,32 +6,32 @@
 /datum/time_of_day/dawn
 	name = "Dawn"
 	color = list("#394579", "#49385d", "#3a1537")
-	start = 8 HOURS //8:00:00 AM
+	start = 5.5 HOURS //8:00:00 AM
 
 /datum/time_of_day/sunrise
 	name = "Sunrise"
 	color = "#F598AB"
-	start = 9.5 HOURS  //9:30:00 AM
+	start = 6.5 HOURS  //9:30:00 AM
 
 /datum/time_of_day/daytime
 	name = "Daytime"
 	color = list("#dbbfbf", "#ddd7bd", "#add1b0", "#a4c0ca", "#ae9dc6", "#d09fbf")
-	start = 10 HOURS //10:00:00 AM
+	start = 7.5 HOURS //10:00:00 AM
 
 /datum/time_of_day/sunset
 	name = "Sunset"
 	color = "#ff8a63"
-	start = 15 HOURS //3:00:00 PM
+	start = 17.5 HOURS //3:00:00 PM
 
 /datum/time_of_day/dusk
 	name = "Dusk"
 	color = list("#c26f56", "#c05271", "#b84933")
-	start = 15.5 HOURS //3:30:00 PM
+	start = 18.5 HOURS //3:30:00 PM
 
 /datum/time_of_day/midnight
 	name = "Midnight"
 	color = list("#100a18", "#0c0412", "#0f0012")
-	start = 16 HOURS //4:00:00 PM
+	start = 19.5 HOURS //4:00:00 PM
 
 GLOBAL_VAR_INIT(GLOBAL_LIGHT_RANGE, 3)
 GLOBAL_LIST_EMPTY(SUNLIGHT_QUEUE_WORK)   /* turfs to be stateChecked */
