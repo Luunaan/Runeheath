@@ -154,6 +154,22 @@
 	else
 		return 0
 
+/// Calculates a luck value in the range [1, 400] (calculated as STALUC^2), then maps the result linearly to the given range
+/// min must be >= 0, max must be <= 100, and min must be <= max
+/// For giving 
+/mob/living/proc/get_scaled_sq_luck(min, max)
+	if (min < 0)
+		min = 0
+	if (max > 100)
+		max = 100
+	if (min > max)
+		var/temp = min
+		min = max
+		max = temp
+	var/adjusted_luck = (src.STALUC * src.STALUC) / 400
+
+	return LERP(min, max, adjusted_luck)
+
 /mob/living/proc/badluck(multi = 3)
 	if(STALUC < 10)
 		return prob((10 - STALUC) * multi)

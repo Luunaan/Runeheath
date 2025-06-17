@@ -63,6 +63,7 @@
 #define TRAIT_WITCH "They fear me, but I am useful to them."
 #define TRAIT_NOFATIGUE "Boundless Energy" //infinite fatigue (blue bar) but not infinite stamina
 #define TRAIT_PERMAMUTE "Permanent Mute"
+#define TRAIT_SIMPLESPEECH "Simple Speech" // Can only say the 1000 most common English-language words; other words get modified
 
 
 //Hearthstone port (Tracking)
@@ -284,7 +285,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOFATIGUE = span_notice ("I don't need rest; I won't ever feel fatigue."),
 	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_STRENGTH_UNCAPPED = span_warning("MY STRENGTH IS UNBOUND!"),
-	TRAIT_MONK_ROBE = span_notice("I feel closer to the gods in my meager robes.. I feel vigorous, empowered by their light!")
+	TRAIT_MONK_ROBE = span_notice("I feel closer to the gods in my meager robes.. I feel vigorous, empowered by their light!"),
+	TRAIT_SIMPLESPEECH = span_info("I can not say hard words.")
 ))
 
 // trait accessor defines
