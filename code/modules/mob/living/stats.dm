@@ -119,8 +119,6 @@
 			tempskill.modifystat(STAPER, BUFPER, amt)
 			STAPER = tempskill.value
 			BUFPER = tempskill.buffer
-			see_override = initial(src.see_invisible) + (STAPER/2.78) // This may be a mistake.
-			update_sight() //Needed.
 			update_fov_angles()
 
 		if("intelligence")
