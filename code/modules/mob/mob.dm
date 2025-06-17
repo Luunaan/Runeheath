@@ -1386,8 +1386,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return lowertext(copytext(input, 1, customsayverb))
 	. = ..()
 
-/atom/movable/proc/attach_spans(input, list/spans)
+/atom/movable/proc/attach_spans(input, list/spans, message_colour = null)
 	var/customsayverb = findtext(input, "*")
 	if(customsayverb)
 		input = capitalize(copytext(input, customsayverb+1))
-	return "[message_spans_start(spans)][input]</span>"
+	if (message_colour)
+		return "<span style='color:[message_colour];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>[message_spans_start(spans)][input]</span></span>"
+	else	
+		return "[message_spans_start(spans)][input]</span>"
