@@ -5,7 +5,7 @@
 
 /datum/time_of_day/dawn
 	name = "Dawn"
-	color = list("#394579", "#49385d", "#3a1537")
+	color = list("#394579")
 	start = 5.5 HOURS //8:00:00 AM
 
 /datum/time_of_day/sunrise
@@ -15,7 +15,7 @@
 
 /datum/time_of_day/daytime
 	name = "Daytime"
-	color = list("#dbbfbf", "#ddd7bd", "#add1b0", "#a4c0ca", "#ae9dc6", "#d09fbf")
+	color = list("#ddd7bd", "#add1b0", "#a4c0ca")
 	start = 7.5 HOURS //10:00:00 AM
 
 /datum/time_of_day/sunset
