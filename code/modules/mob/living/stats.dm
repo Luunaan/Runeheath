@@ -62,6 +62,8 @@
 
 		if (H.statpack)
 			H.statpack.apply_to_human(H)
+		if (H.pointbuy)
+			H.pointbuy.apply_to(H)
 		if (H.dna?.species) // LETHALSTONE EDIT: apply our race bonus, if we have one
 			var/datum/species/species = H.dna.species
 			if (species.race_bonus)

@@ -369,6 +369,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		statpack = GLOB.statpacks[statpack]
 		//statpack = new statpack
 
+/datum/preferences/proc/_load_pointbuy(S)
+	var/datum/point_buy/pb = new
+	pb.deserialize(S["pointbuy"])
+	pointbuy = pb
+
 /datum/preferences/proc/_load_virtue(S)
 	var/virtue_type
 	var/virtuetwo_type
@@ -463,7 +468,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_flaw(S)
 
 	// LETHALSTONE edit: jank-ass load our statpack choice
-	_load_statpack(S)
+	//_load_statpack(S)
+	_load_pointbuy(S)
 
 	_load_loadout(S)
 	_load_loadout2(S)
@@ -679,7 +685,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["char_accent"] , char_accent)
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
-	WRITE_FILE(S["statpack"] , statpack.type)
+	//WRITE_FILE(S["statpack"] , statpack.type)
+	WRITE_FILE(S["pointbuy"], pointbuy.serialize())
 	WRITE_FILE(S["virtue"] , virtue.type)
 	WRITE_FILE(S["virtuetwo"], virtuetwo.type)
 	if(loadout)

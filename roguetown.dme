@@ -1223,6 +1223,7 @@
 #include "code\modules\client\preferences_descriptors.dm"
 #include "code\modules\client\preferences_savefile.dm"
 #include "code\modules\client\preferences_toggles.dm"
+#include "code\modules\client\point_buy.dm"
 #include "code\modules\client\roundendmanifest.dm"
 #include "code\modules\client\customizer\customizer.dm"
 #include "code\modules\client\customizer\customizer_choice.dm"

@@ -92,6 +92,18 @@
 	dat += "</td></table>"
 	return
 
+/datum/preferences/proc/print_point_buy_page()
+	var/list/dat = list()
+	dat += "<b>Points available: [pointbuy.current_points]</b><br><br>"
+
+	for (var/stat in pointbuy.stats)
+		dat += "<li><b>[capitalize(stat)]</b> "
+		dat += "<a href='?_src_=prefs;task=change_stat;stat=[stat];amount=-1'>-</a>"
+		dat += " [pointbuy.stats[stat]] "
+		dat += "<a href='?_src_=prefs;task=change_stat;stat=[stat];amount=1'>+</a><br>"
+
+	return dat
+
 /// We dont associate the entries just to be safer for save/load, so we can't lookup easily and we do this.
 /datum/preferences/proc/get_customizer_entry_for_customizer_type(customizer_type)
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
@@ -183,6 +195,14 @@
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += print_customizers_page()
 	var/datum/browser/popup = new(user, "customization", "<div align='center'>Customization</div>", 630, 730)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+
+/datum/preferences/proc/ShowPointBuy(mob/user)
+	var/list/dat = list()
+	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
+	dat += print_point_buy_page()
+	var/datum/browser/popup = new(user, "pointbuy", "<div align='center'>Point Buy</div>", 630, 730) // TODO: Reasonable dimensions
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

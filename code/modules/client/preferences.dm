@@ -180,6 +180,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/ooc_notes
 	var/ooc_notes_display
 
+	var/datum/point_buy/pointbuy = new /datum/point_buy()
+
 /datum/preferences/New(client/C)
 	parent = C
 	migrant  = new /datum/migrant_pref(src)
@@ -342,7 +344,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 
 			// LETHALSTONE EDIT BEGIN: add statpack selection
-			dat += "<b>Statpack:</b> <a href='?_src_=prefs;preference=statpack;task=input'>[statpack.name]</a><BR>"
+			//dat += "<b>Statpack:</b> <a href='?_src_=prefs;preference=statpack;task=input'>[statpack.name]</a><BR>"
+			dat += "<br><b>Stat Adjustments:</b> <a href='?_src_=prefs;preference=point_buy;task=menu'>Change</a><BR>"
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
 
@@ -1268,6 +1271,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	else if(href_list["preference"] == "customizers")
 		ShowCustomizers(user)
 		return
+	else if (href_list["preference"] == "point_buy")
+		ShowPointBuy(user)
+		return
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
 
@@ -1363,6 +1369,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			handle_descriptors_topic(user, href_list)
 			show_descriptors_ui(user)
 			return
+		if ("change_stat")
+			var/stat = href_list["stat"]
+			var/amount = text2num(href_list["amount"])
+			if (pointbuy.try_buy_point(stat, amount))
+				ShowPointBuy(user)
 		if("random")
 			switch(href_list["preference"])
 				if("name")
@@ -2023,7 +2034,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/phobiaType = input(user, "What are you scared of?", "Character Preference", phobia) as null|anything in SStraumas.phobia_types
 					if(phobiaType)
 						phobia = phobiaType
-
 		else
 			switch(href_list["preference"])
 				if("publicity")
@@ -2427,6 +2437,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.headshot_link = headshot_link
 
 	character.statpack = statpack
+
+	character.pointbuy = pointbuy
+	if (character.pointbuy)
+		character.pointbuy.remove_from(character)
+		character.pointbuy.apply_to(character)
 
 	character.flavortext = flavortext
 
