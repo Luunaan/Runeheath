@@ -116,6 +116,8 @@
 	..()
 
 	force = initial(force)
+	force_wielded = initial(force_wielded)
+	force_dynamic = force
 	armor_penetration = initial(armor_penetration)
 	wdefense = initial(wdefense)
 	wdefense_wbonus = initial(wdefense_wbonus)

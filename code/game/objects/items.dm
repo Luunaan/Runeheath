@@ -470,7 +470,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			inspec += "\n<b>BULKY</b>"
 
 		if(can_parry)
-			inspec += "\n<b>DEFENSE:</b> [wdefense]"
+			inspec += "\n<b>DEFENSE:</b> [wdefense_dynamic]"
 
 		if(max_blade_int)
 			inspec += "\n<b>SHARPNESS:</b> "

@@ -219,7 +219,7 @@
 		for(var/datum/supply_pack/PA in sortNames(pax))
 			var/costy = round(PA.cost + PA.cost * extra_fee)
 			if(!(upgrade_flags & UPGRADE_NOTAX))
-				costy = round(costy + (SStreasury.tax_value * PA.cost))
+				costy = costy + round(SStreasury.tax_value * PA.cost)
 			var/quantified_name = PA.no_name_quantity ? PA.name : "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""]"
 			if(is_public && locked) 
 				contents += "[quantified_name]<BR>"

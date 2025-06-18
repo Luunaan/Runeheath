@@ -205,3 +205,7 @@
 	cost = 10
 	contains = list(/obj/item/storage/hip/headhook)
 
+/datum/supply_pack/rogue/tools/bottle_kit
+	name = "Bottle Kit"
+	cost = 50
+	contains = list(/obj/item/bottle_kit)

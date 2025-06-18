@@ -107,7 +107,7 @@
 
 /datum/crafting_recipe/roguetown/structure/barrel
 	name = "wooden barrel"
-	result = /obj/structure/fermenting_barrel/crafted
+	result = /obj/structure/fermentation_keg/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	verbage_simple = "make"
 	verbage = "makes"
@@ -140,7 +140,7 @@
 	craftdiff = 2
 	skillcraft = /datum/skill/craft/carpentry
 
-/obj/structure/fermenting_barrel/crafted
+/obj/structure/fermentation_keg/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/structure/meathook
