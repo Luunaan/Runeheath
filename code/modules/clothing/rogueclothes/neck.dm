@@ -282,11 +282,15 @@
 	
 	return TRUE
 
+/obj/item/clothing/neck/roguetown/psicross/attack_right(mob/user)
+	..()
+	user.emote("pray")
+	return
+
 /obj/item/clothing/neck/roguetown/psicross/aalloy
 	name = "decrepit psicross"
 	desc = "Surely this one endures?"
 	icon_state = "psycross_a"
-
 
 /obj/item/clothing/neck/roguetown/zcross/aalloy
 	name = "decrepit zcross"
