@@ -28,7 +28,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)			
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
@@ -227,8 +227,8 @@
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			gloves = /obj/item/clothing/gloves/roguetown/angle
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/recipe_book/survival = 1)
-			beltl = pick(/obj/item/reagent_containers/glass/bottle/alchemical/strpot, 
-						/obj/item/reagent_containers/glass/bottle/alchemical/conpot, 
+			beltl = pick(/obj/item/reagent_containers/glass/bottle/alchemical/strpot,
+						/obj/item/reagent_containers/glass/bottle/alchemical/conpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/endpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/spdpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/perpot,
@@ -236,7 +236,7 @@
 						/obj/item/reagent_containers/glass/bottle/alchemical/lucpot)
 
 		if("Flagellant")
-			to_chat(H, span_warning("You are a pacifistic warrior who embraces suffering, believing pain is the path to enlightenment. You take the suffering of others upon yourself."))
+			to_chat(H, span_warning("You are a pacifistic warrior who embraces suffering, believing pain is the path to enlightenment."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
@@ -245,33 +245,22 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.set_blindness(0)
-			
-			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_PACIFISM, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC) 
+
 			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_IGNORESLOWDOWN, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
-			
-			H.change_stat("constitution", 15)
-			H.change_stat("intelligence", -2)
-			H.change_stat("perception", -2)
-			H.change_stat("endurance", -2)
+			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+
+			H.change_stat("constitution", 5)
+			H.change_stat("endurance", 5)
+			H.change_stat("speed", 1)
 			H.change_stat("strength", -2)
-			
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/damage_transfer)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/affliction_transfer)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/damage_link)
-			
+			H.change_stat("intelligence", -2)
+
 			pants = /obj/item/clothing/under/roguetown/tights/black
-			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
-			backl = /obj/item/storage/backpack/rogue/satchel   
-			belt = /obj/item/storage/belt/rogue/leather        
+			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			backl = /obj/item/storage/backpack/rogue/satchel
+			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/rogueweapon/whip
-			backpack_contents = list(/obj/item/recipe_book/survival = 1)            
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+			backpack_contents = list(/obj/item/recipe_book/survival = 1, /obj/item/flashlight/flare/torch = 1)

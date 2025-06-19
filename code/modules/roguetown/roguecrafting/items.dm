@@ -62,6 +62,13 @@
 	verbage_simple = "untie"
 	verbage = "unties"
 
+/datum/crafting_recipe/roguetown/survival/clothsash
+	name = "fine sash (3 fibers, 1 goat fur)"
+	result = /obj/item/storage/belt/rogue/leather/sash
+	reqs = list(/obj/item/natural/fibers = 3,
+				/obj/item/natural/fur/goat = 1)
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/survival/ropebelt
 	name = "rope belt"
 	result = /obj/item/storage/belt/rogue/leather/rope

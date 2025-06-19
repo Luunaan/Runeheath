@@ -26,6 +26,7 @@
 	desc = "Cheap and easy to make. It's better than leaving your neck exposed."
 	icon_state = "coif"
 	item_state = "coif"
+	color = CLOTHING_BROWN
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT

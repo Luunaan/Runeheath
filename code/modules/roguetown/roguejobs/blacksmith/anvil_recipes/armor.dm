@@ -530,6 +530,13 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half
 	craftdiff = 3
 
+/datum/anvil_recipe/armor/steel/lightcuirass
+	name = "Fencing Cuirass (+1 Fur, +1 Tallow, +3 Cured Leather)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/fur, /obj/item/reagent_containers/food/snacks/tallow, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fencer
+	craftdiff = 5
+
 /datum/anvil_recipe/armor/steel/cuirass/fluted
 	name = "Fluted Cuirass (+1 Steel, +1 Iron)"
 	req_bar = /obj/item/ingot/steel

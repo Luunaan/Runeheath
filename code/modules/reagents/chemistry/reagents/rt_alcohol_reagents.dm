@@ -11,7 +11,7 @@
 
 /datum/reagent/consumable/ethanol/rum
 	name = "Rum"
-	description = ""
+	description = "Where has the rum gone?"
 	color = "#5f3b23" // rgb: 102, 67, 0
 	boozepwr = 25
 	taste_description = "rum"
@@ -19,18 +19,26 @@
 /datum/reagent/consumable/ethanol/cider
 	name = "Apple Cider"
 	boozepwr = 40
-	taste_description = "cider"
+	taste_description = "crisp freshness of apple"
 	glass_name = "glass of cider"
 	color = "#6aa945"
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/cider/pear
 	name = "Pear Cider"
+	boozepwr = 40
+	taste_description = "sweet subtle delights of pear"
+	glass_name = "Glass of Pear Cider"
+	color = "fffc6c"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/cider/strawberry
 	name = "Strawberry Cider"
+	boozepwr = 40
+	taste_description = "a subtle hint of strawberry sweetness"
 	color = "#da4d4d"
 	taste_description = "strawberry cider"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/aqua_vitae
 	name = "Aqua Vitae"
@@ -42,25 +50,38 @@
 /datum/reagent/consumable/ethanol/brandy
 	name = "Apple Brandy"
 	boozepwr = 60
-	taste_description = "brandy"
+	taste_description = "caramel oak brandy"
 	glass_name = "glass of brandy"
 	color = "#6aa945"
 	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/brandy/pear
 	name = "Pear Brandy"
+	boozepwr = 60
+	taste_description = "ripe pear with a hint of spice"
+	color = "b9b607"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/brandy/strawberry
 	name = "Strawberry Brandy"
+	boozepwr = 60
+	taste_description = "overwhelming sweetness with a smooth finish"
 	color = "#bb1a1a"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/brandy/tangerine
 	name = "Tangerine Brandy"
+	boozepwr = 60
+	taste_description = "spice and a twist of citrus"
 	color = "#bb751a"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/brandy/plum
 	name = "Plum Brandy"
+	boozepwr = 60
+	taste_description = "purple sweetness and vanila"
 	color = "#5c0449"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/wine
 	name = "Wine"
@@ -68,6 +89,7 @@
 	taste_description = "wine"
 	glass_name = "glass of wine"
 	color = "#8a0b0b"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/light
 	name = "Light Beer"
@@ -163,7 +185,7 @@
 /datum/reagent/consumable/ethanol/fireleaf // cabbbage
 	name = "Fireleaf"
 	boozepwr = 2
-	taste_description = "bland liquor"
+	taste_description = "awful liquor"
 	color = "#475e45"
 	quality = DRINK_NICE
 
@@ -231,35 +253,35 @@
 /datum/reagent/consumable/ethanol/jackberrywine/aged
 	name = "Aged Jackberry Wine"
 	boozepwr = 30
-	taste_description = "sickly sweet aged wine"
+	taste_description = "sweet aged wine"
 	color = "#402249"
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/jackberrywine/delectable
 	name = "Delectable Jackberry Wine"
 	boozepwr = 30
-	taste_description = "sickly sweet delectably aged wine"
+	taste_description = "sweet delectably aged wine"
 	color = "#652679"
 	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/plum_wine
 	name = "Umeshu"
 	boozepwr = 15
-	taste_description = "sickly sweet young wine"
+	taste_description = "sickly sour young wine"
 	color = "#c997d8"
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/plum_wine/aged
 	name = "Aged Umeshu"
 	boozepwr = 30
-	taste_description = "sickly sweet aged wine"
+	taste_description = "sweet slightly sour aged wine"
 	color = "#c27cd8"
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/plum_wine/delectable
 	name = "Delectable Umeshu"
 	boozepwr = 30
-	taste_description = "sickly sweet delectably aged wine"
+	taste_description = "delectably aged sour sweet wine"
 	color = "#a854c2"
 	quality = DRINK_VERYGOOD
 
@@ -287,21 +309,21 @@
 /datum/reagent/consumable/ethanol/raspberry
 	name = "Raspberry Wine"
 	boozepwr = 15
-	taste_description = "bitter sweet young wine"
+	taste_description = "tart sweet young wine"
 	color = "#ee5ea6"
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/raspberry/aged
 	name = "Aged Raspberry Wine"
 	boozepwr = 30
-	taste_description = "bitter sweet aged wine"
+	taste_description = "tart sweet aged wine"
 	color = "#d83788"
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/raspberry/delectable
 	name = "Delectable Raspberry Wine"
 	boozepwr = 30
-	taste_description = "bitter sweet delectably aged wine"
+	taste_description = "tart sweet delectably aged wine"
 	color = "#db0d74"
 	quality = DRINK_VERYGOOD
 

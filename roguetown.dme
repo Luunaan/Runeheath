@@ -1495,6 +1495,7 @@
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\condottiero.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\desertrider.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\forlorn.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\classes\freifechter.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\grenzelhoft.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\grudgebearer.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\routier.dm"
@@ -2363,6 +2364,5 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\orc.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
-#include "modular_hearthstone\code\modules\spells\roguetown\flagellant.dm"
 // END_INCLUDE
 

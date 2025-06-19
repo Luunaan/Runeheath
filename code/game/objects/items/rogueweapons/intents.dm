@@ -665,3 +665,7 @@
 	item_d_type = "blunt"
 	intent_effect = /datum/status_effect/debuff/dazed
 	target_parts = list(BODY_ZONE_HEAD)
+
+/*/datum/intent/effect/daze/shield
+	intent_effect = /datum/status_effect/debuff/dazed/shield
+	swingdelay = 3 */

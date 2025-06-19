@@ -311,3 +311,12 @@
 
 
 #undef SHIELD_BANG_COOLDOWN
+
+/*/obj/item/rogueweapon/shield/buckler/freelancer
+	name = "fencer's wrap"
+	desc = "A traditional Etruscan quilted cloth square with a woolen cover. It can be used to daze and distract people with its bright colours and hanging steel balls."
+	force = 10
+	throwforce = 10
+	coverage = 15
+	max_integrity = 200
+	possible_item_intents = list(SHIELD_BLOCK, FENCER_DAZE) */

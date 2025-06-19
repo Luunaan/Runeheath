@@ -183,6 +183,12 @@
 	max_integrity = 100			//Half that of iron boots
 	armor = ARMOR_BOOTS			//Better than regular leather.
 
+/obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short
+	name = "dress boots"
+	desc = "A pair of sturdy boots stitched together from cured leather. These are shorter than usual, made for casual wear and dueling."
+	icon_state = "albootsb"
+	item_state = "albootsb"
+
 /obj/item/clothing/shoes/roguetown/boots/otavan
 	name = "otavan leather boots"
 	desc = "Boots of outstanding craft, your fragile feet have never felt so protected and comfortable before."

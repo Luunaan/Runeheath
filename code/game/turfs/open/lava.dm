@@ -144,19 +144,13 @@
 				if(S && H && S.clothing_flags & LAVAPROTECT && H.clothing_flags & LAVAPROTECT)
 					return
 
-				if(C.health <= 0)
-					C.dust(drop_items = TRUE)
-
 			if("lava" in L.weather_immunities)
 				continue
 
-//			L.adjustFireLoss(50)
 			if(L) //mobs turning into object corpses could get deleted here.
-				L.adjustFireLoss(10)
+				L.adjustFireLoss(40)
 				L.adjust_fire_stacks(100)
 				L.IgniteMob()
-				if(L.health <= 0)
-					L.dust(drop_items = TRUE)
 
 /turf/open/lava/onbite(mob/user)
 	if(isliving(user))
@@ -213,8 +207,10 @@
 			var/obj/O = thing
 			if((O.resistance_flags & (ACID_PROOF|INDESTRUCTIBLE)) || O.throwing)
 				continue
+			O.obj_integrity -= O.max_integrity * 0.1
+			if(O.obj_integrity <= 0)
+				qdel(O)	
 			. = 1
-			qdel(O)
 
 		else if (isliving(thing))
 			. = 1
@@ -232,33 +228,16 @@
 				var/mob/living/live = buckle_check
 				if("lava" in live.weather_immunities)
 					continue
+			for(var/obj/item/clothing/C in L.contents)
+				if(C.resistance_flags & (ACID_PROOF|INDESTRUCTIBLE))
+					continue
+				C.obj_integrity -= C.max_integrity * 0.1
+				if(C.obj_integrity <= 0)
+					to_chat(L, span_danger("Your [C.name] is destroyed by the acid!"))
+					qdel(C)	
 
-			if(iscarbon(L))
-				var/mob/living/carbon/C = L
-//				var/obj/item/clothing/S = C.get_item_by_slot(SLOT_ARMOR)
-//				var/obj/item/clothing/H = C.get_item_by_slot(SLOT_HEAD)
-
-//				if(S && H && S.clothing_flags & LAVAPROTECT && H.clothing_flags & LAVAPROTECT)
-//					return
-				//make this acid
-				var/shouldupdate = FALSE
-				for(var/obj/item/bodypart/B in C.bodyparts)
-					if(!B.skeletonized && B.is_organic_limb())
-						B.skeletonize()
-						shouldupdate = TRUE
-				if(shouldupdate)
-					if(ishuman(C))
-						var/mob/living/carbon/human/H = C
-						H.underwear = "Nude"
-					C.unequip_everything()
-					C.update_body()
-//				C.dust(drop_items = TRUE)
-				continue
-
-//			if("lava" in L.weather_immunities)
-//				continue
-
-			L.dust(drop_items = TRUE)
+			L.adjustFireLoss(100)
+			to_chat(L, span_userdanger("THE ACID BURNS!"))
 
 /turf/open/lava/acid/onbite(mob/user)
 	if(isliving(user))

@@ -266,3 +266,9 @@
 // Should move all contained objects to it's location.
 /obj/proc/dump_contents()
 	CRASH("Unimplemented.")
+
+/obj/merge_conflict_marker
+	name = "---Merge Conflict Marker---"
+	desc = "Mapping helper."
+	icon = 'icons/obj/merge_conflict_marker.dmi'
+	icon_state = "merge_conflict_marker"
