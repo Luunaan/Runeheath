@@ -153,3 +153,124 @@
 
 /datum/crafting_recipe/proc/show_menu(mob/user)
 	user << browse(generate_html(user),"window=new_recipe;size=500x810")
+
+/datum/crafting_recipe/proc/construct_name()
+	// type == abstract_type implies this recipe doesn't actually represent an item
+	// TODO: Some of the abstract crafting recipes irritatingly do not properly define their abstract_type,
+	// meaning this guard is not perfect. We will need to either fix this, or come up with another guard that
+	// catches any remaining cases (and isn't too expensive to be worth bothering).
+	// For now, one lookup of the names table and a call to get_result_name() shouldn't be TOO expensive...
+	if (type == abstract_type)
+		return null
+
+	// If the name already exists and is cached, return it
+	var/static/list/names = list()
+	var/str = names[type]
+	if (str)
+		return str
+
+	// Construct the name based on output, ingredients, etc. and cache it
+	var/item_name = get_result_name()
+	if (item_name)
+		var/list/data = list()
+		data += item_name
+		data += get_ingredients_string(data)
+		data += get_tools_string(data)
+		data += get_catalyst_string(data)
+		data += get_skill_level_string(data)
+		name = data.Join("")
+		names[type] = name
+	return name
+
+/datum/crafting_recipe/proc/get_result_name()
+	if (result)
+		// Multiple outputs
+		if (islist(result) && length(result) > 0)
+			var/current_name = null
+			var/run_length = 0
+			var/index = 1
+			var/len = length(result)
+			var/list/string = list()
+			for(var/item in result)
+				if (ispath(item, /obj))
+					var/obj/it = item
+					if (it.name != current_name)
+						if (current_name != null)
+							string += capitalize(it.name)
+							if (run_length > 1)
+								string += " x"
+								string += num2text(run_length)
+							if (index < len)
+								string += ", "
+						run_length = 0
+						current_name = it.name
+					++run_length
+				++index
+			if (current_name != null)
+				string += capitalize(current_name)
+				if (run_length > 1)
+					string += " x"
+					string += num2text(run_length)
+			return string.Join("")
+		// Single output
+		else if (ispath(result, /obj))
+			var/obj/it = result
+			return capitalize(it.name)
+	return null
+
+/datum/crafting_recipe/proc/get_ingredients_string(data)
+	var/list/string = list()
+	var/len = length(reqs)
+	if (reqs && len > 0)
+		string += " ("
+		var/index = 1
+		for(var/item in reqs)
+			if (ispath(item, /obj))
+				var/obj/it = item
+				string += it.name
+				if (reqs[item] > 1)
+					string += " x"
+					string += num2text(reqs[item])
+				if (index < len)
+					string += "; "
+			++index
+		string += ")"
+	return string.Join("")
+
+/datum/crafting_recipe/proc/get_tools_string(data)
+	var/list/string = list()
+	var/len = length(tools)
+	if (tools && len > 0)
+		string += " ("
+		var/index = 1
+		for(var/item in tools)
+			if (ispath(item, /obj))
+				var/obj/it = item
+				string += it.name
+				if (index < len)
+					string += "; "
+			++index
+		string += ")"
+	return string.Join("")
+
+/datum/crafting_recipe/proc/get_catalyst_string(data)
+	var/list/string = list()
+	var/len = length(chem_catalysts)
+	if (chem_catalysts && len > 0)
+		string += " ("
+		var/index = 1
+		for(var/item in chem_catalysts)
+			if (ispath(item, /obj))
+				var/obj/it = item
+				string += it.name
+				if (index < len)
+					string += ";"
+			++index
+		string += ")"
+	return string.Join("")
+
+/datum/crafting_recipe/proc/get_skill_level_string(data)
+	if (craftdiff > 0)
+		return " ([SSskills.level_names_plain[craftdiff]])"
+	else
+		return ""

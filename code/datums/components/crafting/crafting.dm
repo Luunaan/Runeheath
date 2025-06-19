@@ -601,6 +601,7 @@
 			continue
 
 		if(check_contents(R, surroundings))
+			R.construct_name()
 			if(R.name)
 				data += R
 				if(R.skillcraft)
