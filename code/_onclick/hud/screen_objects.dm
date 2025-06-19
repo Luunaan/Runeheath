@@ -1285,7 +1285,9 @@
 				limby.color = "#78a8ba"
 				. += limby
 				continue
-			var/damage = BP.burn_dam + BP.brute_dam
+			var/burn_dam = BP.burn_dam < 1 ? 0 : BP.burn_dam
+			var/brute_dam = BP.brute_dam < 1 ? 0 : BP.brute_dam
+			var/damage = burn_dam + brute_dam
 			if(damage > BP.max_damage)
 				damage = BP.max_damage
 			var/comparison = (damage/BP.max_damage)
