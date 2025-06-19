@@ -466,7 +466,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isliving(src))
+	if(isliving(src) && !src.stat)
 		var/message = "[src] looks at"
 		var/target = "\the [A]"
 		if(!isturf(A))
@@ -478,14 +478,35 @@ GLOBAL_VAR_INIT(mobids, 1)
 			else if(A.loc.loc == src)
 				message = "[src] looks into"
 				target = "[src.p_their()] [A.loc.name]"
-			else if(isliving(A) && src.cmode)
+			else if(isliving(A))
 				var/mob/living/T = A
 				if(!iscarbon(T))
 					target = "\the [T.name]'s [T.simple_limb_hit(zone_selected)]"
-				if(iscarbon(T) && T != src)
-					target = "[T]'s [parse_zone(zone_selected)]"
-			if(m_intent != MOVE_INTENT_SNEAK)
-				visible_message(span_emote("[message] [target]."))
+				else
+					var/behind = FALSE
+					var/grabbing = FALSE
+					var/defiancy = T.defiant
+					var/uncovered = get_location_accessible(T, zone_selected)
+					var/has_penis = T.getorganslot(ORGAN_SLOT_PENIS)
+					var/has_vagina = T.getorganslot(ORGAN_SLOT_VAGINA)
+					var/strcheck = T.STASTR >= 12
+					if((src != T && src.dir == T.dir)  || (src == T && fixedeye))
+						behind = TRUE
+					if(ishuman(src))
+						var/obj/item/grabbing/G = get_active_held_item()
+						if(istype(G))
+							if(G.grabbed == T)
+								if(G.sublimb_grabbed == zone_selected)
+									grabbing = TRUE
+					var/parsed_zone = null
+					if (T != src)
+						parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, has_penis, has_vagina, strcheck, FALSE)
+						target = "[T]'s [parsed_zone]"
+					else
+						parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, has_penis, has_vagina, strcheck, TRUE)
+						target = "[T.p_their()] [parsed_zone]"
+				if(m_intent != MOVE_INTENT_SNEAK)
+					visible_message(span_emote("[message] [target]."))
 
 	var/list/result = A.examine(src)
 	if(result)
