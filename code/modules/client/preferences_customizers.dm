@@ -94,7 +94,10 @@
 
 /datum/preferences/proc/print_point_buy_page()
 	var/list/dat = list()
-	dat += "<b>Points available: [pointbuy.current_points]</b><br><br>"
+	dat += "<b>Points available: [pointbuy.current_points]</b>"
+	if (pointbuy.can_afford_second_virtue())
+		dat += " (virtuous!)"
+	dat += "<br><br>"
 
 	for (var/stat in pointbuy.stats)
 		dat += "<li><b>[capitalize(stat)]</b> "
@@ -202,7 +205,7 @@
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += print_point_buy_page()
-	var/datum/browser/popup = new(user, "pointbuy", "<div align='center'>Point Buy</div>", 630, 730) // TODO: Reasonable dimensions
+	var/datum/browser/popup = new(user, "pointbuy", "<div align='center'>Point Buy</div>", 300, 350) // TODO: Reasonable dimensions
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 
