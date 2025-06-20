@@ -6,6 +6,8 @@
 	var/list/mudfishloot = null
 	var/list/fishloot = null
 	var/list/cageloot = null	
+	var/list/luckyloot = null // Non-fish rewards - lucky finds
+	var/list/trashloot = null // Not NECESSARILY trash, but less desirable items
 
 /obj/item/natural/worms
 	name = "worm"
@@ -65,6 +67,35 @@
 		/obj/item/reagent_containers/food/snacks/fish/crab = 214,
 		/obj/item/reagent_containers/food/snacks/fish/lobster = 214,
 	)	
+	luckyloot = list(
+		/obj/item/clothing/ring/gold = 80,
+		/obj/item/clothing/ring/silver = 72,
+		/obj/item/storage/belt/rogue/pouch/coins/mid = 64,
+		/obj/item/clothing/ring/sapphire = 64,
+		/obj/item/clothing/ring/emerald = 48,
+		/obj/item/clothing/ring/ruby = 40,
+		/obj/item/clothing/ring/diamond = 32,
+		/obj/item/storage/belt/rogue/pouch/coins/rich = 32
+	)
+	trashloot = list(
+		/obj/item/trash/applecore = 50,
+		/obj/item/natural/fibers = 15,
+		/obj/item/grown/log/tree/stick = 4,
+		/obj/item/customlock = 35,
+		/obj/item/clothing/head/roguetown/roguehood = 25,
+		/obj/item/clothing/under/roguetown/loincloth/brown = 25,
+		/obj/item/clothing/shoes/roguetown/sandals = 25,
+		/obj/item/clothing/shoes/roguetown/simpleshoes = 25,
+		/obj/item/clothing/gloves/roguetown/fingerless = 25,
+		/obj/item/clothing/gloves/roguetown/leather = 25,
+		/obj/item/clothing/shoes/roguetown/boots = 25,
+		/obj/item/natural/bundle/stick = 15,
+		/obj/item/natural/stone = 15,
+		/obj/item/natural/cloth = 15,
+		/obj/item/kitchen/spoon = 1,
+		/obj/item/roguecoin/silver = 24,
+		/obj/item/roguecoin/gold = 24,
+	)
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 	var/amt = 1
 
@@ -116,6 +147,36 @@
 		/obj/item/clothing/ring/gold = 1,
 		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 25,				
 	)	
+	luckyloot = list(
+		/obj/item/clothing/ring/gold = 80,
+		/obj/item/clothing/ring/silver = 72,
+		/obj/item/storage/belt/rogue/pouch/coins/mid = 64,
+		/obj/item/clothing/ring/sapphire = 64,
+		/obj/item/clothing/ring/emerald = 48,
+		/obj/item/clothing/ring/ruby = 40,
+		/obj/item/clothing/ring/diamond = 32,
+		/obj/item/storage/belt/rogue/pouch/coins/rich = 32
+	)
+	trashloot = list(
+		/obj/item/trash/applecore = 50,
+		/obj/item/natural/fibers = 15,
+		/obj/item/grown/log/tree/stick = 4,
+		/obj/item/customlock = 35,
+		/obj/item/clothing/head/roguetown/roguehood = 25,
+		/obj/item/clothing/under/roguetown/loincloth/brown = 25,
+		/obj/item/clothing/shoes/roguetown/sandals = 25,
+		/obj/item/clothing/shoes/roguetown/simpleshoes = 25,
+		/obj/item/clothing/gloves/roguetown/fingerless = 25,
+		/obj/item/clothing/gloves/roguetown/leather = 25,
+		/obj/item/clothing/shoes/roguetown/boots = 25,
+		/obj/item/natural/bundle/stick = 15,
+		/obj/item/natural/stone = 15,
+		/obj/item/natural/cloth = 15,
+		/obj/item/kitchen/spoon = 1,
+		/obj/item/roguecoin/silver = 24,
+		/obj/item/roguecoin/gold = 24,
+	)
+
 /obj/item/natural/worms/grubs/attack_right(mob/user)
 	return
 

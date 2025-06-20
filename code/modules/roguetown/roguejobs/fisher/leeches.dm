@@ -55,6 +55,37 @@
 		/obj/item/reagent_containers/food/snacks/fish/crab = 214,
 		/obj/item/reagent_containers/food/snacks/fish/lobster = 214,
 	)
+	luckyloot = list(
+		/obj/item/clothing/ring/gold = 80,
+		/obj/item/clothing/ring/silver = 72,
+		/obj/item/storage/belt/rogue/pouch/coins/mid = 64,
+		/obj/item/clothing/ring/sapphire = 64,
+		/obj/item/clothing/ring/emerald = 48,
+		/obj/item/clothing/ring/ruby = 40,
+		/obj/item/clothing/ring/diamond = 32,
+		/obj/item/storage/belt/rogue/pouch/coins/rich = 32,
+		/obj/item/clothing/ring/dragon_ring = 1, // Jackpot item
+		/obj/item/clothing/ring/active/nomag = 1 // Jackpot item
+	)
+	trashloot = list(
+		/obj/item/trash/applecore = 50,
+		/obj/item/natural/fibers = 15,
+		/obj/item/grown/log/tree/stick = 4,
+		/obj/item/customlock = 35,
+		/obj/item/clothing/head/roguetown/roguehood = 25,
+		/obj/item/clothing/under/roguetown/loincloth/brown = 25,
+		/obj/item/clothing/shoes/roguetown/sandals = 25,
+		/obj/item/clothing/shoes/roguetown/simpleshoes = 25,
+		/obj/item/clothing/gloves/roguetown/fingerless = 25,
+		/obj/item/clothing/gloves/roguetown/leather = 25,
+		/obj/item/clothing/shoes/roguetown/boots = 25,
+		/obj/item/natural/bundle/stick = 15,
+		/obj/item/natural/stone = 15,
+		/obj/item/natural/cloth = 15,
+		/obj/item/kitchen/spoon = 1,
+		/obj/item/roguecoin/silver = 24,
+		/obj/item/roguecoin/gold = 24,
+	)
 
 	embedding = list(
 		"embed_chance" = 100,

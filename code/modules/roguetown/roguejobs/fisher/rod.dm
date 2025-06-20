@@ -98,8 +98,22 @@
 								fishchance -= fpp // Deduct a penalty the lower our fishing level is (-0 at legendary)
 						var/mob/living/fisherman = user
 						if(prob(fishchance)) // Finally, roll the dice to see if we fish.
+							var/lucky = FALSE
+							var/unlucky = FALSE
+							if (isliving(user))
+								var/mob/living/L = user
+								lucky = prob(L.get_scaled_sq_luck(1, 16)) // 4% at 10 luck
+								if (!lucky) // We'll be nice and not override lucky
+									unlucky = prob(20 - L.good_luck_percent(2))
+
 							if(target.type in frwt)
-								var/A = pickweight(baited.freshfishloot)
+								var/A = null
+								if (lucky && baited.luckyloot && length(baited.luckyloot) > 0)
+									A = pickweight(baited.luckyloot)
+								else if (unlucky && baited.trashloot && length(baited.trashloot) > 0)
+									A = pickweight(baited.trashloot)
+								else
+									A = pickweight(baited.freshfishloot)
 								var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
 								to_chat(user, "<span class='notice'>Something tugs the line!</span>")
 								playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
@@ -127,7 +141,13 @@
 										qdel(baited)
 										baited = null
 							if(target.type in salwt)
-								var/A = pickweight(baited.seafishloot)
+								var/A = null
+								if (lucky && baited.luckyloot && length(baited.luckyloot) > 0)
+									A = pickweight(baited.luckyloot)
+								else if (unlucky && baited.trashloot && length(baited.trashloot) > 0)
+									A = pickweight(baited.trashloot)
+								else
+									A = pickweight(baited.seafishloot)
 								var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
 								to_chat(user, "<span class='notice'>Something tugs the line!</span>")
 								playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
@@ -155,7 +175,13 @@
 										qdel(baited)
 										baited = null	
 							if(target.type in mud)
-								var/A = pickweight(baited.mudfishloot)
+								var/A = null
+								if (lucky && baited.luckyloot && length(baited.luckyloot) > 0)
+									A = pickweight(baited.luckyloot)
+								else if (unlucky && baited.trashloot && length(baited.trashloot) > 0)
+									A = pickweight(baited.trashloot)
+								else
+									A = pickweight(baited.mudfishloot)
 								var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
 								to_chat(user, "<span class='notice'>Something tugs the line!</span>")
 								playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)

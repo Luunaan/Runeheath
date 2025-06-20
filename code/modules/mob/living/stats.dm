@@ -180,6 +180,17 @@
 	if(STALUC > 10)
 		return prob((STALUC - 10) * multi)
 
+/mob/living/proc/bad_luck_percent(multi = 3)
+	if (STALUC < 10)
+		return (10 - STALUC) * multi
+	return 0
+
+/mob/living/proc/good_luck_percent(multi = 3)
+	if (STALUC > 10)
+		return (STALUC - 10) * multi
+	else
+		return 0
+
 /mob/living/proc/get_stat_level(stat_keys)
 	switch(stat_keys)
 		if(STATKEY_STR)
