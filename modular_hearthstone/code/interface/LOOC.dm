@@ -1,32 +1,32 @@
-/datum/keybinding/looc
-	category = CATEGORY_CLIENT
-	weight = WEIGHT_HIGHEST
-	hotkey_keys = list("Y")
-	name = "LOOC"
-	full_name = "LOOC Chat"
-	description = "Local OOC Chat."
+// /datum/keybinding/looc
+// 	category = CATEGORY_CLIENT
+// 	weight = WEIGHT_HIGHEST
+// 	hotkey_keys = list("Y")
+// 	name = "LOOC"
+// 	full_name = "LOOC Chat"
+// 	description = "Local OOC Chat."
 
-/datum/keybinding/looc/down(client/user)
-	user.get_looc()
-	return TRUE
+// /datum/keybinding/looc/down(client/user)
+// 	user.get_looc()
+// 	return TRUE
 
-/client/proc/get_looc()
-	var/msg = input(src, null, "looc \"text\"") as text|null
-	do_looc(msg, FALSE)
+// /client/proc/get_looc()
+// 	var/msg = input(src, null, "looc \"text\"") as text|null
+// 	do_looc(msg, FALSE)
 
-/client/verb/looc(msg as text)
-	set name = "LOOC"
-	set desc = "Local OOC, seen only by those in view."
-	set category = "OOC"
+// /client/verb/looc(msg as text)
+// 	set name = "LOOC"
+// 	set desc = "Local OOC, seen only by those in view."
+// 	set category = "OOC"
 
-	do_looc(msg, FALSE)
+// 	do_looc(msg, FALSE)
 
-/client/verb/loocwp(msg as text)
-	set name = "LOOC (Wall Pierce)"
-	set desc = "Local OOC, seen by all in range."
-	set category = "OOC"
+// /client/verb/loocwp(msg as text)
+// 	set name = "LOOC (Wall Pierce)"
+// 	set desc = "Local OOC, seen by all in range."
+// 	set category = "OOC"
 
-	do_looc(msg, TRUE)
+// 	do_looc(msg, TRUE)
 
 /client/proc/do_looc(msg as text, wp)
 
