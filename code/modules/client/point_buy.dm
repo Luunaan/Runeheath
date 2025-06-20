@@ -2,7 +2,7 @@
 	var/const/starting_points = 3 // Points to start with
 	var/const/max_positive_adjustments = 5 // Maximum POSITIVE adjustments
 	var/const/max_total_adjustments = 12 // Maximum TOTAL adjustments (sum of magnitudes)
-	var/const/points_for_second_virtue = 6
+	var/const/points_for_second_virtue = 4
 	var/current_points = starting_points
 
 	var/list/stats = list(
