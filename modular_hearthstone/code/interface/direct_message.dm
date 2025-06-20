@@ -49,8 +49,8 @@
 		to_chat(usr, "<font color='["#6699CC"]'><b><span class='message'>Player is too far away.</span></b></font>")
 		return
 
-	// if (target == src.mob)
-	// 	return
+	if (target == src.mob)
+		return
 
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if (!msg)
