@@ -85,7 +85,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 	if(born_of_rock)
 		. += span_notice("This tome was made from a magical stone instead of a proper gem. Holding it in your hand with it open reduces spell charge time by [ROCK_CHARGE_REDUCTION * 100]%")
 	else
-		. += span_notice("This tome was made from a gem. Holding it in your hand with it open reduces spell charge time by [GEM_CHARGE_REDUCTION * 100]%") 
+		. += span_notice("This tome was made from a gem. Holding it in your hand with it open reduces spell charge time by [GEM_CHARGE_REDUCTION * 100]%")
 
 /obj/item/book/spellbook/attack_self(mob/user)
 	if(!open)
@@ -324,6 +324,15 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 	anchored = TRUE
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "imbuement"
+	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	layer = SIGIL_LAYER
+
+/obj/effect/roguerunelargeWall/
+	name = "The seal of Graggar"
+	desc = "Despite all their attempts, the orcs never understood how to open the gate..."
+	anchored = TRUE
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "walltest"
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = SIGIL_LAYER
 
