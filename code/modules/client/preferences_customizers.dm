@@ -96,7 +96,7 @@
 	var/list/dat = list()
 	dat += "<b>Points available: [pointbuy.current_points]</b>"
 	if (pointbuy.can_afford_second_virtue())
-		dat += " (virtuous!)"
+		dat += " <span style=\"color:#FFD700\";>(virtuous!)</span>"
 	dat += "<br><br>"
 
 	for (var/stat in pointbuy.stats)
