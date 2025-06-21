@@ -2,6 +2,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_EMPTY(chosen_names)
 
+#define GENDER_PREF_MALE (1 << 0)
+#define GENDER_PREF_FEMALE (1 << 1)
+#define GENDER_PREF_INTERSEX (1 << 2)
+#define GENDER_PREF_FEM_PRESENTING (1 << 3)
+#define GENDER_PREF_MASC_PRESENTING (1 << 4)
+
+#define GENDER_PREF_ALL = GENDER_PREF_MALE | GENDER_PREF_FEMALE | GENDER_PREF_INTERSEX | GENDER_PREF_FEM_PRESENTING | GENDER_PREF_MASC_PRESENTING
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -97,6 +105,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/phobia = "spiders"
 	var/shake = TRUE
 	var/sexable = FALSE
+	var/gender_preferences = 0 // NOT to be displayed publicly, to avoid cliquishness - this is for when we MECHANICALLY need it
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -383,6 +392,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
 //			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+			dat += "<b>Gender Preferences:</b> <a href='?_src_=prefs;preference=gender_prefs'>Change</a><BR>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -1375,6 +1385,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			var/amount = text2num(href_list["amount"])
 			if (pointbuy.try_buy_point(stat, amount))
 				ShowPointBuy(user)
+		if ("toggle_gender_pref")
+			if (href_list["gender_pref"])
+				var/pref = text2num(href_list["gender_pref"])
+				if (gender_preferences & pref)
+					gender_preferences &= ~pref
+				else
+					gender_preferences |= pref
+			ShowGenderPrefs(user)
 		if("random")
 			switch(href_list["preference"])
 				if("name")
@@ -2064,6 +2082,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						domhand = 2
 					else
 						domhand = 1
+				if ("gender_prefs")
+					ShowGenderPrefs(user)
 				if("bespecial")
 					if(next_special_trait)
 						print_special_text(user, next_special_trait)

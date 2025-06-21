@@ -107,6 +107,21 @@
 
 	return dat
 
+/datum/preferences/proc/print_gender_prefs_page()
+	var/list/dat = list()
+	dat += "<b>Customise your gender preferences.</b><br>"
+	dat += "<b>NOTE: This is for mechanical purposes, and is not visible to other players!<b><br>"
+	dat += "<br><br>"
+
+	dat += "Male: <a href='?_src_=prefs;task=toggle_gender_pref;gender_pref=[GENDER_PREF_MALE]'>[(gender_preferences & GENDER_PREF_MALE) ? "YES" : "NO"]</a><br>"
+	dat += "Female: <a href='?_src_=prefs;task=toggle_gender_pref;gender_pref=[GENDER_PREF_FEMALE]'>[(gender_preferences & GENDER_PREF_FEMALE) ? "YES" : "NO"]</a><br>"
+	dat += "Intersex: <a href='?_src_=prefs;task=toggle_gender_pref;gender_pref=[GENDER_PREF_INTERSEX]'>[(gender_preferences & GENDER_PREF_INTERSEX) ? "YES" : "NO"]</a><br>"
+	dat += "<br>"
+	dat += "Masculine: <a href='?_src_=prefs;task=toggle_gender_pref;gender_pref=[GENDER_PREF_MASC_PRESENTING]'>[(gender_preferences & GENDER_PREF_MASC_PRESENTING) ? "YES" : "NO"]</a><br>"
+	dat += "Feminine: <a href='?_src_=prefs;task=toggle_gender_pref;gender_pref=[GENDER_PREF_FEM_PRESENTING]'>[(gender_preferences & GENDER_PREF_FEM_PRESENTING) ? "YES" : "NO"]</a><br>"
+
+	return dat
+
 /// We dont associate the entries just to be safer for save/load, so we can't lookup easily and we do this.
 /datum/preferences/proc/get_customizer_entry_for_customizer_type(customizer_type)
 	for(var/datum/customizer_entry/entry as anything in customizer_entries)
@@ -205,7 +220,15 @@
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += print_point_buy_page()
-	var/datum/browser/popup = new(user, "pointbuy", "<div align='center'>Point Buy</div>", 300, 350) // TODO: Reasonable dimensions
+	var/datum/browser/popup = new(user, "pointbuy", "<div align='center'>Point Buy</div>", 300, 350)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+
+/datum/preferences/proc/ShowGenderPrefs(mob/user)
+	var/list/dat = list()
+	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
+	dat += print_gender_prefs_page()
+	var/datum/browser/popup = new(user, "genderprefs", "<div align ='center'>Gender Preferences</div>", 300, 350)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

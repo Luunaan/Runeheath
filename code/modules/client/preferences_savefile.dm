@@ -374,6 +374,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pb.deserialize(S["pointbuy"])
 	pointbuy = pb
 
+/datum/preferences/proc/_load_gender_prefs(S)
+	if (S["gender_prefs"])
+		var/prefs = text2num(S["gender_prefs"])
+		gender_preferences = prefs
+
 /datum/preferences/proc/_load_virtue(S)
 	var/virtue_type
 	var/virtuetwo_type
@@ -475,6 +480,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// LETHALSTONE edit: jank-ass load our statpack choice
 	//_load_statpack(S)
 	_load_pointbuy(S)
+	_load_gender_prefs(S)
 
 	_load_loadout(S)
 	_load_loadout2(S)
@@ -696,6 +702,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pronouns"] , pronouns)
 	//WRITE_FILE(S["statpack"] , statpack.type)
 	WRITE_FILE(S["pointbuy"], pointbuy.serialize())
+	WRITE_FILE(S["gender_prefs"], gender_preferences)
 	WRITE_FILE(S["virtue"] , virtue.type)
 	WRITE_FILE(S["virtuetwo"], virtuetwo.type)
 	WRITE_FILE(S["body_size"] , features["body_size"])
