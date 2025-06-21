@@ -2,6 +2,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_EMPTY(chosen_names)
 
+#define GENDER_PREF_NONE 0
 #define GENDER_PREF_MALE (1 << 0)
 #define GENDER_PREF_FEMALE (1 << 1)
 #define GENDER_PREF_INTERSEX (1 << 2)
@@ -2470,6 +2471,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if (character.pointbuy)
 		character.pointbuy.remove_from(character)
 		character.pointbuy.apply_to(character)
+
+	character.gender_preferences = gender_preferences
 
 	character.flavortext = flavortext
 

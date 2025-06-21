@@ -130,3 +130,5 @@
 	var/datum/point_buy/pointbuy = null
 	var/second_voice	// Virtue-specific. Can be swapped to / from and changed.
 	var/original_voice
+	var/gender_preferences = GENDER_PREF_NONE
+
