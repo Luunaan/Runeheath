@@ -98,6 +98,36 @@
 	W.spawn_gibs(FALSE)
 	src.forceMove(W)
 
+	// Hack: apply the same sexual characteristics that our character has
+	// Not perfect - doesn't reflect surgical changes etc. - but it will do
+	var/obj/item/organ/penis/orig_penis = src.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/testicles/orig_testicles = src.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/breasts/orig_breasts = src.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/vagina/orig_vagina = src.getorganslot(ORGAN_SLOT_VAGINA)
+
+	if (orig_penis != null && !W.getorganslot(ORGAN_SLOT_PENIS))
+		var/obj/item/organ/penis/knotted/big/penis = new()
+		penis.functional = orig_penis.functional
+		penis.penis_size = orig_penis.penis_size
+		penis.Insert(W)
+	if (orig_testicles != null && !W.getorganslot(ORGAN_SLOT_TESTICLES))
+		var/obj/item/organ/testicles/testicles = new()
+		testicles.ball_size = orig_testicles.ball_size
+		testicles.virility = orig_testicles.virility
+		testicles.Insert(W)
+	if (orig_breasts != null && !W.getorganslot(ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/breasts/breasts = new()
+		breasts.lactating = orig_breasts.lactating
+		if (breasts.lactating)
+			breasts.milk_stored = breasts.milk_max
+		breasts.breast_size = orig_breasts.breast_size
+		breasts.Insert(W)
+	if (orig_vagina != null && !W.getorganslot(ORGAN_SLOT_VAGINA))
+		var/obj/item/organ/vagina/vagina = new()
+		vagina.fertility = orig_vagina.fertility
+		vagina.pregnant = orig_vagina.pregnant
+		vagina.Insert(W)
+
 	W.after_creation()
 	W.stored_language = new
 	W.stored_language.copy_known_languages_from(src)
