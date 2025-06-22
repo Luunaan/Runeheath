@@ -72,7 +72,6 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 	H.STASTR = 20
 	H.STASPD = 8
 	H.STACON = 20
-	H.STAEND = 20
 	H.STAPER = 8
 	H.STAINT = 1
 

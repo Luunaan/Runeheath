@@ -99,10 +99,9 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 	if(prob(25))
 		gloves = /obj/item/clothing/gloves/roguetown/angle
-	H.STASTR = rand(10,11) //GENDER EQUALITY!!
+	H.STASTR = 11
 	H.STASPD = 10
-	H.STACON = rand(10,12) //so their limbs no longer pop off like a skeleton
-	H.STAEND = 10
+	H.STACON = 11 //so their limbs no longer pop off like a skeleton
 	H.STAPER = 10
 	H.STAINT = 10
 	if(prob(50))

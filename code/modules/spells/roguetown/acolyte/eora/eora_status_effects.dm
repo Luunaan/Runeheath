@@ -51,7 +51,6 @@
 	// Apply stat boosts to all attributes
 	effectedstats = list(
 		"strength" = current_boost,
-		"endurance" = current_boost,
 		"constitution" = current_boost,
 		"intelligence" = current_boost,
 		"perception" = current_boost,

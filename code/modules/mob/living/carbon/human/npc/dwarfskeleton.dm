@@ -105,7 +105,6 @@ GLOBAL_LIST_INIT(dwarfskeleton_aggro, world.file2list("strings/rt/dskeletonaggro
 	H.STASTR = rand(12,13)
 	H.STASPD = 11
 	H.STACON = rand(12,13)
-	H.STAEND = rand(12,13)
 	H.STAPER = 14
 	H.STAINT = 11
 	if(H.mind)
@@ -136,7 +135,6 @@ GLOBAL_LIST_INIT(dwarfskeleton_aggro, world.file2list("strings/rt/dskeletonaggro
 	H.STASTR = 16
 	H.STASPD = 11
 	H.STACON = 14
-	H.STAEND = 14
 	H.STAPER = 14
 	H.STAINT = 11
 	if(H.mind)

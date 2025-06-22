@@ -43,7 +43,6 @@
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	H.change_stat("strength", 2)  // Heretic is by far the best class with access to rituals (as long as they play a god with ritual), holy and heavy armor. So they keep 7 points.
 	H.change_stat("constitution", 2)
-	H.change_stat("endurance", 1)
 	if (istype (H.patron, /datum/patron/inhumen/zizo))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark)

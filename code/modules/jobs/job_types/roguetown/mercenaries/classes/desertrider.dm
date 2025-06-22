@@ -41,7 +41,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
+			H.change_stat("constitution", 2)
 			H.change_stat("perception", -1)
 			H.change_stat("speed", 2)
 			backl = /obj/item/rogueweapon/shield/wood
@@ -73,7 +73,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			H.change_stat("endurance", 2)
+			H.change_stat("constitution", 2)
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 3)
 			backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -113,7 +113,7 @@
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 			H.change_stat("perception", -1)
-			H.change_stat("endurance", 2)
+			H.change_stat("constitution", 2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("speed", 3)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

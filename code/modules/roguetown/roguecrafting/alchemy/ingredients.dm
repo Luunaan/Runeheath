@@ -102,7 +102,7 @@
 	name = "coal dust"
 	icon_state = "coaldust"
 	major_pot = /datum/alch_cauldron_recipe/antidote
-	med_pot = /datum/alch_cauldron_recipe/end_potion
+	med_pot = /datum/alch_cauldron_recipe/con_potion
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/silverdust
@@ -116,7 +116,7 @@
 	name = "pure essentia"
 	icon_state = "magic_runedust"
 	major_pot = /datum/alch_cauldron_recipe/big_mana_potion
-	med_pot = /datum/alch_cauldron_recipe/end_potion
+	med_pot = /datum/alch_cauldron_recipe/int_potion // TODO: END removal: used to be an END potion, this may need to be changed
 	minor_pot = /datum/alch_cauldron_recipe/con_potion
 
 /obj/item/alch/firedust
@@ -131,13 +131,13 @@
 	icon_state = "sinew"
 	dropshrink = 0.9
 	major_pot = /datum/alch_cauldron_recipe/stam_poison
-	med_pot = /datum/alch_cauldron_recipe/end_potion
+	med_pot = /datum/alch_cauldron_recipe/con_potion
 	minor_pot = /datum/alch_cauldron_recipe/health_potion
 
 /obj/item/alch/irondust
 	name = "iron dust"
 	icon_state = "irondust"
-	major_pot = /datum/alch_cauldron_recipe/end_potion
+	major_pot = /datum/alch_cauldron_recipe/int_potion // TODO: END removal: used to be an END potion, this may need to be changed
 	med_pot = /datum/alch_cauldron_recipe/con_potion
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
@@ -153,7 +153,7 @@
 	icon_state = "swampdust"
 	major_pot = /datum/alch_cauldron_recipe/berrypoison
 	med_pot = /datum/alch_cauldron_recipe/big_stam_poison
-	minor_pot = /datum/alch_cauldron_recipe/end_potion
+	minor_pot = /datum/alch_cauldron_recipe/con_potion
 
 /obj/item/alch/tobaccodust
 	name = "westleach dust"
@@ -166,7 +166,7 @@
 	name = "earth essentia"
 	icon_state = "earth_runedust"
 	major_pot = /datum/alch_cauldron_recipe/con_potion
-	med_pot = /datum/alch_cauldron_recipe/end_potion
+	med_pot = /datum/alch_cauldron_recipe/int_potion // TODO: END removal: used to be an END potion, this may need to be changed
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/bone
@@ -195,7 +195,7 @@
 
 	major_pot = /datum/alch_cauldron_recipe/str_potion
 	med_pot = /datum/alch_cauldron_recipe/con_potion
-	minor_pot = /datum/alch_cauldron_recipe/end_potion
+	minor_pot = /datum/alch_cauldron_recipe/int_potion // TODO: END removal: used to be an END potion, this may need to be changed
 
 /obj/item/alch/golddust
 	name = "gold dust"
@@ -334,7 +334,7 @@
 	icon_state = "calendula"
 
 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
-	med_pot = /datum/alch_cauldron_recipe/end_potion
+	med_pot = /datum/alch_cauldron_recipe/con_potion
 	minor_pot = /datum/alch_cauldron_recipe/health_potion
 
 /obj/item/alch/mentha
@@ -364,7 +364,7 @@
 
 	major_pot = /datum/alch_cauldron_recipe/con_potion
 	med_pot = /datum/alch_cauldron_recipe/str_potion
-	minor_pot = /datum/alch_cauldron_recipe/end_potion
+	minor_pot = /datum/alch_cauldron_recipe/int_potion // TODO: END removal: used to be an END potion, this may need to be changed
 
 /obj/item/alch/hypericum
 	name = "hypericum"

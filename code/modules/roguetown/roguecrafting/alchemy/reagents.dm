@@ -223,15 +223,6 @@
 	M.apply_status_effect(/datum/status_effect/buff/alch/constitutionpot)
 	return ..()
 
-/datum/reagent/buff/endurance
-	name = "Endurance"
-	color = "#ffff00"
-	taste_description = "oversweetened milk"
-
-/datum/reagent/buff/endurance/on_mob_life(mob/living/carbon/M)
-	M.apply_status_effect(/datum/status_effect/buff/alch/endurancepot)
-	return ..()
-
 /datum/reagent/buff/speed
 	name = "Speed"
 	color = "#ffff00"

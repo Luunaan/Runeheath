@@ -39,7 +39,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
-		H.change_stat("endurance", 2)
+		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 2)
 		H.change_stat("intelligence", 1)

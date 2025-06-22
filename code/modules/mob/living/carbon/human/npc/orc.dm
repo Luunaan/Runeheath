@@ -35,7 +35,6 @@
 	H.STASTR = 16
 	H.STASPD = 6
 	H.STACON = 15
-	H.STAEND = 15
 	H.STAINT = 8
 
 	//light labor skills for armor repairs and such, equipment is so-so, with good stats

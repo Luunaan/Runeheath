@@ -35,4 +35,3 @@
 		ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", -1)
-		H.change_stat("endurance", -1)

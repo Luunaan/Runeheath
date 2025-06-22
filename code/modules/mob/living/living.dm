@@ -1104,7 +1104,7 @@
 		combat_modifier -= 0.3
 
 	resist_chance += max((wrestling_diff * 10), -20)
-	resist_chance += (STACON - (agg_grab ? L.STASTR : L.STAEND)) * 5
+	resist_chance += (STACON - (agg_grab ? L.STASTR : L.STACON)) * 5
 	resist_chance *= combat_modifier
 	resist_chance = clamp(resist_chance, 5, 95)
 

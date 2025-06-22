@@ -90,7 +90,6 @@
 			H.change_stat("strength", 2) // Favoring a less speedy and more steady playstyle vs spellsinger
 			H.change_stat("intelligence", 1)
 			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 1)
 			H.mind.adjust_spellpoints(12)
 			H.cmode_music = 'sound/music/combat_bard.ogg'
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
@@ -140,7 +139,7 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.change_stat("intelligence", 2)
-			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
 			H.change_stat("speed", 2)
 			H.mind.adjust_spellpoints(12)
 			H.cmode_music = 'sound/music/combat_bard.ogg'

@@ -79,12 +79,6 @@
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/perception = 27)
 
-/datum/alch_cauldron_recipe/end_potion
-	name = "Potion of Enduring Fortitude"
-	smells_like = "mountain air"
-	skill_required = SKILL_LEVEL_EXPERT
-	output_reagents = list(/datum/reagent/buff/endurance = 27)
-
 /datum/alch_cauldron_recipe/con_potion
 	name = "Potion of Stone Flesh"
 	smells_like = "earth"

@@ -2152,11 +2152,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return
 		if(!I.sharpness)
 			if(!target.resting)
-				var/endurance = target.STAEND
+				var/constitution = target.STACON
 				var/knockback_tiles = 0
 				var/newforce = get_complex_damage(I, user)
-				if(endurance >= 3)
-					knockback_tiles = FLOOR(newforce/((endurance - 2) * 2.5), 1)
+				if(constitution >= 3)
+					knockback_tiles = FLOOR(newforce/((constitution - 2) * 2.5), 1)
 				else
 					knockback_tiles = FLOOR(newforce/2, 1)
 				if(knockback_tiles >= 1)

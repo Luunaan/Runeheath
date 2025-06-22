@@ -26,7 +26,6 @@
 	STACON = 8
 	STASTR = 6
 	STASPD = 12
-	STAEND = 8
 	
 	// Movement
 	pass_flags = PASSTABLE

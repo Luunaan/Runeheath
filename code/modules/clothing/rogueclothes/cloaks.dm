@@ -1561,7 +1561,6 @@
 			user.change_stat("perception", 2)
 			user.change_stat("intelligence", 2)
 			user.change_stat("constitution", 2)
-			user.change_stat("endurance", 2)
 			user.change_stat("speed", 2)
 			armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "piercing" = 100, "fire" = 50, "acid" = 0)
 		else
@@ -1579,7 +1578,6 @@
 		user.change_stat("perception", -2)
 		user.change_stat("intelligence", -2)
 		user.change_stat("constitution", -2)
-		user.change_stat("endurance", -2)
 		user.change_stat("speed", -2)
 	else
 		to_chat(user, span_notice("Strange, I don't feel that power anymore..."))

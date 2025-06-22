@@ -147,7 +147,7 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat("intelligence", 3)
-		H.change_stat("endurance", 2)
+		H.change_stat("constitution", 2)
 		H.change_stat("speed", 1)
 		H.cmode_music = 'sound/music/combat_holy.ogg'
 		if(H.patron?.type == /datum/patron/divine/necra)

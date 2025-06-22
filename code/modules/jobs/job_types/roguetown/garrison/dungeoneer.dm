@@ -65,7 +65,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.change_stat("strength", 2)
-	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 2)
 	//Torture victim is for inquisition - doesn't even work without a psicross anymore so maybe come up with a variant for him specifically?
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

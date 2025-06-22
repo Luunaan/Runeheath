@@ -159,11 +159,6 @@
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/conpot)
 
-/datum/supply_pack/rogue/Sawbones/endpot
-	name = "Endurance Potion"
-	cost = 10
-	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/endpot)
-
 /datum/supply_pack/rogue/Sawbones/strpot
 	name = "Strength Potion"
 	cost = 10

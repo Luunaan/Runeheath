@@ -65,26 +65,6 @@
 					r_hand = /obj/item/rogueweapon/spear/boar
 				if("Lucerne")
 					r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
-/*		if("Cortador")								TBA
-			H.set_blindness(0)
-			to_chat(H, span_warning("You completely forego long arms, having proven yourself effective in the teachings of the Etruscan knife-fighting masters of old. You are a master knife fighter and your \"shield\" can daze opponents easily."))
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.change_stat("speed", 2)
-			H.change_stat("perception", 1)
-			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 3)
-			ADD_TRAIT(H, TRAIT_DODGEEXPERT)
-			var/weapons = list("Common Dagger", "Facón Dagger")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			switch(weapon_choice)
-				if("Common Dagger")
-					r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
-				if("Facón Dagger")
-					r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/freelancer	*/
 
 //Gear regardless of class. This will be changed when Cortador is finished.
 	belt = /obj/item/storage/belt/rogue/leather/sash

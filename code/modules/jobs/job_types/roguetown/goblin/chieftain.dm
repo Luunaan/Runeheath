@@ -32,8 +32,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 6)
-		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 4)
 		H.change_stat("speed", -2)
 
 /mob/living/carbon/human/proc/goblinannouncement()

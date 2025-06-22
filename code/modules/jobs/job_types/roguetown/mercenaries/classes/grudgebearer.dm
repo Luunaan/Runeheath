@@ -20,7 +20,7 @@
 			if("Smith")	//Because the armor is race-exclusive for repairs, these guys *should* be able to repair their own guys armor layers. A Dwarf smith isn't guaranteed, after all.
 				H.change_stat("intelligence", 3)
 				H.change_stat("perception", 3)	//"Strikes deftly" is based on PER
-				H.change_stat("endurance", 3)
+				H.change_stat("constitution", 2)
 				H.change_stat("strength", 1)
 				H.change_stat("speed", -2)
 				H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
@@ -47,8 +47,7 @@
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 			if("Soldier")
-				H.change_stat("constitution", 5)
-				H.change_stat("endurance", 4)
+				H.change_stat("constitution", 4)
 				H.change_stat("strength", 2)
 				H.change_stat("speed", -2)
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)

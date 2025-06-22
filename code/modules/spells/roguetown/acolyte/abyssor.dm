@@ -375,7 +375,6 @@
 	effectedstats = list(
 		"strength" = str_buff,
 		"constitution" = con_buff,
-		"endurance" = end_buff,
 		"fortune" = fortune_malus,
 		"speed" = speed_malus,
 		"perception" = perception_malus

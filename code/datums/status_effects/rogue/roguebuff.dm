@@ -5,7 +5,7 @@
 /datum/status_effect/buff/drunk
 	id = "drunk"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/drunk
-	effectedstats = list("intelligence" = -2, "endurance" = 1)
+	effectedstats = list("intelligence" = -2, "constitution" = 1)
 	duration = 5 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/drunk
@@ -32,13 +32,13 @@
 /datum/status_effect/buff/nocshine
 	id = "nocshine"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/drunknoc
-	effectedstats = list("strength" = 1, "endurance" = 1)
+	effectedstats = list("strength" = 1, "constitution" = 1)
 	duration = 2 MINUTES
 
 /datum/status_effect/buff/foodbuff
 	id = "foodbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
-	effectedstats = list("constitution" = 1,"endurance" = 1)
+	effectedstats = list("constitution" = 1)
 	duration = 15 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/foodbuff
@@ -112,7 +112,7 @@
 /datum/status_effect/buff/moondust
 	id = "moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 2, "endurance" = 2, "intelligence" = -2)
+	effectedstats = list("speed" = 2, "constitution" = 2, "intelligence" = -2)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/moondust/nextmove_modifier()
@@ -125,7 +125,7 @@
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 3, "endurance" = 3, "intelligence" = -2)
+	effectedstats = list("speed" = 3, "constitution" = 3, "intelligence" = -2)
 	duration = 40 SECONDS
 
 /datum/status_effect/buff/moondust_purest/nextmove_modifier()
@@ -138,7 +138,7 @@
 /datum/status_effect/buff/herozium
 	id = "herozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = -5, "endurance" = 4, "intelligence" = -3, "constitution" = 3)
+	effectedstats = list("speed" = -5, "intelligence" = -3, "constitution" = 4)
 	duration = 80 SECONDS
 	var/originalcmode = ""
 	var/hadcritres = FALSE
@@ -173,7 +173,7 @@
 /datum/status_effect/buff/starsugar
 	id = "starsugar"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 4, "endurance" = 4, "intelligence" = -3, "constitution" = -3)
+	effectedstats = list("speed" = 4, "intelligence" = -3, "constitution" = 4)
 	duration = 80 SECONDS
 	var/originalcmode = ""
 	var/haddodge = FALSE
@@ -376,7 +376,7 @@
 /datum/status_effect/buff/barkeepbuff
 	id = "barkeepbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/barkeepbuff
-	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "strength" = 3) 
+	effectedstats = list("constitution" = 1, "speed" = 1, "strength" = 3) 
 
 /datum/status_effect/buff/barkeepbuff/process()
 
@@ -388,12 +388,12 @@
 /datum/status_effect/buff/guardbuffone
 	id = "guardbuffone"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
-	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2) 
+	effectedstats = list("constitution" = 1, "speed" = 1, "perception" = 2) 
 
 /datum/status_effect/buff/dungeoneerbuff
 	id = "dungeoneerbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dungeoneerbuff
-	effectedstats = list("constitution" = 1,"endurance" = 1, "strength" = 2)//This only works in 2 small areas on the entire map
+	effectedstats = list("constitution" = 1, "strength" = 2)//This only works in 2 small areas on the entire map
 
 /datum/status_effect/buff/guardbuffone/process()
 
@@ -532,7 +532,7 @@
 	id = "censer"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/censerbuff
 	duration = 15 MINUTES
-	effectedstats = list("endurance" = 1, "constitution" = 1)
+	effectedstats = list("constitution" = 1)
 
 /datum/status_effect/buff/convergence //Increases all healing while it lasts.
 	id = "convergence"
@@ -827,7 +827,7 @@
 	id = "call_to_arms"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/call_to_arms
 	duration = 2.5 MINUTES
-	effectedstats = list("strength" = 1, "endurance" = 2, "constitution" = 1)
+	effectedstats = list("strength" = 1, "constitution" = 2)
 
 /atom/movable/screen/alert/status_effect/buff/call_to_arms
 	name = "Call to Arms"
@@ -838,7 +838,7 @@
 	id = "call_to_slaughter"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/call_to_slaughter
 	duration = 2.5 MINUTES
-	effectedstats = list("strength" = 1, "endurance" = 2, "constitution" = 1)
+	effectedstats = list("strength" = 1, "constitution" = 2)
 
 /atom/movable/screen/alert/status_effect/buff/call_to_slaughter
 	name = "Call to Slaughter"
@@ -887,7 +887,7 @@
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("intelligence" = 2, "endurance" = 4, "speed" = -3)
+	effectedstats = list("intelligence" = 2, "constitution" = 4, "speed" = -3)
 	duration = 20 SECONDS
 
 

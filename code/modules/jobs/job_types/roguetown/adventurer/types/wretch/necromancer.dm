@@ -39,7 +39,7 @@
 		H.mind.adjust_spellpoints(6)
 	H.change_stat("intelligence", 4) // Necromancer get the most +4 Int, +2 Perception just like Sorc (Adv Mage), and a bit of endurance / speed
 	H.change_stat("perception", 2)
-	H.change_stat("endurance", 1)
+	H.change_stat("constitution", 1)
 	H.change_stat("speed", 1)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)

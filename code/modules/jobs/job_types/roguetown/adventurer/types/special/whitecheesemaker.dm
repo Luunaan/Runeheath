@@ -49,7 +49,6 @@
 
 	H.change_stat("intelligence", 3)
 	H.change_stat("strength", 4)
-	H.change_stat("endurance", 4)
 	H.change_stat("constitution", 4)
 	H.change_stat("speed", 2)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)

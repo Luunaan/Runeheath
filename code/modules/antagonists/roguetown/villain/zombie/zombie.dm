@@ -26,7 +26,6 @@
 	var/STASPD
 	var/STAINT
 	var/STACON
-	var/STAEND
 	var/cmode_music
 	var/list/base_intents
 
@@ -131,7 +130,6 @@
 	src.STASPD = zombie.STASPD
 	src.STAINT = zombie.STAINT
 	src.STACON = zombie.STACON
-	src.STAEND = zombie.STAEND
 	cmode_music = zombie.cmode_music
 
 	//Special because deadite status is latent as opposed to the others. 
@@ -166,7 +164,6 @@
 		zombie.STASPD = src.STASPD
 		zombie.STAINT = src.STAINT
 		zombie.STACON = src.STACON
-		zombie.STAEND = src.STAEND
 
 
 

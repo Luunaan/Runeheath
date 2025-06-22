@@ -98,7 +98,7 @@
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
-			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
 			H.grant_language(/datum/language/thievescant)
 			H.set_blindness(0)
 
@@ -196,5 +196,5 @@
 					H.change_stat("strength", 1)
 					H.set_blindness(0)
 			H.change_stat("perception", 2) // Look far, but not too far.
-			H.change_stat("endurance", 2)
+			H.change_stat("constitution", 2)
 			H.change_stat("intelligence", 1) // Adaptive to their surroundings.

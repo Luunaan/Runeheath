@@ -3,7 +3,6 @@
 #define STAT_PERCEPTION "perception"
 #define STAT_INTELLIGENCE "intelligence"
 #define STAT_CONSTITUTION "constitution"
-#define STAT_ENDURANCE "endurance"
 #define STAT_SPEED "speed"
 #define STAT_FORTUNE "fortune"
 
@@ -12,7 +11,6 @@
 	var/STAPER = 10
 	var/STAINT = 10
 	var/STACON = 10
-	var/STAEND = 10
 	var/STASPD = 10
 	var/STALUC = 10
 	//buffers, the 'true' amount of each stat
@@ -20,7 +18,6 @@
 	var/BUFPER = 0
 	var/BUFINT = 0
 	var/BUFCON = 0
-	var/BUFEND = 0
 	var/BUFSPE = 0
 	var/BUFLUC = 0
 	var/statbuf = FALSE
@@ -54,7 +51,6 @@
 	STAPER = 10
 	STAINT = 10
 	STACON = 10
-	STAEND = 10
 	STASPD = 10
 	STALUC = 10
 	if(ishuman(src))
@@ -73,7 +69,7 @@
 		switch(H.age)
 			if(AGE_MIDDLEAGED)
 				change_stat("speed", -1)
-				change_stat("endurance", 1)
+				change_stat("constitution", 1)
 			if(AGE_OLD)
 				change_stat("strength", -1)
 				change_stat("speed", -2)
@@ -84,7 +80,6 @@
 			if(check_blacklist(ckey(key)))
 				change_stat("strength", -5)
 				change_stat("speed", -20)
-				change_stat("endurance", -2)
 				change_stat("constitution", -2)
 				change_stat("intelligence", -20)
 				change_stat("fortune", -20)
@@ -132,12 +127,7 @@
 			tempskill.modifystat(STACON, BUFCON, amt)
 			STACON = tempskill.value
 			BUFCON = tempskill.buffer
-
-		if("endurance")
-			tempskill.modifystat(STAEND, BUFEND, amt)
-			STAEND = tempskill.value
-			BUFEND = tempskill.buffer
-
+			
 		if("speed")
 			tempskill.modifystat(STASPD, BUFSPE, amt)
 			STASPD = tempskill.value
@@ -197,8 +187,6 @@
 			return STASTR
 		if(STATKEY_PER)
 			return STAPER
-		if(STATKEY_END)
-			return STAEND
 		if(STATKEY_CON)
 			return STACON
 		if(STATKEY_INT)
@@ -250,7 +238,6 @@
 	var/STAPER = 10
 	var/STAINT = 10
 	var/STACON = 10
-	var/STAEND = 10
 	var/STASPD = 10
 	var/STALUC = 10
 	
@@ -258,7 +245,6 @@
 	var/BUFPER = 0
 	var/BUFINT = 0
 	var/BUFCON = 0
-	var/BUFEND = 0
 	var/BUFSPD = 0
 	var/BUFLUC = 0
 
@@ -279,9 +265,6 @@
 
 	STACON = L.STACON
 	BUFCON = L.BUFCON
-
-	STAEND = L.STAEND
-	BUFEND = L.BUFEND
 
 	STASPD = L.STASPD
 	BUFSPD = L.BUFSPE
@@ -319,10 +302,6 @@
 			tempstat.modifystat(STACON, BUFCON, amount)
 			STACON = tempstat.value
 			BUFCON = tempstat.buffer
-		if("endurance")
-			tempstat.modifystat(STAEND, BUFEND, amount)
-			STAEND = tempstat.value
-			BUFEND = tempstat.buffer
 		if("speed")
 			tempstat.modifystat(STASPD, BUFSPD, amount)
 			STASPD = tempstat.value

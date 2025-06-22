@@ -31,7 +31,6 @@
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	STAEND = 6
 	STACON = 6
 	STASTR = 2
 	STASPD = 17

@@ -8,7 +8,6 @@
 	var/list/stats = list(
 		STATKEY_STR = 0,
 		STATKEY_PER = 0,
-		STATKEY_END = 0,
 		STATKEY_CON = 0,
 		STATKEY_INT = 0,
 		STATKEY_SPD = 0,
@@ -22,11 +21,10 @@
 	
 	stats[STATKEY_STR] = text2num(data[1])
 	stats[STATKEY_PER] = text2num(data[2])
-	stats[STATKEY_END] = text2num(data[3])
-	stats[STATKEY_CON] = text2num(data[4])
-	stats[STATKEY_INT] = text2num(data[5])
-	stats[STATKEY_SPD] = text2num(data[6])
-	stats[STATKEY_LCK] = text2num(data[7])
+	stats[STATKEY_CON] = text2num(data[3])
+	stats[STATKEY_INT] = text2num(data[4])
+	stats[STATKEY_SPD] = text2num(data[5])
+	stats[STATKEY_LCK] = text2num(data[6])
 
 	if (!validate())
 		reset_points()
@@ -40,7 +38,6 @@
 	// We need to be 100% certain the serialization and deserialization match.
 	data += "[num2text(stats[STATKEY_STR])],"
 	data += "[num2text(stats[STATKEY_PER])],"
-	data += "[num2text(stats[STATKEY_END])],"
 	data += "[num2text(stats[STATKEY_CON])],"
 	data += "[num2text(stats[STATKEY_INT])],"
 	data += "[num2text(stats[STATKEY_SPD])],"

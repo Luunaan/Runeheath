@@ -40,5 +40,4 @@
 
 	if(H.mind)
 		H.change_stat("strength", 1)	//Stat spread is decent; not great but decent. 
-		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)

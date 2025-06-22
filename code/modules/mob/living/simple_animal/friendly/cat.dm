@@ -37,9 +37,8 @@
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
 	STASTR = 3
-	STAEND = 4
 	STASPD = 3
-	STACON = 3
+	STACON = 4
 	var/turns_since_scan = 0
 	gold_core_spawnable = FRIENDLY_SPAWN
 

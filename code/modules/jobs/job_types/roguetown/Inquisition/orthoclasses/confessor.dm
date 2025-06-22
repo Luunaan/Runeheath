@@ -41,7 +41,7 @@
 	head = /obj/item/clothing/head/roguetown/roguehood/psydon
 	backpack_contents = list(/obj/item/roguekey/inquisition = 1, /obj/item/lockpickring/mundane = 1, /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger, /obj/item/grapplinghook = 1)
 	H.change_stat("strength", -1) // weasel
-	H.change_stat("endurance", 3)
+	H.change_stat("constitution", 3)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 3)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

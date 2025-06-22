@@ -67,8 +67,7 @@ NECRO SKELETONS
 	H.STASTR = prob(2) ? 20 : rand(12,14)
 	H.STAPER = rand(10,12)
 	H.STASPD = rand(8,10)
-	H.STACON = rand(9,11)
-	H.STAEND = rand(12,15)
+	H.STACON = rand(9,12)
 	H.STAINT = 1
 
 	//light labor skills for skeleton manual labor and some warrior-adventurer skills, equipment is still bad probably

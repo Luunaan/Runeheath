@@ -111,7 +111,6 @@
 		var/mob/living/carbon/human/target = targets[1]
 		totalstatchange += (target.STASPD-user.STASPD)
 		totalstatchange += ((target.STASTR-user.STASTR)*2) // We're gonna weigh strength as double, being the strongest stat.
-		totalstatchange += (target.STAEND-user.STAEND)
 		totalstatchange += (target.STALUC-user.STALUC)
 		totalstatchange += (target.STAINT-user.STAINT)
 		totalstatchange += (target.STACON-user.STACON)
@@ -132,8 +131,6 @@
 			user.STASPD += totalstatshift
 			target.STASTR -= totalstatshift
 			user.STASTR += totalstatshift
-			target.STAEND -=totalstatshift
-			user.STAEND += totalstatshift
 			target.STALUC -= totalstatshift
 			user.STALUC += totalstatshift
 			target.STAINT -= totalstatshift
@@ -150,7 +147,6 @@
 	target.remove_filter(EQUALIZED_GLOW)
 	target.STASPD += totalstatshift
 	target.STASTR += totalstatshift
-	target.STAEND += totalstatshift
 	target.STALUC += totalstatshift
 	target.STAINT += totalstatshift
 	target.STACON += totalstatshift
@@ -161,7 +157,6 @@
 	user.remove_filter(EQUALIZED_GLOW)
 	user.STASTR -= totalstatshift
 	user.STASPD -= totalstatshift
-	user.STAEND -= totalstatshift
 	user.STALUC -= totalstatshift
 	user.STAINT -= totalstatshift
 	user.STACON -= totalstatshift

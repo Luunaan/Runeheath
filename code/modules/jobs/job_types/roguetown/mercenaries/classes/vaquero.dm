@@ -71,7 +71,7 @@
 		if("Flute")
 			backr = /obj/item/rogue/instrument/flute
 	H.change_stat("strength", 1)
-	H.change_stat("endurance", 1)
+	H.change_stat("constitution", 1)
 	H.change_stat("speed", 3)
 	H.grant_language(/datum/language/etruscan)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

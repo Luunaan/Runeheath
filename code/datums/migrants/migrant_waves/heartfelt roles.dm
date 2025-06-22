@@ -38,7 +38,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 2)
-		H.change_stat("endurance", 2)
+		H.change_stat("constitution", 2)
 		H.change_stat("speed", 1)
 		H.change_stat("perception", 2)
 		H.change_stat("fortune", 5)
@@ -83,7 +83,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.change_stat("intelligence", 3)
-		H.change_stat("endurance", 3)
+		H.change_stat("constitution", 3)
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("fortune", 5)
@@ -175,7 +175,6 @@
 		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
@@ -301,7 +300,6 @@
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", -1)
-		H.change_stat("endurance", 1)
 		H.change_stat("speed", -1)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.

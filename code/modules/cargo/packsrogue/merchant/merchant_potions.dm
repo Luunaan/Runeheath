@@ -79,15 +79,6 @@
 					/obj/item/reagent_containers/glass/bottle/alchemical/perpot,
 				)
 
-// lower cost again, not as powerful as strength or speed.
-/datum/supply_pack/rogue/potions/endpot
-	name = "Endurance Potion"
-	cost = 50
-	contains = list(
-					/obj/item/reagent_containers/glass/bottle/alchemical/endpot,
-					/obj/item/reagent_containers/glass/bottle/alchemical/endpot,
-				)
-
 // also lower cost
 /datum/supply_pack/rogue/potions/conpot
 	name = "Constitution Potion"

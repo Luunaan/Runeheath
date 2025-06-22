@@ -51,7 +51,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("strength", 3)
-		H.change_stat("endurance", 3)
 		H.change_stat("constitution", 3)
 		H.change_stat("intelligence", -2)
 		H.change_stat("speed", -1)
@@ -83,8 +82,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("speed", 2)
-		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 1)
+		H.change_stat("constitution", 2)
 		H.change_stat("perception", -1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch) // Pre-set spell list
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)

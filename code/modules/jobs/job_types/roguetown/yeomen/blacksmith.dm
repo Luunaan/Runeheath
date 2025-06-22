@@ -59,7 +59,6 @@
 
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
-	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
 
 /datum/job/roguetown/weaponsmith
@@ -122,7 +121,6 @@
 		cloak = /obj/item/clothing/cloak/apron/blacksmith
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
-	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
 
 /datum/job/roguetown/blacksmith
@@ -190,5 +188,4 @@
 
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
-	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)

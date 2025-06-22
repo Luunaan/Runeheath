@@ -72,7 +72,6 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 	user.STAPER += 2
 	user.STAINT += 2
 	user.STACON += 2
-	user.STAEND += 2
 	user.STASPD += 2
 	user.STALUC += 2
 
@@ -138,7 +137,6 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 	user.STAPER += 2
 	user.STAINT += 2
 	user.STACON += 2
-	user.STAEND += 2
 	user.STASPD += 2
 	user.STALUC += 2
 
@@ -200,7 +198,6 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 			user.STAPER += 10
 			user.STAINT += 10
 			user.STACON += 10
-			user.STAEND += 10
 			user.STASPD += 10
 			user.STALUC += 6
 

@@ -42,7 +42,6 @@
 	/// Cached old stats in case we get removed
 	var/STASTR
 	var/STACON
-	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver,
@@ -99,10 +98,8 @@
 				owner.adjust_skillrank(/datum/skill/misc/medicine, 3 - medicine_skill, TRUE)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
-			STAEND = dreamer.STAEND
 			dreamer.STASTR = 20
 			dreamer.STACON = 20
-			dreamer.STAEND = 20
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
 	LAZYINITLIST(owner.learned_recipes)
@@ -121,7 +118,6 @@
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.STASTR = STASTR
 			dreamer.STACON = STACON
-			dreamer.STAEND = STAEND
 		for(var/trait in applied_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		for(var/trait in final_traits)

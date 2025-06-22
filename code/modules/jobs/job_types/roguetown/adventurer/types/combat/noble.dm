@@ -144,7 +144,6 @@
 					backr = /obj/item/gwstrap
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 1)
 			H.change_stat("intelligence", 1)
 
 		if("Squire Errant")

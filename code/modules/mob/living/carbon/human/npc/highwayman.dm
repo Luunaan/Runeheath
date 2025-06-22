@@ -101,10 +101,9 @@ GLOBAL_LIST_INIT(highwayman_aggro, world.file2list("strings/rt/highwaymanaggroli
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	if(prob(50))
 		gloves = /obj/item/clothing/gloves/roguetown/angle
-	H.STASTR = rand(12,14) //GENDER EQUALITY!!
+	H.STASTR = 13
 	H.STASPD = 11
-	H.STACON = rand(10,12) //so their limbs no longer pop off like a skeleton
-	H.STAEND = 13
+	H.STACON = 12 //so their limbs no longer pop off like a skeleton
 	H.STAPER = 10
 	H.STAINT = 10
 	if(prob(50))

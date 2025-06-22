@@ -77,7 +77,6 @@
 					head = /obj/item/clothing/head/roguetown/helmet/kettle
 					gloves = /obj/item/clothing/gloves/roguetown/angle
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 2)
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
@@ -112,7 +111,7 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 					beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 			H.change_stat("strength", 1)
-			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
 			H.change_stat("speed", 2)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			head = /obj/item/clothing/head/roguetown/duelhat
@@ -168,7 +167,6 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 					ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 			H.change_stat("strength", 3)
-			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 2)
 			H.change_stat("intelligence", -2)
 			if(should_wear_masc_clothes(H))
@@ -210,7 +208,6 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.cmode_music = 'sound/music/inquisitorcombat.ogg'
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("intelligence", 1)
 			beltr = /obj/item/rogueweapon/sword/silver
@@ -229,7 +226,6 @@
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/recipe_book/survival = 1)
 			beltl = pick(/obj/item/reagent_containers/glass/bottle/alchemical/strpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/conpot,
-						/obj/item/reagent_containers/glass/bottle/alchemical/endpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/spdpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/perpot,
 						/obj/item/reagent_containers/glass/bottle/alchemical/intpot,
@@ -251,7 +247,6 @@
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
 			H.change_stat("constitution", 5)
-			H.change_stat("endurance", 5)
 			H.change_stat("speed", 1)
 			H.change_stat("strength", -2)
 			H.change_stat("intelligence", -2)

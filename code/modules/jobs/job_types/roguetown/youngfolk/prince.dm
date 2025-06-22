@@ -202,5 +202,4 @@
 		H.change_stat("perception", -2)
 		H.change_stat("intelligence", -2)
 		H.change_stat("constitution", -2)
-		H.change_stat("endurance", -2)
 		H.change_stat("fortune", -2) //They already can't run, no need to do speed and torture their move speed.

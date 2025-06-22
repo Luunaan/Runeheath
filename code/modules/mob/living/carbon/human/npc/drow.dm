@@ -136,7 +136,6 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 	H.STASTR = rand(16,18)
 	H.STASPD = rand(16,18)
 	H.STACON = rand(14,16)
-	H.STAEND = rand(14,16)
 	H.STAPER = rand(12,14)
 	H.STAINT = rand(12,14)
 	if(prob(50))

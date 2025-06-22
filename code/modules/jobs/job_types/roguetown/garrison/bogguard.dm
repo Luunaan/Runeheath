@@ -80,7 +80,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)	
 		H.change_stat("perception", 2) //7 points weighted, same as MAA. They get temp buffs in the woods instead of in the city.
-		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 1)
 		H.change_stat("speed", 2)
 		H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -127,7 +127,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.change_stat("perception", 1) //7 points weighted, same as MAA. They get temp buffs in the woods instead of in the city.
 		H.change_stat("constitution", 1)
-		H.change_stat("endurance", 1)
 		H.change_stat("strength", 2)
 		H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

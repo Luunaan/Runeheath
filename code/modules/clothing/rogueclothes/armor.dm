@@ -944,7 +944,6 @@
 	..()
 	if(slot != SLOT_ARMOR)
 		return
-	user.change_stat("endurance", 1)
 	user.change_stat("constitution", 1)
 	to_chat(user, span_notice("Endure til' inevitability."))
 	if (!HAS_TRAIT(user, TRAIT_MEDIUMARMOR))
@@ -956,7 +955,6 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/dropped(mob/living/user)
 	..()
-	user.change_stat("endurance", -1)
 	user.change_stat("constitution", -1)
 	to_chat(user, span_notice("Trust in thyself."))
 	if (!traited)

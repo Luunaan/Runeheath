@@ -29,7 +29,6 @@
 	STAPER = 15
 	STAINT = 12
 	STACON = 20
-	STAEND = 20
 	STASPD = 15
 	STALUC = 14
 	projectiletype = /obj/projectile/bullet/reusable/deepone

@@ -46,7 +46,6 @@
 	aggressive = 1
 
 	STACON = 20
-	STAEND = 20
 	STASTR = 16
 	STASPD = 3
 
