@@ -6,6 +6,8 @@
 /datum/mob_descriptor/age/can_describe(mob/living/described)
 	if(!ishuman(described))
 		return FALSE
+	if (HAS_TRAIT(described, TRAIT_AGELESS))
+		return FALSE
 	return TRUE
 
 /datum/mob_descriptor/age/get_description(mob/living/described)

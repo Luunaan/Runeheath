@@ -82,7 +82,7 @@
 	if(length(allowed_races) && !(H.dna.species.type in allowed_races))
 		return FALSE
 
-	if(length(allowed_ages) && !(H.age in allowed_ages))
+	if(length(allowed_ages) && !(H.age in allowed_ages) && !(HAS_TRAIT(H, TRAIT_AGELESS)))
 		return FALSE
 
 	if(length(allowed_patrons) && !(H.patron in allowed_patrons))

@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		return FALSE
 	if(!isnull(special.allowed_sexes) && !(character.gender in special.allowed_sexes))
 		return FALSE
-	if(!isnull(special.allowed_ages) && !(character.age in special.allowed_ages))
+	if(!isnull(special.allowed_ages) && !(character.age in special.allowed_ages) && !(HAS_TRAIT(character, TRAIT_AGELESS)))
 		return FALSE
 	if(!isnull(special.allowed_patrons) && !(character.patron.type in special.allowed_patrons))
 		return FALSE

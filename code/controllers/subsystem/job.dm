@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(job)
 		if(!(player.client.prefs.gender in job.allowed_sexes))
 			JobDebug("FOC incompatible with sex, Player: [player], Job: [job.title]")
 			continue
-		if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
+		if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages) && !(LAZYFIND(player.client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 			JobDebug("FOC incompatible with age, Player: [player], Job: [job.title], Age: [player.client.prefs.age]")
 			continue
 		if(check_blacklist(player.client.ckey) && !job.bypass_jobban)
@@ -233,7 +233,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ incompatible with PATREON LEVEL, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 
-		if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
+		if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages) && !(LAZYFIND(player.client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 			JobDebug("GRJ incompatible with age, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 
@@ -492,7 +492,7 @@ SUBSYSTEM_DEF(job)
 					if(job.whitelist_req && (!player.client.whitelisted()))
 						continue
 
-				if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
+				if(length(job.allowed_ages) && (player.client.prefs.age in job.allowed_ages) && !(LAZYFIND(player.client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 					JobDebug("DO incompatible with age, Player: [player], Job: [job.title]")
 					continue
 
@@ -586,7 +586,7 @@ SUBSYSTEM_DEF(job)
 					if(job.whitelist_req && (!player.client.whitelisted()))
 						continue
 
-				if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages))
+				if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages) && !(LAZYFIND(player.client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 					continue
 
 				if(length(job.allowed_sexes) && !(player.client.prefs.gender in job.allowed_sexes))

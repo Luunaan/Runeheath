@@ -446,7 +446,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			allowed_sexes += MALE
 	if(length(allowed_sexes) && !(client.prefs.gender in allowed_sexes))
 		return JOB_UNAVAILABLE_SEX
-	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages))
+	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages) && !(LAZYFIND(client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 		return JOB_UNAVAILABLE_AGE
 	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
 		return JOB_UNAVAILABLE_PATRON

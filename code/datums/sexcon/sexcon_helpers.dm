@@ -1,3 +1,7 @@
+#define BASE_IMPREGNATION_CHANCE 25
+#define KNOTTED_PENIS_IMPREGNATION_OFFSET 15
+#define FERTILE_OFFSET 10
+
 /datum/looping_sound/femhornylite
 	mid_sounds = list('sound/vo/female/gen/se/horny1loop (1).ogg')
 	mid_length = 470
@@ -64,15 +68,55 @@
 	else
 		playsound(src, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), 35, TRUE, ignore_walls = FALSE)
 
+/// Attempts to impregnate the given "wife". Returns TRUE if successful and FALSE otherwise.
 /mob/living/carbon/human/proc/try_impregnate(mob/living/carbon/human/wife, prob_offset_percent = 0)
 	var/obj/item/organ/testicles/testes = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(!testes)
-		return
+		return FALSE
 	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
 	if(!vag)
-		return
-	if(prob(25 + prob_offset_percent) && wife.is_fertile() && is_virile())
+		return FALSE
+	var/impreg_chance = get_impregnation_chance(wife, prob_offset_percent)
+	if(prob(impreg_chance) && wife.is_fertile() && is_virile())
 		vag.be_impregnated(src)
+		return TRUE
+	return FALSE
+
+/// Calculates the impregnation chance, as a percentage, of the given "wife".
+/mob/living/carbon/human/proc/get_impregnation_chance(mob/living/carbon/human/wife, prob_offset_percent = 0)
+	// Infertile partners never give birth. (In future we might add a trait that can override even this.)
+	if (!is_virile())
+		return 0
+	if (!wife.is_fertile())
+		return 0
+	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
+	if(!vag)
+		return 0
+
+	. = BASE_IMPREGNATION_CHANCE + prob_offset_percent
+
+	var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+	if (penis && istype(penis, /obj/item/organ/penis/knotted))
+		. += KNOTTED_PENIS_IMPREGNATION_OFFSET
+
+	if (HAS_TRAIT(src, TRAIT_EXTREMELY_VIRILE))
+		. += FERTILE_OFFSET * 3
+	else if (HAS_TRAIT(src, TRAIT_VERY_VIRILE))
+		. += FERTILE_OFFSET * 2
+	else if (HAS_TRAIT(src, TRAIT_VIRILE))
+		. += FERTILE_OFFSET
+	else if (HAS_TRAIT(src, TRAIT_REDUCED_VIRILITY))
+		. -= FERTILE_OFFSET
+
+	if (HAS_TRAIT(wife, TRAIT_EXTREMELY_FERTILE))
+		. += FERTILE_OFFSET * 3
+	else if (HAS_TRAIT(wife, TRAIT_VERY_FERTILE))
+		. += FERTILE_OFFSET * 2
+	else if (HAS_TRAIT(wife, TRAIT_FERTILE))
+		. += FERTILE_OFFSET
+	else if (HAS_TRAIT(wife, TRAIT_REDUCED_FERTILITY))
+		. -= FERTILE_OFFSET
+
 
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)
 	var/grabstate = null

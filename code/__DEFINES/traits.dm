@@ -159,6 +159,17 @@
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
 
+// RACIAL TRAITS
+#define TRAIT_AGELESS "Ageless" // Allows selecting roles without age restrictions, age does not appear in examine text
+#define TRAIT_REDUCED_FERTILITY "Reduced Fertility"
+#define TRAIT_REDUCED_VIRILITY "Reduced Virility"
+#define TRAIT_FERTILE "Fertile" // Fertile increases chance of pregnancy in women
+#define TRAIT_VIRILE "Virile" // Virile increases chance of pregnancy in men
+#define TRAIT_VERY_FERTILE "Very Fertile" // In lore, fertility & virility also communicate the "strength" of genes -
+#define TRAIT_VERY_VIRILE "Very Virile" // ie. the child will be more close to the more fertile/virile partner's race
+#define TRAIT_EXTREMELY_FERTILE "Extremely Fertile"
+#define TRAIT_EXTREMELY_VIRILE "Extremely Virile"
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_TAVERN_FIGHTER = span_info("I am vigilant in my duties. The Tavern is my home, none shall dare oppose me or skip out on payment."),
@@ -286,7 +297,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_STRENGTH_UNCAPPED = span_warning("MY STRENGTH IS UNBOUND!"),
 	TRAIT_MONK_ROBE = span_notice("I feel closer to the gods in my meager robes.. I feel vigorous, empowered by their light!"),
-	TRAIT_SIMPLESPEECH = span_info("I can not say hard words.")
+	TRAIT_SIMPLESPEECH = span_info("I can not say hard words."),
+	TRAIT_AGELESS = span_info("I don't age as the shorter-lived races do."),
 ))
 
 // trait accessor defines

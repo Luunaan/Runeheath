@@ -286,7 +286,7 @@ SUBSYSTEM_DEF(migrants)
 		return FALSE
 	if(role.allowed_sexes && !(prefs.gender in role.allowed_sexes))
 		return FALSE
-	if(role.allowed_ages && !(prefs.age in role.allowed_ages))
+	if(role.allowed_ages && !(prefs.age in role.allowed_ages) && !(LAZYFIND(prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 		return FALSE
 	return TRUE
 

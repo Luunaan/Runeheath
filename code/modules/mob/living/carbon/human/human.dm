@@ -874,11 +874,11 @@
 
 /mob/living/carbon/human/proc/is_fertile()
 	var/obj/item/organ/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
-	return vagina.fertility
+	return vagina && vagina.fertility
 
 /mob/living/carbon/human/proc/is_virile()
 	var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
-	return testicles.virility
+	return testicles && testicles.virility
 
 /*/mob/living/carbon/human/proc/update_heretic_commune()
 	if(HAS_TRAIT(src, TRAIT_COMMIE) || HAS_TRAIT(src, TRAIT_CABAL) || HAS_TRAIT(src, TRAIT_HORDE) || HAS_TRAIT(src, TRAIT_DEPRAVED))

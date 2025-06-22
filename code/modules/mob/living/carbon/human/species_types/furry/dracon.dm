@@ -8,6 +8,7 @@
 	Mighty scaled individuals who claim to be descendants of the dragons of yore.<br>\
 	(+1 Strength)"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
+	inherent_traits = list(TRAIT_AGELESS)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
