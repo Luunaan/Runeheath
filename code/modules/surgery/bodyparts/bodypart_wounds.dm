@@ -1,3 +1,6 @@
+// Crits can only be applied if a bodypart's health is <= (max_health * CRIT_THRESHOLD)
+#define CRIT_THRESHOLD 0.5
+
 /obj/item/bodypart
 	/// List of /datum/wound instances affecting this bodypart
 	var/list/datum/wound/wounds
@@ -125,8 +128,8 @@
 		if(human_owner.checkcritarmor(zone_precise, bclass))
 			do_crit = FALSE
 			dam *= 0.5
-		if(owner.mind && (get_damage() <= (max_damage * 0.9))) //No crits unless the damage is maxed out.
-			do_crit = FALSE // We used to check if they are buckled or lying down but being grounded is a big enough advantage.
+		if(owner.mind && get_damage() < max_damage * CRIT_THRESHOLD) //No crits except if it hits a damage threshold on players.
+			do_crit = FALSE
 	if(user)
 		if(user.goodluck(2))
 			dam += 10
