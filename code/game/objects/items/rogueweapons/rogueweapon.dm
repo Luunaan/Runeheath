@@ -38,6 +38,7 @@
 	var/initial_sl
 	var/list/possible_enhancements
 	resistance_flags = FIRE_PROOF
+	var/accuracy_bonus = 0
 
 /obj/item/rogueweapon/Initialize()
 	. = ..()

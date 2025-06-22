@@ -138,6 +138,7 @@
 	wdefense = 4
 	grid_width = 32
 	grid_height = 64
+	accuracy_bonus = 5
 
 /obj/item/rogueweapon/sword/Initialize()
 	. = ..()
@@ -218,6 +219,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	grid_width = 32
 	grid_height = 96
+	accuracy_bonus = 20
 
 /obj/item/rogueweapon/sword/short/pashortsword
 	name = "ancient shortsword"
@@ -701,6 +703,7 @@
 	minstr = 5
 	wdefense = 7		//Same as rapier
 	wbalance = WBALANCE_SWIFT
+	accuracy_bonus = 10
 
 /datum/intent/sword/cut/sabre
 	clickcd = 8		//Faster than sword by 4
