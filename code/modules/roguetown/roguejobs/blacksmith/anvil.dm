@@ -2,7 +2,7 @@
 /obj/machinery/anvil
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "iron anvil"
-	desc = "It's surface is marred by countless hammer strikes."
+	desc = "Its surface is marred by countless hammer strikes."
 	icon_state = "anvil"
 	var/hott = null
 	var/obj/item/ingot/hingot
@@ -12,6 +12,8 @@
 	climbable = TRUE
 	var/previous_material_quality = 0
 	var/advance_multiplier = 1 //Lower for auto-striking
+	anchored = FALSE
+	drag_slowdown = 10
 
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"
@@ -129,9 +131,12 @@
 		return
 
 	if(W.anvilrepair)
-		user.visible_message(span_info("[user] places [W] on the anvil."))
-		W.forceMove(src.loc)
-		return
+		if(user.cmode)
+			..()
+		else
+			user.visible_message(span_info("[user] places [W] on the anvil."))
+			W.forceMove(src.loc)
+			return
 	..()
 
 /obj/machinery/anvil/proc/choose_recipe(mob/living/user)
