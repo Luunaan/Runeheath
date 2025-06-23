@@ -2491,6 +2491,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 	character.pronouns = pronouns
 	character.voice_type = voice_type
+	character.gender_preferences = gender_preferences
 
 	// LETHALSTONE ADDITION END
 

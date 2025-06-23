@@ -137,3 +137,18 @@
 			return 30
 
 	return damage
+
+/mob/living/carbon/human/proc/likes_males()
+	return gender_preferences & GENDER_PREF_MALE
+
+/mob/living/carbon/human/proc/likes_females()
+	return gender_preferences & GENDER_PREF_FEMALE
+
+/mob/living/carbon/human/proc/likes_intersex()
+	return gender_preferences & GENDER_PREF_INTERSEX
+
+/mob/living/carbon/human/proc/likes_masculinity()
+	return gender_preferences & GENDER_PREF_MASC_PRESENTING
+
+/mob/living/carbon/human/proc/likes_femininity()
+	return gender_preferences & GENDER_PREF_FEM_PRESENTING
