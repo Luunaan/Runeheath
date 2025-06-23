@@ -492,7 +492,7 @@ SUBSYSTEM_DEF(job)
 					if(job.whitelist_req && (!player.client.whitelisted()))
 						continue
 
-				if(length(job.allowed_ages) && (player.client.prefs.age in job.allowed_ages) && !(LAZYFIND(player.client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
+				if(length(job.allowed_ages) && !(player.client.prefs.age in job.allowed_ages) && !(LAZYFIND(player.client.prefs.pref_species.inherent_traits, TRAIT_AGELESS)))
 					JobDebug("DO incompatible with age, Player: [player], Job: [job.title]")
 					continue
 
