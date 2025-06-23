@@ -169,6 +169,7 @@
 #define TRAIT_VERY_VIRILE "Very Virile" // ie. the child will be more close to the more fertile/virile partner's race
 #define TRAIT_EXTREMELY_FERTILE "Extremely Fertile"
 #define TRAIT_EXTREMELY_VIRILE "Extremely Virile"
+#define TRAIT_GOOD_JUMP "Good Jump" // +1 to jump range
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -299,6 +300,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MONK_ROBE = span_notice("I feel closer to the gods in my meager robes.. I feel vigorous, empowered by their light!"),
 	TRAIT_SIMPLESPEECH = span_info("I can not say hard words."),
 	TRAIT_AGELESS = span_info("I don't age as the shorter-lived races do."),
+	TRAIT_GOOD_JUMP = span_info("I am naturally good at jumping long distances."),
 ))
 
 // trait accessor defines

@@ -592,6 +592,9 @@
 			jadded += 50
 			jrange = 1
 
+	if (HAS_TRAIT(src, TRAIT_GOOD_JUMP))
+		jrange += 1
+
 	jump_action_resolve(A, jadded, jrange, jextra)
 
 #define FLIP_DIRECTION_CLOCKWISE 1
