@@ -161,7 +161,7 @@
 		if(wander)
 			if(prob(50))
 				var/turf/T = get_step(loc,pick(GLOB.cardinals))
-				if(T.can_traverse_safely(src)) // Don't wander into lava or open space unless we're immune to it/can't fall.
+				if(T && T.can_traverse_safely(src)) // Don't wander into lava or open space unless we're immune to it/can't fall.
 					step_towards(src, T, cached_multiplicative_slowdown)
 			else
 				setDir(turn(dir, pick(90,-90)))
