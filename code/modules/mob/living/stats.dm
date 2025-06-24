@@ -47,12 +47,7 @@
 	var/construct = 0
 
 /mob/living/proc/roll_stats()
-	STASTR = 10
-	STAPER = 10
-	STAINT = 10
-	STACON = 10
-	STASPD = 10
-	STALUC = 10
+	reset_stats()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 
@@ -145,6 +140,24 @@
 		return difference * 10
 	else
 		return 0
+
+///Clears all stats and stat indices.
+/mob/living/proc/reset_stats()
+	STASTR = 10
+	STAPER = 10
+	STAINT = 10
+	STACON = 10
+	STASPD = 10
+	STALUC = 10
+
+	BUFSTR = 0
+	BUFPER = 0
+	BUFINT = 0
+	BUFCON = 0
+	BUFSPE = 0
+	BUFLUC = 0
+
+	statindex = list()
 
 /// Calculates a luck value in the range [1, 400] (calculated as STALUC^2), then maps the result linearly to the given range
 /// min must be >= 0, max must be <= 100, and min must be <= max

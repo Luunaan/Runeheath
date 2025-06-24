@@ -2450,6 +2450,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.statpack = statpack
 
 	character.pointbuy = pointbuy
+	// HACK: This results in redundant assignment on character creation, since it will be reset in roll_stats(),
+	// but it allows reapply preferences to remove the old point buy and apply the new one correctly
+	if (character.pointbuy)
+		character.pointbuy.apply_to(character)
 
 	character.gender_preferences = gender_preferences
 
