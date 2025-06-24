@@ -92,6 +92,8 @@
 		/datum/body_marking/tiger,
 		/datum/body_marking/tiger/dark,
 		/datum/body_marking/drake_eyes,
+		/datum/body_marking/sock,
+		/datum/body_marking/socklonger,
 		/datum/body_marking/tonage,
 		/datum/body_marking/nose,
 		/datum/body_marking/bangs,
