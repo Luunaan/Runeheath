@@ -401,6 +401,29 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/sewing/jesterchest
+	name = "jester's tunick (1 fibers, 3 cloth)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/jester)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/jesterhead
+	name = "jester's hat (1 fibers, 2 cloth, 1 set of jingle bells)"
+	result = list(/obj/item/clothing/head/roguetown/jester)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/jingle_bells = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/jestershoes
+	name = "jester's shoes (1 fibers, 2 cloth, 1 set of jingle bells)"
+	result = list(/obj/item/clothing/shoes/roguetown/jester)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/jingle_bells = 1)
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/sewing/bardress
 	name = "bar dress (1 fibers, 3 cloth)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress)

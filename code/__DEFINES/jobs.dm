@@ -105,6 +105,7 @@
 #define GUARD_CAPTAIN		(1<<5)
 #define MARSHAL		(1<<6)
 #define HOSTAGE		(1<<7)
+#define SUITOR		(1<<8)
 
 #define GARRISON		(1<<1)
 
@@ -225,6 +226,7 @@
 #define JDO_LORD 1
 #define JDO_LADY 1.1
 #define JDO_PRINCE 1.2
+#define JDO_SUITOR 1.3
 #define JDO_HAND 2
 #define JDO_STEWARD 3
 #define JDO_CLERK 3.1

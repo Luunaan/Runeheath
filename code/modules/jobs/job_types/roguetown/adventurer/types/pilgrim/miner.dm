@@ -1,7 +1,7 @@
 /datum/advclass/miner
 	name = "Miner"
-	tutorial = "You are a Miner, you mine for the local blacksmith, gathering rare ores. \
-	there are tales of ambitious dwarf miners building great forts in the lavalands, to harvest all of its hardly touched ores"
+	tutorial = "Swing the pick. Heave. Swing. Heave. Deep underground where the days lose their meaning, the work is grueling, the tunnels cramped, and the stale air full of coal dust, yet tales abound of the lucky few who persevered, and found enough precious gems to set them for life." 
+
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/miner

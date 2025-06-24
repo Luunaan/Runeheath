@@ -135,6 +135,8 @@
 	desc = "A fancy tunic and coat combo. How elegant."
 	icon_state = "noblecoat"
 	sleevetype = "noblecoat"
+	detail_tag = "_detail"
+	detail_color = CLOTHING_AZURE
 	color = CLOTHING_WHITE
 	boobed = TRUE
 

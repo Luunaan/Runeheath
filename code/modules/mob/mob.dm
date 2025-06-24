@@ -1415,3 +1415,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return "<span style='color:[message_colour];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>[message_spans_start(spans)][input]</span></span>"
 	else	
 		return "[message_spans_start(spans)][input]</span>"
+
+/mob/living/proc/can_smell()
+	if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
+		return FALSE
+	return TRUE

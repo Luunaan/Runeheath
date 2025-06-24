@@ -13,7 +13,7 @@
 	name = "Rum"
 	description = "Where has the rum gone?"
 	color = "#5f3b23" // rgb: 102, 67, 0
-	boozepwr = 25
+	boozepwr = 40
 	taste_description = "rum"
 
 /datum/reagent/consumable/ethanol/cider
@@ -205,12 +205,19 @@
 	color = "#5D8A8A"
 	quality = DRINK_GOOD
 
-/datum/reagent/consumable/ethanol/voddena // Not vodka. Trust me.
+/datum/reagent/consumable/ethanol/voddena // Definitely Actually Just Vodka Now. 
 	name = "Voddena"
-	boozepwr = 55  // holy shit
-	taste_description = "burning starchy wet dirt"
+	boozepwr = 40  // now it's just vodka
+	taste_description = "clean liquor"
 	color = "#a1a1a1"
 	quality = DRINK_NICE
+
+/datum/reagent/consumable/ethanol/sazdistal // Definitely Not Vodka. 
+	name = "Saz Distal"
+	boozepwr = 55  // holy shit
+	taste_description = "spicy chilis, ginger, and dirt"
+	color = "#2D1D1D"
+	quality = DRINK_GOOD	
 
 /datum/reagent/consumable/ethanol/limoncello
 	name = "Limoncello"
@@ -219,7 +226,21 @@
 	color = "#d2da63"
 	quality = DRINK_GOOD
 
-// WINE - Fancy.. And yes: all drinks are beer, technically. Cope. Seethe. I didnt code it like this.
+// Generic Rice
+/datum/reagent/consumable/ethanol/ricewine
+	name = "Rice Wine"
+	taste_description = "floral sweetness with a subtle umami taste."
+	color = "#F5E6C4" // rgb: 210, 218, 99
+	boozepwr = 30
+
+/datum/reagent/consumable/ethanol/ricespirit
+	name = "Rice Spirit"
+	taste_description = "clean heat and dry finish."
+	color = "#F8FDFC" // rgb: 210, 218, 99
+	boozepwr = 55
+	quality = DRINK_NICE
+
+// WINE - Fancy.
 
 // Humen Production - Grape Based
 
@@ -435,15 +456,51 @@
 	boozepwr = 50
 	taste_description = "dry sweetness"
 	color = "#ccd7e0"
-	quality = DRINK_GOOD
+	quality = DRINK_VERYGOOD
+
+/datum/reagent/consumable/ethanol/kgunshochu
+	name = "Shochu"
+	boozepwr = 60
+	taste_description = "dry, clean finish"
+	color = "#F8FDFC"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/ethanol/kgunplum
 	name = "Umeshu"
 	boozepwr = 30
 	taste_description = "a mix of sweet and sour"
 	color = "#ddb99b"
+	quality = DRINK_GOOD
+
+// Zhongese
+/datum/reagent/consumable/ethanol/huangjiu
+	name = "Huangjiu"
+	boozepwr = 30
+	taste_description = "a mix of sweet and sour"
+	color = "#d8b84c"
+
+/datum/reagent/consumable/ethanol/baijiu
+	name = "Baijiu"
+	boozepwr = 60
+	taste_description = "fiery and pungent alcohol with a hint of sweetness"
+	color = "#f8fdfc"
+	quality = DRINK_GOOD
+
+/datum/reagent/consumable/ethanol/yaojiu
+	name = "Yaojiu"
+	boozepwr = 50
+	taste_description = "bittersweet alcohol with deep herbal notes"
+	color = "#8C4B1F"
 	quality = DRINK_VERYGOOD
 
+/datum/reagent/consumable/ethanol/shejiu
+	name = "Shejiu"
+	boozepwr = 50
+	taste_description = "musky and strong alcohol with a hint of gameiness"
+	color = "#C49A6C"
+	quality = DRINK_VERYGOOD
+
+// Mead 
 /datum/reagent/consumable/ethanol/mead
 	name = "Mead"
 	description = "A warriors drink, though a cheap one."
@@ -459,6 +516,7 @@
 /datum/reagent/consumable/ethanol/mead/spider
 	color = "#660061"
 
+// Special Drugs
 /datum/reagent/consumable/ethanol/murkwine // not Toilet wine
 	name = "mürkwine"
 	boozepwr = 50  // bubba's best
