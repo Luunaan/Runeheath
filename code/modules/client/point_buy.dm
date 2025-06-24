@@ -16,7 +16,7 @@
 
 /datum/point_buy/proc/deserialize(text)
 	var/list/data = splittext(text, ",")
-	if (length(data) != 7)
+	if (length(data) != length(stats))
 		return FALSE
 	
 	stats[STATKEY_STR] = text2num(data[1])
