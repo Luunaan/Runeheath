@@ -346,7 +346,7 @@
 	if(!target)
 		return FALSE
 	var/obj/effect/proc_holder/spell/S = target
-	if(owner)
+	if(owner && !QDELETED(owner))
 		return S.can_cast(owner)
 	return FALSE
 
