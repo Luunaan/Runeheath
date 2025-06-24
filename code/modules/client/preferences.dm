@@ -2450,9 +2450,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.statpack = statpack
 
 	character.pointbuy = pointbuy
-	if (character.pointbuy)
-		character.pointbuy.remove_from(character)
-		character.pointbuy.apply_to(character)
 
 	character.gender_preferences = gender_preferences
 
