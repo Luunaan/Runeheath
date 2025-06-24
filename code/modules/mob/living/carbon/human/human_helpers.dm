@@ -2,7 +2,7 @@
 /mob/living/carbon/human/proc/change_name(new_name)
 	real_name = new_name
 
-/mob/living/carbon/human/restrained(ignore_grab)
+/mob/living/carbon/human/restrained(ignore_grab = TRUE)
 	. = ((wear_armor && wear_armor.breakouttime) || ..())
 
 /mob/living/carbon/human/check_language_hear(language)
@@ -152,3 +152,8 @@
 
 /mob/living/carbon/human/proc/likes_femininity()
 	return gender_preferences & GENDER_PREF_FEM_PRESENTING
+
+/mob/living/carbon/human/is_floor_hazard_immune()
+	. = ..()
+	if(dna?.species?.is_floor_hazard_immune(src))
+		return TRUE

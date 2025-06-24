@@ -10,7 +10,6 @@
 	ambushable = FALSE
 	dodgetime = 15
 	flee_in_pain = FALSE
-	stand_attempts = 6
 	possible_rmb_intents = list()
 
 /mob/living/carbon/human/species/human/northern/mad_touched_teasure_hunter/ambush

@@ -14,7 +14,8 @@
 	. = ..()
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
-		H.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/structure/zizo_shrine)
+		if(H.mind)
+			H.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/structure/zizo_shrine)
 
 /datum/patron/inhumen/zizo
 	name = "Zizo"
