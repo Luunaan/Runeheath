@@ -454,6 +454,8 @@
 		return TRUE
 	if(incapacitated(ignore_restraints = TRUE))
 		return TRUE
+	if (IsImmobilized())
+		return TRUE
 	return FALSE
 
 /mob/living/carbon/human/proc/equip_item(obj/item/I)
