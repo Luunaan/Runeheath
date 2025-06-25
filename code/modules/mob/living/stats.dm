@@ -51,8 +51,6 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 
-		// if (H.statpack)
-		// 	H.statpack.apply_to_human(H)
 		if (H.pointbuy)
 			H.pointbuy.apply_to(H)
 		if (H.dna?.species) // LETHALSTONE EDIT: apply our race bonus, if we have one

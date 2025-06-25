@@ -77,9 +77,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/gender = MALE					//gender of character (well duh) (LETHALSTONE EDIT: this no longer references anything but whether the masculine or feminine model is used)
 	var/pronouns = HE_HIM				// LETHALSTONE EDIT: character's pronouns (well duh)
 	var/voice_type = VOICE_TYPE_MASC	// LETHALSTONE EDIT: the type of soundpack the mob should use
-	var/datum/statpack/statpack	= new /datum/statpack/wildcard/fated // LETHALSTONE EDIT: the statpack we're giving our char instead of racial bonuses
-	var/datum/virtue/virtue = new /datum/virtue/none // LETHALSTONE EDIT: the virtue we get for not picking a statpack
-	var/datum/virtue/virtuetwo = new /datum/virtue/none
+	var/datum/virtue/virtue = new /datum/virtue/none
+	var/datum/virtue/virtuetwo = new /datum/virtue/none // Second virtue, gained if we have enough pointbuy points left over
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
 	var/accessory = "Nothing"
@@ -353,8 +352,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 
-			// LETHALSTONE EDIT BEGIN: add statpack selection
-			//dat += "<b>Statpack:</b> <a href='?_src_=prefs;preference=statpack;task=input'>[statpack.name]</a><BR>"
 			dat += "<br><b>Stat Adjustments:</b> <a href='?_src_=prefs;preference=point_buy;task=menu'>Change</a><BR>"
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
@@ -385,7 +382,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 //			dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
 			dat += "<b>Virtue:</b> <a href='?_src_=prefs;preference=virtue;task=input'>[virtue]</a><BR>"
-			if (pointbuy.can_afford_second_virtue() || statpack.name == "Virtuous")
+			if (pointbuy.can_afford_second_virtue())
 				dat += "<b>Second Virtue:</b> <a href='?_src_=prefs;preference=virtuetwo;task=input'>[virtuetwo]</a><BR>"
 			dat += "<b>Vice:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
@@ -1497,25 +1494,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 
-				// LETHALSTONE EDIT: add statpack selection
-				if ("statpack")
-					var/list/statpacks_available = list()
-					for (var/path as anything in GLOB.statpacks)
-						var/datum/statpack/statpack = GLOB.statpacks[path]
-						if (!statpack.name)
-							continue
-						statpacks_available[statpack.name] = statpack
-
-					var/statpack_input = input(user, "Choose your character's statpack", "Statpack") as null|anything in statpacks_available
-					if (statpack_input)
-						var/datum/statpack/statpack_chosen = statpacks_available[statpack_input]
-						statpack = statpack_chosen
-						to_chat(user, "<font color='purple'>[statpack.name]</font>")
-						to_chat(user, "<font color='purple'>[statpack.description_string()]</font>")
-						/* also, unset our virtue if we're not a virtuous statpack.
-						if (!istype(statpack, /datum/statpack/wildcard/virtuous) && virtue.type != /datum/virtue/none)
-							virtue = new /datum/virtue/none
-							to_chat(user, span_info("Your virtue has been removed due to taking a stat-altering statpack.")) */
 				// LETHALSTONE EDIT: add pronouns
 				if ("pronouns")
 					var pronouns_input = input(user, "Choose your character's pronouns", "Pronouns") as null|anything in GLOB.pronouns_list
@@ -1910,9 +1888,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						var/datum/virtue/virtue_chosen = virtue_choices[result]
 						virtuetwo = virtue_chosen
 						to_chat(user, process_virtue_text(virtue_chosen))
-					/*	if (statpack.type != /datum/statpack/wildcard/virtuous)
-							statpack = new /datum/statpack/wildcard/virtuous
-							to_chat(user, span_purple("Your statpack has been set to virtuous (no stats) due to selecting a virtue.")) */
 
 				if("charflaw")
 					var/list/coom = GLOB.character_flaws.Copy()
@@ -2446,8 +2421,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.dna.real_name = character.real_name
 
 	character.headshot_link = headshot_link
-
-	character.statpack = statpack
 
 	character.pointbuy = pointbuy
 	// HACK: This results in redundant assignment on character creation, since it will be reset in roll_stats(),

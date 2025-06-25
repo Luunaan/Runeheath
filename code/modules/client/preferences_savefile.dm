@@ -359,16 +359,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
 
-/datum/preferences/proc/_load_statpack(S)
-	var/statpack_type
-	S["statpack"] >> statpack_type
-	if (statpack_type)
-		statpack = new statpack_type()
-	else
-		statpack = pick(GLOB.statpacks)
-		statpack = GLOB.statpacks[statpack]
-		//statpack = new statpack
-
 /datum/preferences/proc/_load_pointbuy(S)
 	var/datum/point_buy/pb = new
 	pb.deserialize(S["pointbuy"])
@@ -477,8 +467,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_virtue(S)
 	_load_flaw(S)
 
-	// LETHALSTONE edit: jank-ass load our statpack choice
-	//_load_statpack(S)
 	_load_pointbuy(S)
 	_load_gender_prefs(S)
 
@@ -700,7 +688,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["char_accent"] , char_accent)
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
-	//WRITE_FILE(S["statpack"] , statpack.type)
 	WRITE_FILE(S["pointbuy"], pointbuy.serialize())
 	WRITE_FILE(S["gender_prefs"], gender_preferences)
 	WRITE_FILE(S["virtue"] , virtue.type)

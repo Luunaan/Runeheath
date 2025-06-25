@@ -53,12 +53,6 @@
 		if(patron.preference_accessible)
 			GLOB.preference_patrons[path] = patron
 
-	// Ported from Lethalstone
-	for (var/path in subtypesof(/datum/statpack))
-		var/datum/statpack/statpack = new path()
-		GLOB.statpacks[path] = statpack
-	sortList(GLOB.statpacks, GLOBAL_PROC_REF(cmp_text_dsc))
-
 	for (var/path in subtypesof(/datum/virtue))
 		var/datum/virtue/virtue = new path()
 		GLOB.virtues[path] = virtue
