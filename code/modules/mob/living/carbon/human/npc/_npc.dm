@@ -648,7 +648,7 @@
 			else if(!is_move_blocked_by_grab()) // try to run offscreen if we aren't being grabbed by someone else
 				NPC_THINK("Fleeing from [target]!")
 				// todo: use A* to find the shortest path to the farthest tile away from the flee target?
-				walk_away(src, target, NPC_FLEE_DISTANCE, cached_multiplicative_slowdown)
+				step_away(src, target, NPC_FLEE_DISTANCE, cached_multiplicative_slowdown)
 			else // can't flee and can't move, stop walking!
 				NPC_THINK("I can't flee from [target]!")
 				walk(src, 0)
