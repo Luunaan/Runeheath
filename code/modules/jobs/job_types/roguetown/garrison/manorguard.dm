@@ -100,10 +100,10 @@
 	switch(weapon_choice)
 		if("Warhammer & Shield")
 			beltr = /obj/item/rogueweapon/mace/warhammer
-			backl = /obj/item/rogueweapon/shield/wood
+			backl = /obj/item/rogueweapon/shield/iron
 		if("Axe & Shield")
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-			backl = /obj/item/rogueweapon/shield/wood
+			backl = /obj/item/rogueweapon/shield/iron
 		if("Halberd")
 			r_hand = /obj/item/rogueweapon/halberd
 			backl = /obj/item/gwstrap

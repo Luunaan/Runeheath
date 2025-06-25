@@ -95,7 +95,7 @@
 			to_chat(H, span_warning("A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade."))
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/rogueweapon/shield/tower
+			backr = /obj/item/rogueweapon/shield/iron
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			wrists = /obj/item/clothing/wrists/roguetown/bracers

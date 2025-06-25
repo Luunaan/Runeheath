@@ -106,10 +106,10 @@
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			H.set_blindness(0)
 			switch(weapon_choice)
-				if("Just A Heater Shield")
+				if("Just An Iron Shield")
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
-					backr = /obj/item/rogueweapon/shield/heater
+					backr = /obj/item/rogueweapon/shield/iron
 				if("Dagger + Crossbow")
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 					beltl = /obj/item/rogueweapon/huntingknife/idagger/steel 
@@ -118,7 +118,7 @@
 				if ("Militia Warpick + Heater Shield")
 					H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 					beltl = /obj/item/rogueweapon/pick/militia
-					backr = /obj/item/rogueweapon/shield/heater
+					backr = /obj/item/rogueweapon/shield/iron
 				if ("Militia Spear + Heater Shield")
 					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 					l_hand = /obj/item/rogueweapon/spear/militia
