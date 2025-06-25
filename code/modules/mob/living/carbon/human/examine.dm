@@ -526,7 +526,7 @@
 
 	// Bleeding
 	var/bleed_rate = get_bleed_rate()
-	if(bleed_rate)
+	if(bleed_rate > 0)
 		if(!is_stupid)
 			var/bleed_wording = "bleeding"
 			switch(bleed_rate)

@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		return FALSE
 	if(!isnull(bleed_rate) && !affected.can_bloody_wound())
 		if (can_disable_bleeding())
-			disable_bleeding()
+			return TRUE
 		else
 			return FALSE
 	for(var/datum/wound/other_wound as anything in affected.wounds)
@@ -161,6 +161,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	sortTim(affected.wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
 	bodypart_owner = affected
 	owner = bodypart_owner.owner
+
+	if (bleed_rate > 0 && !affected.can_bloody_wound() && can_disable_bleeding())
+		disable_bleeding()
+
 	on_bodypart_gain(affected)
 	INVOKE_ASYNC(src, PROC_REF(on_mob_gain), affected.owner) //this is literally a fucking lint error like new species cannot possible spawn with wounds until after its ass
 	if(crit_message)
@@ -345,3 +349,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/disable_bleeding()
 	if (can_disable_bleeding)
 		bleed_rate = 0
+		can_sew = FALSE
+		sewn_bleed_rate = 0
+		can_cauterize = FALSE
