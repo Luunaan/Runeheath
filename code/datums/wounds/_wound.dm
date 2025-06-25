@@ -75,7 +75,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 	/// Some wounds make no sense on a dismembered limb and need to go
 	var/qdel_on_droplimb = FALSE
-
+	/// If TRUE, the bleeding on this wound can be reduced to 0 on a target immune to bleeding, while still being applied
+	var/can_disable_bleeding = FALSE
 
 
 /datum/wound/Destroy(force)
@@ -135,7 +136,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(bodypart_owner || owner || QDELETED(affected) || QDELETED(affected.owner))
 		return FALSE
 	if(!isnull(bleed_rate) && !affected.can_bloody_wound())
-		return FALSE
+		if (can_disable_bleeding())
+			disable_bleeding()
+		else
+			return FALSE
 	for(var/datum/wound/other_wound as anything in affected.wounds)
 		if(!can_stack_with(other_wound))
 			return FALSE
@@ -334,3 +338,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(weapon && !can_embed(weapon))
 		return FALSE
 	return prob(wound_or_boolean.embed_chance)
+
+/datum/wound/proc/can_disable_bleeding()
+	return can_disable_bleeding
+
+/datum/wound/proc/disable_bleeding()
+	if (can_disable_bleeding)
+		bleed_rate = 0

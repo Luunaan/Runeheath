@@ -6,7 +6,6 @@
 		"The bone shatters!",
 		"The bone is broken!",
 		"The %BODYPART is mauled!",
-		"The bone snaps through the skin!",
 	)
 	sound_effect = "wetbreak"
 	whp = 40
@@ -28,6 +27,7 @@
 	bleed_rate = 15				// Artery is 20, but doesn't stop.
 	clotting_threshold = 0.25	// Grusome slash is 0.4
 	clotting_rate = 0.60		// Normally it's only 0.02, this is huge compared to that.
+	can_disable_bleeding = TRUE // Skeletons aren't immune to fractures just because they can't bleed.
 
 /datum/wound/fracture/get_visible_name(mob/user)
 	. = ..()
