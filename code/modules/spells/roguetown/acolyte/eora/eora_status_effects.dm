@@ -140,14 +140,11 @@
 /datum/status_effect/buff/eoran_balm_effect/tick()
 	. = ..()
 	var/mob/living/carbon/M = owner
-	to_chat(world, span_bold("Eoran Balm Effect start: [M.name]"))
 	new /obj/effect/temp_visual/heal(get_turf(owner), "#cd2be2")
 
 	if(M.stat != DEAD)
 		M.remove_status_effect(src)
 		return
-
-	to_chat(world, span_bold("Eoran Balm Effect Processing: [M.name]"))
 
 	if(waiting_for_prompt)
 		return

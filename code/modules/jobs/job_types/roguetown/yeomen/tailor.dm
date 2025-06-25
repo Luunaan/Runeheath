@@ -15,7 +15,7 @@
 	give_bank_account = 16
 	min_pq = 0
 	max_pq = null
-	round_contrib_points = 2
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/tailor/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -37,7 +37,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 		/obj/item/needle, 
-		/obj/item/roguekey/tailor, 
+		/obj/item/storage/keyring/tailor,
 		/obj/item/dye_brush, 
 		/obj/item/recipe_book/sewing, 
 		/obj/item/recipe_book/leatherworking
