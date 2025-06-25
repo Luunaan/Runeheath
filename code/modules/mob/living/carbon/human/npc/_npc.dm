@@ -328,10 +328,6 @@
 			return
 		// Try jumping prior to validation to avoid losing our path from being too far away.
 		// Basically a catch-up step. Won't run every time.
-		if(npc_try_jump())
-			NPC_THINK("MOVEMENT TURN [movement_turn]: Jumped, waiting 1ds!")
-			sleep(1)
-			continue
 		if(!validate_path())
 			NPC_THINK("MOVEMENT TURN [movement_turn]: Path invalidated!")
 			return
