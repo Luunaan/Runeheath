@@ -309,6 +309,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SIMPLESPEECH = span_info("I can not say hard words."),
 	TRAIT_AGELESS = span_info("I don't age as the shorter-lived races do."),
 	TRAIT_GOOD_JUMP = span_info("I am naturally good at jumping long distances."),
+	TRAIT_GOODBITE = span_info("My sharp teeth and strong jaws mean my bites are especially dangerous."),
+	TRAIT_NOMADIC = span_info("I find it easy to sleep outside, beneath the stars."),
 ))
 
 // trait accessor defines
