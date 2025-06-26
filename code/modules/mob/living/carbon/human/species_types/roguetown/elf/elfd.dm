@@ -40,7 +40,7 @@
 	skin_tone_wording = "Origin City-State"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
-	inherent_traits = list(TRAIT_FERTILE, TRAIT_REDUCED_VIRILITY)
+	inherent_traits = list(TRAIT_FERTILE, TRAIT_REDUCED_VIRILITY, TRAIT_LIGHT_STEP, TRAIT_GOOD_HEARING)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	disliked_food = NONE

@@ -13,7 +13,7 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_VERY_FERTILE, TRAIT_NOMADIC)
+	inherent_traits = list(TRAIT_VERY_FERTILE, TRAIT_NOMADIC, TRAIT_GOOD_HEARING)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT

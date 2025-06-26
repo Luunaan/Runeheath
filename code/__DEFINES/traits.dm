@@ -3,6 +3,8 @@
 
 #define STRONGBITE_DAMAGE_MULT 2
 #define GOODBITE_DAMAGE_MULT 1.4
+#define GOOD_HEARING_DISTANCE_INCREASE 7
+#define BOOMING_VOICE_DISTANCE_INCREASE 7
 
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
@@ -177,6 +179,8 @@
 #define TRAIT_GOODBITE "Good Bite" // 40% extra bite damage (doesn't stack with strong bite)
 #define TRAIT_NOMADIC "Nomadic" // Easier to sleep on the ground, inspiration from sleeping on the ground
 #define TRAIT_LARGE_MAW "Large Maw" // Eat food items in one bite
+#define TRAIT_GOOD_HEARING "Good Hearing"
+#define TRAIT_BOOMING_VOICE "Booming Voice"
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -312,6 +316,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOOD_JUMP = span_info("I am naturally good at jumping long distances."),
 	TRAIT_GOODBITE = span_info("My sharp teeth and strong jaws mean my bites are especially dangerous."),
 	TRAIT_NOMADIC = span_info("I find it easy to sleep outside, beneath the stars."),
+	TRAIT_LARGE_MAW = span_info("I can take larger bites than those of most other races."),
 ))
 
 // trait accessor defines

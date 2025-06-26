@@ -370,7 +370,6 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
 	var/Zs_too = FALSE
-	var/Zs_all = FALSE
 	var/Zs_yell = FALSE
 	var/listener_has_ceiling	= TRUE
 	var/speaker_has_ceiling		= TRUE
@@ -386,9 +385,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		Zs_too = TRUE
 		if(say_test(message) == "2")	//CIT CHANGE - ditto
 			message_range += 10
+			if (HAS_TRAIT(src, TRAIT_BOOMING_VOICE))
+				message_range += BOOMING_VOICE_DISTANCE_INCREASE
 			Zs_yell = TRUE
-		if(say_test(message) == "3")	//Big "!!" shout
-			Zs_all = TRUE
 	// AZURE EDIT: thaumaturgical loudness (from orisons)
 	if (has_status_effect(/datum/status_effect/thaumaturgy))
 		spans |= SPAN_REALLYBIG
@@ -407,22 +406,16 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	// AZURE EDIT END
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
 	var/list/the_dead = list()
-//	var/list/yellareas	//CIT CHANGE - adds the ability for yelling to penetrate walls and echo throughout areas
 	for(var/_M in GLOB.player_list)
 		var/mob/M = _M
-//		if(M.stat != DEAD) //not dead, not important
-//			if(yellareas)	//CIT CHANGE - see above. makes yelling penetrate walls
-//				var/area/A = get_area(M)	//CIT CHANGE - ditto
-//				if(istype(A) && A.ambientsounds != SPACE && (A in yellareas))	//CIT CHANGE - ditto
-//					listening |= M	//CIT CHANGE - ditto
-//			continue
 		if(!client) //client is so that ghosts don't have to listen to mice
 			continue
 		if(!M)
 			continue
 		if(!M.client)
 			continue
-		if(get_dist(M, src) > message_range) //they're out of range of normal hearing
+		var/extra_range = HAS_TRAIT(M, TRAIT_GOOD_HEARING) ? GOOD_HEARING_DISTANCE_INCREASE : 0
+		if(get_dist(M, src) > message_range + extra_range) //they're out of range of normal hearing
 			if(M.client.prefs)
 				if(eavesdropping_modes[message_mode] && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
 					continue
@@ -452,7 +445,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
 			if(AM.z != src.z)
 				continue
-		if(Zs_too && AM.z != src.z && !Zs_all)
+		if(Zs_too && AM.z != src.z)
 			if(!Zs_yell && !HAS_TRAIT(AM, TRAIT_KEENEARS))
 				if(listener_turf.z < speaker_turf.z && listener_has_ceiling)	//Listener is below the speaker and has a ceiling above them
 					continue

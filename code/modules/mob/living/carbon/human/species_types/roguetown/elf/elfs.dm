@@ -23,7 +23,7 @@
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
-	inherent_traits = list(TRAIT_VERY_FERTILE, TRAIT_LIGHT_STEP)
+	inherent_traits = list(TRAIT_VERY_FERTILE, TRAIT_LIGHT_STEP, TRAIT_GOOD_HEARING)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	disliked_food = NONE
