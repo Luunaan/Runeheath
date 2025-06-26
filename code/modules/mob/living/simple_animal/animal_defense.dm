@@ -155,7 +155,9 @@
 /mob/living/simple_animal/onbite(mob/living/carbon/human/user)
 	var/damage = 10*(user.STASTR/20)
 	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
-		damage = damage*2
+		damage = damage * STRONGBITE_DAMAGE_MULT
+	else if (HAS_TRAIT(user, TRAIT_GOODBITE))
+		damage = damage * GOODBITE_DAMAGE_MULT
 	playsound(user.loc, "smallslash", 100, FALSE, -1)
 	user.next_attack_msg.Cut()
 	if(stat == DEAD)

@@ -197,8 +197,10 @@
 	var/nodmg = FALSE
 	var/dam2do = 10*(user.STASTR/20)
 	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
-		dam2do *= 2
-	if(!HAS_TRAIT(user, TRAIT_STRONGBITE))
+		dam2do *= STRONGBITE_DAMAGE_MULT
+	else if (HAS_TRAIT(user, TRAIT_GOODBITE))
+		dam2do *= GOODBITE_DAMAGE_MULT
+	else
 		if(!affecting.has_wound(/datum/wound/bite))
 			nodmg = TRUE
 	if(!nodmg)

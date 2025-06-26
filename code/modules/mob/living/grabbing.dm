@@ -539,7 +539,9 @@
 	var/armor_block = C.run_armor_check(sublimb_grabbed, d_type)
 	var/damage = user.get_punch_dmg()
 	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
-		damage = damage*2
+		damage = damage * STRONGBITE_DAMAGE_MULT
+	else if (HAS_TRAIT(user, TRAIT_GOODBITE))
+		damage = damage * GOODBITE_DAMAGE_MULT
 	C.next_attack_msg.Cut()
 	user.do_attack_animation(C, "bite")
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
