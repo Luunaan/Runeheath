@@ -730,6 +730,8 @@ SUBSYSTEM_DEF(job)
 	if(job && H)
 		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 
+	SSgamemode.on_mob_spawn(H, joined_late)
+
 	return H
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)

@@ -44,6 +44,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(player.prefs.loadout3)
 		character.mind.special_items[player.prefs.loadout3::name] += player.prefs.loadout3.path
 
+	SSgamemode.on_job_finalised(character)
+
 /proc/apply_prefs_virtue(mob/living/carbon/human/character, client/player)
 	if (!player)
 		player = character.client

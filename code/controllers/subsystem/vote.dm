@@ -158,7 +158,8 @@ SUBSYSTEM_DEF(vote)
 					SSgamemode.round_ends_at = GLOB.round_timer + ROUND_END_TIME
 			if("storyteller")
 				SSgamemode.storyteller_vote_result(.)
-
+			if ("aspects")
+				SSgamemode.aspect_vote_result(.)
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -259,6 +260,8 @@ SUBSYSTEM_DEF(vote)
 				vote_alert.file = 'sound/roundend/roundend-vote-sound.ogg'
 			if("storyteller")
 				choices.Add(SSgamemode.storyteller_vote_choices())
+			if("aspects")
+				choices.Add(SSgamemode.aspect_vote_choices())
 			else
 				return 0
 		mode = vote_type

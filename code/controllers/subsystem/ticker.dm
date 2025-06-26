@@ -187,7 +187,8 @@ SUBSYSTEM_DEF(ticker)
 					++totalPlayersReady
 			
 			if(!gamemode_voted)
-				SSvote.initiate_vote("storyteller", "Psydon", timeLeft/2)
+				if (prob(SSgamemode.get_aspect_chance()))
+					SSvote.initiate_vote("aspects", "Psydon", timeLeft/2)
 				gamemode_voted = TRUE
 
 			if(start_immediately)
@@ -421,6 +422,8 @@ SUBSYSTEM_DEF(ticker)
 
 	if(!rulermob)
 		lord_color_default()
+
+	SSgamemode.on_round_start()
 
 
 //These callbacks will fire after roundstart key transfer

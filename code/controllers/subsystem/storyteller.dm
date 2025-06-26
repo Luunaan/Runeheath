@@ -5,6 +5,10 @@
 #define MAX_POP_FOR_STORYTELLER_VOTE 25
 ///the duration into the round for which roundstart events are still valid to run
 #define ROUNDSTART_VALID_TIMEFRAME 3 MINUTES
+///Number of aspects to be offered in voting options
+#define ASPECT_VOTE_OPTIONS 3
+/// % chance that aspects will be active in a round
+#define ASPECT_ACTIVATION_CHANCE 33
 
 SUBSYSTEM_DEF(gamemode)
 	name = "Gamemode"
@@ -695,6 +699,33 @@ SUBSYSTEM_DEF(gamemode)
 		pick_from -= picked_storyteller
 	return final_choices
 
+/datum/controller/subsystem/gamemode/proc/aspect_vote_choices()
+	var/list/aspects = list()
+	var/list/choices = list()
+
+	for (var/aspect in GLOB.all_aspects)
+		if (istype(GLOB.all_aspects[aspect], /datum/round_aspect))
+			var/datum/round_aspect/round_aspect = GLOB.all_aspects[aspect]
+			aspects[round_aspect.name] = round_aspect.weight
+
+	for (var/i =0; i<ASPECT_VOTE_OPTIONS; ++i)
+		choices += pickweight_n_take(aspects)
+
+	// Add a none option for cases when players feel like an ordinary round...
+	choices += "None"
+	return choices
+
+/datum/controller/subsystem/gamemode/proc/aspect_vote_result(winner_name)
+	if (winner_name == "None")
+		return
+	for (var/aspect in GLOB.all_aspects)
+		if (istype(GLOB.all_aspects[aspect], /datum/round_aspect))
+			var/datum/round_aspect/a = GLOB.all_aspects[aspect]
+			if (a.name == winner_name)
+				round_aspects += a
+				a.on_selection()
+				break
+
 /datum/controller/subsystem/gamemode/proc/storyteller_desc(storyteller_name)
 	for(var/storyteller_type in storytellers)
 		var/datum/storyteller/storyboy = storytellers[storyteller_type]
@@ -1350,7 +1381,22 @@ SUBSYSTEM_DEF(gamemode)
 		aspect_to_add = aspect
 
 	if (istype(aspect_to_add, /datum/round_aspect))
-		round_aspects.Add(aspect_to_add)
+		round_aspects[aspect_to_add] = TRUE
+
+/datum/controller/subsystem/gamemode/proc/on_round_start()
+	for(var/datum/round_aspect/aspect in round_aspects)
+		aspect.on_round_start()
+
+/datum/controller/subsystem/gamemode/proc/on_mob_spawn(mob/living/carbon/human/H, latejoin = FALSE)
+	for (var/datum/round_aspect/aspect in round_aspects)
+		aspect.on_mob_spawn(H, latejoin)
+
+/datum/controller/subsystem/gamemode/proc/on_job_finalised(mob/living/carbon/human/H)
+	for (var/datum/round_aspect/aspect in round_aspects)
+		aspect.on_job_finalised(H)
+
+/datum/controller/subsystem/gamemode/proc/get_aspect_chance()
+	return ASPECT_ACTIVATION_CHANCE
 
 #undef DEFAULT_STORYTELLER_VOTE_OPTIONS
 #undef MAX_POP_FOR_STORYTELLER_VOTE

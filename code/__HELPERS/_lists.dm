@@ -288,6 +288,30 @@
 
 	return null
 
+/// Combines the functionality of pickweightAllowZero(L) and pick_n_take(L):
+/// Chooses an element from the list according to the element's weight,
+/// then removes the element from the list and returns it to the caller.
+/proc/pickweight_n_take(list/L)
+	var/total = 0
+	var/item = null
+	var/picked = 0
+	for(item in L)
+		if (!L[item])
+			L[item] = 0
+		total += L[item]
+
+	total = rand(1, total)
+	for (item in L)
+		++picked
+		total -=L [item]
+		if (total <= 0)
+			break
+	
+	if (item && picked)
+		L.Cut(picked, picked+1)
+		return item
+	return null
+
 //Pick a random element from the list and remove it from the list.
 /proc/pick_n_take(list/L)
 	RETURN_TYPE(L[_].type)
