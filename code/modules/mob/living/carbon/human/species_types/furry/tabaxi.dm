@@ -17,7 +17,7 @@
 		(+1 Speed)"
 	skin_tone_wording = "Fur Colors"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
-	inherent_traits = list(TRAIT_SEA_DRINKER, TRAIT_GOOD_JUMP) // Cats have efficient kidneys, look it up
+	inherent_traits = list(TRAIT_SEA_DRINKER, TRAIT_GOOD_JUMP, TRAIT_NOMADIC) // Cats have efficient kidneys, look it up
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fma.dmi'

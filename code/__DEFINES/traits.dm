@@ -1,8 +1,8 @@
 #define SIGNAL_ADDTRAIT(trait_ref) ("addtrait " + trait_ref)
 #define SIGNAL_REMOVETRAIT(trait_ref) ("removetrait " + trait_ref)
 
-#define STRONGBITE_DAMAGE_MULT = 2
-#define GOODBITE_DAMAGE_MULT = 1.4
+#define STRONGBITE_DAMAGE_MULT 2
+#define GOODBITE_DAMAGE_MULT 1.4
 
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
@@ -174,7 +174,8 @@
 #define TRAIT_EXTREMELY_FERTILE "Extremely Fertile"
 #define TRAIT_EXTREMELY_VIRILE "Extremely Virile"
 #define TRAIT_GOOD_JUMP "Good Jump" // +1 to jump range
-#define TRAIT_GOOD_BITE "Good Bite" // 40% extra bite damage (doesn't stack with strong bite)
+#define TRAIT_GOODBITE "Good Bite" // 40% extra bite damage (doesn't stack with strong bite)
+#define TRAIT_NOMADIC "Nomadic" // Easier to sleep on the ground, inspiration from sleeping on the ground
 
 
 GLOBAL_LIST_INIT(roguetraits, list(

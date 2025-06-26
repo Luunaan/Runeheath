@@ -596,6 +596,12 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 			if(bed)
 				sleepy_mod = bed.sleepy
 			else
+				if (HAS_TRAIT(src, TRAIT_NOMADIC))
+					var/turf/T = get_turf(src)
+					if (T)
+						var/ceiling_status = T.get_ceiling_status()
+						if (ceiling_status && ceiling_status["SKYVISIBLE"])
+							sleepy_mod = 2.5 // Nomadic: sleeping outdoors is nearly as good as a bed
 				if(HAS_TRAIT(src, TRAIT_OUTDOORSMAN))
 					var/obj/structure/flora/newbranch/branch = locate() in loc
 					if(branch)
@@ -607,7 +613,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 					var/mob/living/carbon/human/H = src
 					if(H.head && H.head.armor?.blunt > 70)
 						armor_blocked = TRUE
-					if(H.wear_armor && (H.wear_armor.armor_class in list(ARMOR_CLASS_HEAVY, ARMOR_CLASS_MEDIUM)))
+					else if(H.wear_armor && (H.wear_armor.armor_class in list(ARMOR_CLASS_HEAVY, ARMOR_CLASS_MEDIUM)))
 						armor_blocked = TRUE
 					if(armor_blocked && !fallingas)
 						to_chat(src, span_warning("I can't sleep like this. My armor is burdening me."))
