@@ -18,7 +18,7 @@
 	skin_tone_wording = "Craft"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_AGELESS)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_AGELESS, TRAIT_REDUCED_FERTILITY, TRAIT_REDUCED_VIRILITY, TRAIT_EMPATH)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	disliked_food = NONE
