@@ -19,7 +19,7 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_VERY_VIRILE, TRAIT_FERTILE)
+	inherent_traits = list(TRAIT_VERY_VIRILE, TRAIT_FERTILE, TRAIT_GOODBITE, TRAIT_LARGE_MAW)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	use_skintones = 1
 	attack_verb = "slash"

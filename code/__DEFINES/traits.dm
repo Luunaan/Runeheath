@@ -176,6 +176,7 @@
 #define TRAIT_GOOD_JUMP "Good Jump" // +1 to jump range
 #define TRAIT_GOODBITE "Good Bite" // 40% extra bite damage (doesn't stack with strong bite)
 #define TRAIT_NOMADIC "Nomadic" // Easier to sleep on the ground, inspiration from sleeping on the ground
+#define TRAIT_LARGE_MAW "Large Maw" // Eat food items in one bite
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
