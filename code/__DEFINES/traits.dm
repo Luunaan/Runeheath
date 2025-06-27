@@ -180,10 +180,10 @@
 #define TRAIT_GOODBITE "Good Bite" // 40% extra bite damage (doesn't stack with strong bite)
 #define TRAIT_NOMADIC "Nomadic" // Easier to sleep on the ground, inspiration from sleeping on the ground
 #define TRAIT_LARGE_MAW "Large Maw" // Eat food items in one bite
-#define TRAIT_GOOD_HEARING "Good Hearing"
-#define TRAIT_BOOMING_VOICE "Booming Voice"
-#define TRAIT_HAULER "Hauler"
-#define TRAIT_NOCTURNAL "Nocturnal"
+#define TRAIT_GOOD_HEARING "Good Hearing" // Can hear yelling from further away
+#define TRAIT_BOOMING_VOICE "Booming Voice" // Can be heard from further away when yelling
+#define TRAIT_HAULER "Hauler" // Strength counts as higher for carrying weapons and mobs
+#define TRAIT_NOCTURNAL "Nocturnal" // Get tired during day, extra inspiration for sleeping during day
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
