@@ -107,11 +107,11 @@
 				var/file_ext = lowertext(copytext(filename, -4))
 				var/file_size = length(infile)
 				message_admins("[ADMIN_LOOKUPFLW(user)] uploaded a song [filename] of size [file_size / 1000000] (~MB).")
-				if(file_ext != ".ogg")
-					to_chat(user, span_warning("SONG MUST BE AN OGG."))
+				if(file_ext != ".mid")
+					to_chat(user, span_warning("SONG MUST BE A .MID."))
 					return
-				if(file_size > 6485760)
-					to_chat(user, span_warning("TOO BIG. 6 MEGS OR LESS."))
+				if(file_size > 524288)
+					to_chat(user, span_warning("TOO BIG. 512KB OR LESS."))
 					return
 				lastfilechange = world.time
 				fcopy(infile,"data/jukeboxuploads/[user.ckey]/[filename]")
