@@ -106,7 +106,7 @@
 				var/filename = "[infile]"
 				var/file_ext = lowertext(copytext(filename, -4))
 				var/file_size = length(infile)
-				message_admins("[ADMIN_LOOKUPFLW(user)] uploaded a song [filename] of size [file_size / 1000000] (~MB).")
+				message_admins("[ADMIN_LOOKUPFLW(user)] uploaded a song [filename] of size [file_size / 1024] (~KB).")
 				if(file_ext != ".mid")
 					to_chat(user, span_warning("SONG MUST BE A .MID."))
 					return
