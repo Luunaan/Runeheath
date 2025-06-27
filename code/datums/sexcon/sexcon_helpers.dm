@@ -1,6 +1,7 @@
 #define BASE_IMPREGNATION_CHANCE 25
 #define KNOTTED_PENIS_IMPREGNATION_OFFSET 15
 #define FERTILE_OFFSET 10
+#define BREEDABLE_FERTILITY_OFFSET 15
 
 /datum/looping_sound/femhornylite
 	mid_sounds = list('sound/vo/female/gen/se/horny1loop (1).ogg')
@@ -98,6 +99,9 @@
 	var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
 	if (penis && istype(penis, /obj/item/organ/penis/knotted))
 		. += KNOTTED_PENIS_IMPREGNATION_OFFSET
+
+	if (wife.has_status_effect(/datum/status_effect/debuff/breedable))
+		. += BREEDABLE_FERTILITY_OFFSET
 
 	if (HAS_TRAIT(src, TRAIT_EXTREMELY_VIRILE))
 		. += FERTILE_OFFSET * 3
