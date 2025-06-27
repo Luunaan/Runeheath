@@ -119,6 +119,15 @@
 		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100
 
+	if (HAS_TRAIT(mind.current, TRAIT_NOCTURNAL) && GLOB.tod == "day")
+		++inspirations // Nocturnal characters get a bonus from sleeping during the day
+	else if (HAS_TRAIT(mind.current, TRAIT_NOMADIC))
+		var/turf/T = get_turf(src)
+		if (T)
+			var/ceiling_status = T.get_ceiling_status()
+			if (ceiling_status && ceiling_status["SKYVISIBLE"])
+				++inspirations // Nomadic characters get a bonus from sleeping outside
+
 	grant_inspiration_xp(inspirations)
 
 	stress_amount = 0

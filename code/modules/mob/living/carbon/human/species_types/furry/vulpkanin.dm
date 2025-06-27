@@ -13,7 +13,10 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_GOOD_HEARING)
+	inherent_traits = list(
+		TRAIT_GOOD_HEARING,
+		TRAIT_NOCTURNAL,
+		)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	liked_food = GROSS | MEAT | FRIED

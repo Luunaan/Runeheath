@@ -183,6 +183,7 @@
 #define TRAIT_GOOD_HEARING "Good Hearing"
 #define TRAIT_BOOMING_VOICE "Booming Voice"
 #define TRAIT_HAULER "Hauler"
+#define TRAIT_NOCTURNAL "Nocturnal"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -321,6 +322,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOOD_HEARING = span_info("My ears can pick up on even distant sounds."),
 	TRAIT_BOOMING_VOICE = span_info("I can project my voice much farther than most races, when I yell!"),
 	TRAIT_HAULER = span_info("My race is naturally muscular, making it easy to carry heavy objects."),
+	TRAIT_NOCTURNAL = span_info("I find myself tired during the day, rather than the night.")
 ))
 
 // trait accessor defines
