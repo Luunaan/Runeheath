@@ -231,7 +231,10 @@
 		if(H.r_grab.grabbed == M)
 			if(H.l_grab.grabbed == M)
 				reqstrength -= 2
-	if(H.STASTR < reqstrength)
+	var/carry_str = H.STASTR
+	if (HAS_TRAIT(H, TRAIT_HAULER))
+		carry_str += HAULER_STRENGTH_MOD
+	if(carry_str < reqstrength)
 		amt2use += 2
 	H.add_movespeed_modifier(MOVESPEED_ID_HUMAN_CARRYING, multiplicative_slowdown = amt2use)
 

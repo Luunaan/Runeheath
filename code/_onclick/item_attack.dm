@@ -240,11 +240,14 @@
 	else if(used_str <= 9)
 		newforce = newforce - (newforce * ((10 - used_str) * 0.1))
 
+	var/carry_str = user.STASTR
+	if (HAS_TRAIT(user, TRAIT_HAULER))
+		carry_str += HAULER_STRENGTH_MOD
 	if(I.minstr)
 		var/effective = I.minstr
 		if(I.wielded)
 			effective = max(I.minstr / 2, 1)
-		if(effective > user.STASTR)
+		if(effective > carry_str)
 			newforce = max(newforce*0.3, 1)
 			if(prob(33))
 				if(I.wielded)

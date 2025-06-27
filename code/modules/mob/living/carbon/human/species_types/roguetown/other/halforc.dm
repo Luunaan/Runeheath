@@ -19,7 +19,7 @@
 	skin_tone_wording = "Clan"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_EXTREMELY_VIRILE, TRAIT_BOOMING_VOICE)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_EXTREMELY_VIRILE, TRAIT_BOOMING_VOICE, TRAIT_HAULER)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	disliked_food = NONE

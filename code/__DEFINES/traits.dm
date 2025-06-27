@@ -1,10 +1,11 @@
 #define SIGNAL_ADDTRAIT(trait_ref) ("addtrait " + trait_ref)
 #define SIGNAL_REMOVETRAIT(trait_ref) ("removetrait " + trait_ref)
 
-#define STRONGBITE_DAMAGE_MULT 2
-#define GOODBITE_DAMAGE_MULT 1.4
-#define GOOD_HEARING_DISTANCE_INCREASE 7
-#define BOOMING_VOICE_DISTANCE_INCREASE 7
+#define STRONGBITE_DAMAGE_MULT 2 // Strong Bite causes bite damage to be multiplied by this amount. Overrides Good Bite when both are present.
+#define GOODBITE_DAMAGE_MULT 1.4 // Good Bite causes bite damage to be multiplied by this amount
+#define GOOD_HEARING_DISTANCE_INCREASE 7 // Good Hearing increases the range at which one hears yelling by this number of tiles.
+#define BOOMING_VOICE_DISTANCE_INCREASE 7 // Booming Voice increases the range at which others hear one's yelling by this number of tiles.
+#define HAULER_STRENGTH_MOD 4 // Hauler increases one's strength for the purposes of carrying things by this amount.
 
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
@@ -181,7 +182,7 @@
 #define TRAIT_LARGE_MAW "Large Maw" // Eat food items in one bite
 #define TRAIT_GOOD_HEARING "Good Hearing"
 #define TRAIT_BOOMING_VOICE "Booming Voice"
-
+#define TRAIT_HAULER "Hauler"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -317,6 +318,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODBITE = span_info("My sharp teeth and strong jaws mean my bites are especially dangerous."),
 	TRAIT_NOMADIC = span_info("I find it easy to sleep outside, beneath the stars."),
 	TRAIT_LARGE_MAW = span_info("I can take larger bites than those of most other races."),
+	TRAIT_GOOD_HEARING = span_info("My ears can pick up on even distant sounds."),
+	TRAIT_BOOMING_VOICE = span_info("I can project my voice much farther than most races, when I yell!"),
+	TRAIT_HAULER = span_info("My race is naturally muscular, making it easy to carry heavy objects."),
 ))
 
 // trait accessor defines
