@@ -184,6 +184,7 @@
 #define TRAIT_BOOMING_VOICE "Booming Voice" // Can be heard from further away when yelling
 #define TRAIT_HAULER "Hauler" // Strength counts as higher for carrying weapons and mobs
 #define TRAIT_NOCTURNAL "Nocturnal" // Get tired during day, extra inspiration for sleeping during day
+#define TRAIT_FALL_RESISTANT "Fall Resistant" // Treat fall damage as if falling one z-level less
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -322,7 +323,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOOD_HEARING = span_info("My ears can pick up on even distant sounds."),
 	TRAIT_BOOMING_VOICE = span_info("I can project my voice much farther than most races, when I yell!"),
 	TRAIT_HAULER = span_info("My race is naturally muscular, making it easy to carry heavy objects."),
-	TRAIT_NOCTURNAL = span_info("I find myself tired during the day, rather than the night.")
+	TRAIT_NOCTURNAL = span_info("I find myself tired during the day, rather than the night."),
+	TRAIT_FALL_RESISTANT = span_info("I always land on my feet!"),
 ))
 
 // trait accessor defines
