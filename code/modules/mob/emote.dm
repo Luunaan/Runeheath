@@ -37,50 +37,6 @@
 		next_emote = world.time + mute_time
 
 /atom/movable/proc/send_speech_emote(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language = null, message_mode, original_message)
-	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
 	for(var/_AM in get_hearers_in_view(range, source))
 		var/atom/movable/AM = _AM
-		AM.Hear(rendered, src, message_language, message, , spans, message_mode)
-//	if(intentional)
-//		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
-/*
-/datum/emote/flip
-	key = "flip"
-	key_third_person = "flips"
-	restraint_check = TRUE
-	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
-	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
-
-/datum/emote/living/carbon/human/flip/can_run_emote(mob/user, status_check = TRUE , intentional)
-	return FALSE
-
-/datum/emote/flip/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(.)
-		user.SpinAnimation(7,1)
-
-/datum/emote/spin
-	key = "spin"
-	key_third_person = "spins"
-	restraint_check = TRUE
-	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
-	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
-
-/datum/emote/living/carbon/human/spin/can_run_emote(mob/user, status_check = TRUE , intentional)
-	return FALSE
-
-
-/datum/emote/spin/run_emote(mob/user, params ,  type_override, intentional)
-	. = ..()
-	if(.)
-		user.spin(20, 1)
-
-		if(iscyborg(user) && user.has_buckled_mobs())
-			var/mob/living/silicon/robot/R = user
-			var/datum/component/riding/riding_datum = R.GetComponent(/datum/component/riding)
-			if(riding_datum)
-				for(var/mob/M in R.buckled_mobs)
-					riding_datum.force_dismount(M)
-			else
-				R.unbuckle_all_mobs()
-*/
+		AM.Hear(src, message_language, message, , spans, message_mode)

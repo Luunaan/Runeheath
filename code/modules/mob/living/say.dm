@@ -277,12 +277,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	log_seen(src, null, listening, original_message, SEEN_LOG_SAY)
 
 	var/eavesdropping
-	var/eavesrendered
 	if(eavesdrop_range)
 		eavesdropping = stars(message)
-		eavesrendered = compose_message(src, message_language, eavesdropping, , spans, message_mode)
 
-	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
 	var/list/understanders = list() //those who aren't understanders will be shown an emote instead
 
 	for(var/_AM in listening)
@@ -302,11 +299,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
 		if(eavesdrop_range && get_dist(source, AM) > message_range+keenears && !(the_dead[AM]))
-			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
+			AM.Hear(src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else if(highlighted_message)
-			AM.Hear(rendered, src, message_language, highlighted_message, , spans, message_mode, original_message)
+			AM.Hear(src, message_language, highlighted_message, , spans, message_mode, original_message)
 		else
-			AM.Hear(rendered, src, message_language, message, , spans, message_mode, original_message)
+			AM.Hear(src, message_language, message, , spans, message_mode, original_message)
 		
 		
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_LIVING_SAY_SPECIAL, src, message)
@@ -344,7 +341,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return FALSE
 	return TRUE
 
-/mob/living/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
+/mob/living/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode, original_message)
 	. = ..()
 	if(!client)
 		return
@@ -362,7 +359,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(can_see_runechat(speaker) && can_hear())
 		create_chat_message(speaker, message_language, raw_message, spans, message_mode)
 	// Recompose message for AI hrefs, language incomprehension.
-	message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mode)
+	var/message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mode)
 	show_message(message, MSG_AUDIBLE, deaf_message, deaf_type)
 	return message
 
@@ -428,12 +425,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	log_seen(src, null, listening, original_message, SEEN_LOG_SAY)
 
 	var/eavesdropping
-	var/eavesrendered
 	if(eavesdrop_range)
 		eavesdropping = stars(message)
-		eavesrendered = compose_message(src, message_language, eavesdropping, , spans, message_mode)
 
-	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
 		var/turf/listener_turf = get_turf(AM)
@@ -480,11 +474,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
 		if(eavesdrop_range && get_dist(source, AM) > message_range+keenears && !(the_dead[AM]))
-			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
+			AM.Hear(src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else if(highlighted_message)
-			AM.Hear(rendered, src, message_language, highlighted_message, , spans, message_mode, original_message)
+			AM.Hear(src, message_language, highlighted_message, , spans, message_mode, original_message)
 		else
-			AM.Hear(rendered, src, message_language, message, , spans, message_mode, original_message)
+			AM.Hear(src, message_language, message, , spans, message_mode, original_message)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_LIVING_SAY_SPECIAL, src, message)
 
 	//speech bubble

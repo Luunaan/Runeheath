@@ -192,36 +192,20 @@
 	//if we're not more injured than before, return without gambling for a trauma
 	if(damage <= prev_damage)
 		return
-	damage_delta = damage - prev_damage
-	if(damage > BRAIN_DAMAGE_MILD)
-		if(prob(damage_delta * (1 + max(0, (damage - BRAIN_DAMAGE_MILD)/100)))) //Base chance is the hit damage; for every point of damage past the threshold the chance is increased by 1% //learn how to do your bloody math properly goddamnit
-			gain_trauma_type(BRAIN_TRAUMA_MILD)
-	if(damage > BRAIN_DAMAGE_SEVERE)
-		if(prob(damage_delta * (1 + max(0, (damage - BRAIN_DAMAGE_SEVERE)/100)))) //Base chance is the hit damage; for every point of damage past the threshold the chance is increased by 1%
-			if(prob(20))
-				gain_trauma_type(BRAIN_TRAUMA_SPECIAL)
-			else
-				gain_trauma_type(BRAIN_TRAUMA_SEVERE)
-
 	if (owner)
 		if(owner.stat < UNCONSCIOUS) //conscious or soft-crit
 			var/brain_message
 			if(prev_damage < BRAIN_DAMAGE_MILD && damage >= BRAIN_DAMAGE_MILD)
 				brain_message = span_warning("I feel lightheaded.")
 			else if(prev_damage < BRAIN_DAMAGE_SEVERE && damage >= BRAIN_DAMAGE_SEVERE)
-				brain_message = span_warning("I feel less in control of your thoughts.")
+				brain_message = span_warning("I feel less in control of my thoughts.")
 			else if(prev_damage < (BRAIN_DAMAGE_DEATH - 20) && damage >= (BRAIN_DAMAGE_DEATH - 20))
-				brain_message = span_warning("I can feel your mind flickering on and off...")
+				brain_message = span_warning("I can feel my mind flickering on and off...")
 
 			if(.)
 				. += "\n[brain_message]"
 			else
 				return brain_message
-
-/obj/item/organ/brain/alien
-	name = "alien brain"
-	desc = ""
-	icon_state = "brain-x"
 
 /obj/item/organ/brain/construct
 	name = "construct brain"
