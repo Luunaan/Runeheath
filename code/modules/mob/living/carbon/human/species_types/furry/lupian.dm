@@ -24,7 +24,7 @@
 		TRAIT_FERTILE,
 		TRAIT_GOODBITE,
 		TRAIT_LARGE_MAW,
-		TRAIT_NOCTURNAL,
+		TRAIT_GOOD_NOSE,
 		)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	use_skintones = 1

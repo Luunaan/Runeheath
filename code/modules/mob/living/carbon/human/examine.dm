@@ -25,10 +25,15 @@
 //	var/t_him = p_them()
 	var/t_has = p_have()
 	var/t_is = p_are()
+	var/t_s = p_s()
 	var/obscure_name = FALSE
 	var/race_name = dna.species.name
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	var/datum/antagonist/skeleton/skeleton = user.mind?.has_antag_datum(/datum/antagonist/skeleton)
+
+	var/keen_nose = HAS_TRAIT(user, TRAIT_GOOD_NOSE)
+	var/deceiving_meekness = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)
+
 	if(maniac && (user != src))
 		race_name = "disgusting pig"
 	if(skeleton && (user != src))
@@ -38,6 +43,11 @@
 	var/m2 = "[t_his]"
 	var/m3 = "[t_He] [t_has]"
 	if(user == src)
+		t_He = "I"
+		t_is = "am"
+		t_his = "my"
+		t_has = "have"
+		t_s = ""
 		m1 = "I am"
 		m2 = "my"
 		m3 = "I have"
@@ -59,7 +69,21 @@
 		obscure_name = FALSE
 
 	if(obscure_name)
-		. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>."))
+		if (keen_nose)
+			if (user.mind)
+				if (src in user.mind.known_people)
+					. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>. [t_He] <EM>[t_has]</EM> [name]'s scent."))
+				else
+					if (src.pronouns == HE_HIM || src.pronouns == HE_HIM_F)
+						. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>. [t_He] [t_has] the scent of a male [race_name]."))
+					else if (src.pronouns == SHE_HER || src.pronouns == SHE_HER_M)
+						. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>. [t_He] [t_has] the scent of a female [race_name]."))
+					else
+						. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>. [t_He] [t_has] the scent of [dna.species.a_an()] [race_name]."))
+			else
+				. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>."))
+		else
+			. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>."))
 	else
 		on_examine_face(user)
 		var/used_name = name
@@ -139,33 +163,41 @@
 			var/datum/job/J = SSjob.GetJob(user.mind?.assigned_role)
 			if(J?.department_flag & GARRISON || J?.department_flag & NOBLEMEN)
 				. += span_greentext("<b>[m1] an agent of the court!</b>")
-		
-		if(user != src && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
-			if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
-				. += span_aiprivradio("[m1] as lovesick as I.")
-			
-			if(has_flaw(/datum/charflaw/addiction/junkie) && user.has_flaw(/datum/charflaw/addiction/junkie))
-				. += span_deadsay("[m1] carrying the same dust marks on their nose as I.")
 
-			if(has_flaw(/datum/charflaw/addiction/smoker) && user.has_flaw(/datum/charflaw/addiction/smoker))
-				. += span_suppradio("[m1] enveloped by the familiar, faint stench of smoke. I know it well.")
+		if(user != src)
+			if (keen_nose || !deceiving_meekness)
+				if(has_flaw(/datum/charflaw/addiction/smoker))
+					if (user.has_flaw(/datum/charflaw/addiction/smoker))
+						. += span_suppradio("[m1] enveloped by the familiar, faint stench of smoke. I know it well.")
+					else if (keen_nose)
+						. += span_suppradio("[t_He] smell[t_s] strongly of westleach.")
 
-			if(has_flaw(/datum/charflaw/addiction/alcoholic) && user.has_flaw(/datum/charflaw/addiction/alcoholic))
-				. += span_syndradio("[m1] struggling to hide the hangover, and the stench of spirits. We're alike.")
+				if(has_flaw(/datum/charflaw/addiction/alcoholic))
+					if (user.has_flaw(/datum/charflaw/addiction/alcoholic))
+						. += span_syndradio("[m1] struggling to hide the hangover, and the stench of spirits. We're alike.")
+					else if (keen_nose)
+						. += span_syndradio("[t_He] stink[t_s] of alcohol.")
 
-			if(has_flaw(/datum/charflaw/paranoid) && user.has_flaw(/datum/charflaw/paranoid))
-				if(ishuman(user))
-					var/mob/living/carbon/human/H = user
-					if(dna.species.name == H.dna.species.name)
-						. += span_nicegreen("[m1] privy to the dangers of all these strangers around us. [m1] just as afraid as I am.")
-					else
-						. += span_nicegreen("[m1] one of the good ones. [m1] just as afraid as I am.")
-			if(has_flaw(/datum/charflaw/masochist) && user.has_flaw(/datum/charflaw/addiction/sadist))
-				. += span_secradio("[m1] marked by scars inflicted for pleasure. A delectable target for my urges.")
-			if(has_flaw(/datum/charflaw/addiction/sadist) && user.has_flaw(/datum/charflaw/masochist))
-				. += span_secradio("[m1] looking with eyes filled with a desire to inflict pain. So exciting.")
-			if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_PERMAMUTE))
-				. += span_notice("[m1] lacks a voice. [m1] is a mute!")
+			if (!deceiving_meekness)
+				if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
+					. += span_aiprivradio("[m1] as lovesick as I.")
+				
+				if(has_flaw(/datum/charflaw/addiction/junkie) && user.has_flaw(/datum/charflaw/addiction/junkie))
+					. += span_deadsay("[m1] carrying the same dust marks on their nose as I.")
+
+				if(has_flaw(/datum/charflaw/paranoid) && user.has_flaw(/datum/charflaw/paranoid))
+					if(ishuman(user))
+						var/mob/living/carbon/human/H = user
+						if(dna.species.name == H.dna.species.name)
+							. += span_nicegreen("[m1] privy to the dangers of all these strangers around us. [m1] just as afraid as I am.")
+						else
+							. += span_nicegreen("[m1] one of the good ones. [m1] just as afraid as I am.")
+				if(has_flaw(/datum/charflaw/masochist) && user.has_flaw(/datum/charflaw/addiction/sadist))
+					. += span_secradio("[m1] marked by scars inflicted for pleasure. A delectable target for my urges.")
+				if(has_flaw(/datum/charflaw/addiction/sadist) && user.has_flaw(/datum/charflaw/masochist))
+					. += span_secradio("[m1] looking with eyes filled with a desire to inflict pain. So exciting.")
+				if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_PERMAMUTE))
+					. += span_notice("[m1] lacks a voice. [m1] is a mute!")
 
 		var/villain_text = get_villain_text(user)
 		if(villain_text)
@@ -708,7 +740,7 @@
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
 		var/final_str = STASTR
-		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+		if(deceiving_meekness)
 			final_str = L.STASTR - rand(1,2)
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
@@ -726,7 +758,7 @@
 	if((HAS_TRAIT(user,TRAIT_INTELLECTUAL)))
 		var/mob/living/L = user
 		var/final_int = STAINT
-		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+		if(deceiving_meekness)
 			final_int = L.STAINT
 		var/int_diff = final_int - L.STAINT
 		switch(int_diff)
@@ -740,6 +772,15 @@
 				. += span_revennotice("[t_He] look[p_s()] dumber than I.")
 			if(-INFINITY to -5)
 				. += span_revennotice("[t_He] look[p_s()] as blunt-minded as a rock.")
+
+	// This includes people who have the infection but haven't turned yet. This is deliberate!
+	if (mind.has_antag_datum(/datum/antagonist/zombie))
+		. += span_warning("[t_He] reek[t_s] of death.")
+	
+	// In the case of a werewolf, we can detect the infection, but not once it's run its course.
+	var/datum/antagonist/werewolf/ww = mind.has_antag_datum(/datum/antagonist/werewolf)
+	if (ww && !ww.infection_complete())
+		. += span_warning("[t_He] smell[t_s] of volf saliva.")
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)

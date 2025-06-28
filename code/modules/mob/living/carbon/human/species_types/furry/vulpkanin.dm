@@ -16,6 +16,7 @@
 	inherent_traits = list(
 		TRAIT_GOOD_HEARING,
 		TRAIT_NOCTURNAL,
+		TRAIT_GOOD_NOSE,
 		)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"

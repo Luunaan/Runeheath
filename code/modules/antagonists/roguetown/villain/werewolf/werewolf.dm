@@ -15,6 +15,7 @@
 	var/transforming
 	var/untransforming
 	var/wolfname = "Verewolf"
+	var/infection_complete = FALSE
 
 /datum/antagonist/werewolf/lesser
 	name = "Lesser Verewolf"
@@ -62,6 +63,9 @@
 		escape_objective.owner = owner
 		add_objective(escape_objective)
 		return
+
+/datum/antagonist/werewolf/proc/infection_complete()
+	return infection_complete
 
 /datum/antagonist/werewolf/greet()
 	to_chat(owner.current, span_userdanger("Ever since that bite, I have been a [name]."))

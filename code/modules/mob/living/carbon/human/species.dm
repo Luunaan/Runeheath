@@ -2189,3 +2189,22 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/modifier = -distance
 	if(!prob(STASPD+skill_modifier+modifier))
 		Paralyze(15)
+
+/////////////
+// ARTICLE //
+/////////////
+/datum/species/proc/a_an(capitalize = FALSE)
+	if (name_begins_with_vowel())
+		if (capitalize)
+			return "An"
+		else
+			return "an"
+	else
+		if (capitalize)
+			return "A"
+		else
+			return "a"
+
+/datum/species/proc/name_begins_with_vowel()
+	var/static/list/vowels = list("A, E, I, O, U")
+	return (copytext(name, 1, 2) in vowels)
