@@ -91,10 +91,10 @@
 		if(ishuman(target)) //BLEED AND PAIN
 			var/mob/living/carbon/human/human_target = target
 			var/datum/physiology/phy = human_target.physiology
-			phy.bleed_mod *= 1.5
-			phy.pain_mod *= 1.5
-			addtimer(VARSET_CALLBACK(phy, bleed_mod, phy.bleed_mod /= 1.5), 25 SECONDS)
-			addtimer(VARSET_CALLBACK(phy, pain_mod, phy.pain_mod /= 1.5), 15 SECONDS)
+			phy.bleed_mult *= 1.5
+			phy.pain_mult *= 1.5
+			addtimer(VARSET_CALLBACK(phy, bleed_mult, phy.bleed_mult /= 1.5), 25 SECONDS)
+			addtimer(VARSET_CALLBACK(phy, pain_mult, phy.pain_mult /= 1.5), 15 SECONDS)
 			human_target.visible_message(span_danger("[target]'s wounds become inflammed as their vitality is sapped away!"))
 			to_chat(target, span_warning("My skins feels like pins and needles, as if something were ripping and tearing at me!"))
 			return ..()

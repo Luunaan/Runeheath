@@ -189,7 +189,7 @@
 	return TRUE
 
 /mob/living/carbon/human/bleed(amt)
-	amt *= physiology.bleed_mod
+	amt *= physiology.bleed_mult
 	if(!(NOBLOOD in dna.species.species_traits))
 		return ..()
 	return FALSE

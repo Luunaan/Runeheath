@@ -59,11 +59,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/mutant_bodyparts = list() 	// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by handle_mutant_bodyparts() below.
 	var/speedmod = 0	// this affects the race's speed. positive numbers make it move slower, negative numbers make it move faster
 	var/armor = 0		// overall defense for the race... or less defense, if it's negative.
-	var/brutemod = 1	// multiplier for brute damage
-	var/burnmod = 1		// multiplier for burn damage
-	var/coldmod = 1		// multiplier for cold damage
-	var/heatmod = 1		// multiplier for heat damage
-	var/stunmod = 1		// multiplier for stun duration
+	var/brutemult = 1	// multiplier for brute damage
+	var/burnmult = 1		// multiplier for burn damage
+	var/coldmult = 1		// multiplier for cold damage
+	var/heatmult = 1		// multiplier for heat damage
+	var/stunmult = 1		// multiplier for stun duration
 	var/attack_type = BRUTE //Type of damage attack does
 	var/punchdamagelow = 10      //lowest possible punch damage. if this is set to 0, punches will always miss
 	var/punchdamagehigh = 10      //highest possible punch damage
@@ -1719,11 +1719,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE)
 	SEND_SIGNAL(H, COMSIG_MOB_APPLY_DAMGE, damage, damagetype, def_zone)
-	var/hit_percent = 1
+	var/damage_mult = H.physiology.global_damage_mult
 	damage = max(damage-blocked+armor,0)
 //	var/hit_percent =  (100-(blocked+armor))/100
-	hit_percent = (hit_percent * (100-H.physiology.damage_resistance))/100
-	if(!damage || (!forced && hit_percent <= 0))
+	if(!damage || (!forced && damage_mult <= 0))
 		return 0
 
 	var/obj/item/bodypart/BP = null
@@ -1740,7 +1739,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	switch(damagetype)
 		if(BRUTE)
 			H.damageoverlaytemp = 20
-			var/damage_amount = forced ? damage : damage * hit_percent * brutemod * H.physiology.brute_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * brutemult * H.physiology.brute_mult
 			if(!HAS_TRAIT(H, TRAIT_NOPAIN))
 				if(damage_amount > 5)
 					H.AdjustSleeping(-50)
@@ -1769,7 +1768,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				H.adjustBruteLoss(damage_amount)
 		if(BURN)
 			H.damageoverlaytemp = 20
-			var/damage_amount = forced ? damage : damage * hit_percent * burnmod * H.physiology.burn_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * burnmult * H.physiology.burn_mult
 			if(damage_amount > 10 && prob(damage_amount))
 				H.emote("pain")
 			if(damage_amount < 10)
@@ -1784,23 +1783,23 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			else
 				H.adjustFireLoss(damage_amount)
 		if(TOX)
-			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.tox_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.tox_mult
 			H.adjustToxLoss(damage_amount)
 		if(OXY)
-			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.oxy_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.oxy_mult
 			H.adjustOxyLoss(damage_amount)
 		if(CLONE)
-			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.clone_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.clone_mult
 			H.adjustCloneLoss(damage_amount)
 		if(STAMINA)
-			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.stamina_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.stamina_mult
 			if(BP)
 				if(BP.receive_damage(0, 0, damage_amount))
 					H.update_stamina()
 			else
 				H.adjustStaminaLoss(damage_amount)
 		if(BRAIN)
-			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.brain_mod
+			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.brain_mult
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
 	return 1
 
@@ -1881,7 +1880,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					H.throw_alert("temp", /atom/movable/screen/alert/hot, 2)
 				else
 					H.throw_alert("temp", /atom/movable/screen/alert/hot, 3)
-		burn_damage = burn_damage * heatmod * H.physiology.heat_mod
+		burn_damage = burn_damage * heatmult * H.physiology.heat_mult
 		if (H.stat < UNCONSCIOUS && (prob(burn_damage) * 10) / 4) //40% for level 3 damage on humans
 			H.emote("pain")
 		H.apply_damage(burn_damage, BURN, spread_damage = TRUE)
@@ -1894,13 +1893,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		switch(H.bodytemperature)
 			if(200 to BODYTEMP_COLD_DAMAGE_LIMIT)
 				H.throw_alert("temp", /atom/movable/screen/alert/cold, 1)
-				H.apply_damage(COLD_DAMAGE_LEVEL_1*coldmod*H.physiology.cold_mod, BURN)
+				H.apply_damage(COLD_DAMAGE_LEVEL_1*coldmult*H.physiology.cold_mult, BURN)
 			if(120 to 200)
 				H.throw_alert("temp", /atom/movable/screen/alert/cold, 2)
-				H.apply_damage(COLD_DAMAGE_LEVEL_2*coldmod*H.physiology.cold_mod, BURN)
+				H.apply_damage(COLD_DAMAGE_LEVEL_2*coldmult*H.physiology.cold_mult, BURN)
 			else
 				H.throw_alert("temp", /atom/movable/screen/alert/cold, 3)
-				H.apply_damage(COLD_DAMAGE_LEVEL_3*coldmod*H.physiology.cold_mod, BURN)
+				H.apply_damage(COLD_DAMAGE_LEVEL_3*coldmult*H.physiology.cold_mult, BURN)
 
 	else
 		H.clear_alert("temp")
@@ -2000,9 +1999,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ToggleFlight(H)
 		flyslip(H)
 
-	. = stunmod * amount
+	. = stunmult * amount
 	if (H.physiology)
-		. *= H.physiology.stun_mod
+		. *= H.physiology.stun_mult
 		
 
 //////////////
@@ -2117,7 +2116,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly
 /datum/species/proc/ToggleFlight(mob/living/carbon/human/H)
 	if(!(H.movement_type & FLYING))
-		stunmod *= 2
+		stunmult *= 2
 		speedmod -= 0.35
 		H.setMovetype(H.movement_type | FLYING)
 		override_float = TRUE
@@ -2125,7 +2124,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		H.OpenWings()
 		H.update_mobility()
 	else
-		stunmod *= 0.5
+		stunmult *= 0.5
 		speedmod += 0.35
 		H.setMovetype(H.movement_type & ~FLYING)
 		override_float = FALSE

@@ -22,7 +22,7 @@
 			span_danger("My belongings fall away as everything grows bigger!"))
 			if(ishuman(C))
 				var/mob/living/carbon/human/H = C
-				H.physiology.damage_resistance -= 100//carbons take double damage while shrunk
+				H.physiology.global_damage_mult += 1//carbons take double damage while shrunk
 	parent_atom.visible_message(span_warning("[parent_atom] shrinks down to a tiny size!"),
 	span_danger("Everything grows bigger!"))
 	QDEL_IN(src, shrink_time)
@@ -38,5 +38,5 @@
 		L.remove_movespeed_modifier(MOVESPEED_ID_SHRINK_RAY)
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
-			H.physiology.damage_resistance += 100
+			H.physiology.global_damage_mult -= 1
 	..()

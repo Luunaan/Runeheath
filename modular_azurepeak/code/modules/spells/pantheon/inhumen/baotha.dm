@@ -93,8 +93,8 @@
 		if(target.mob_biotypes & MOB_UNDEAD)
 			return FALSE	//No, you don't get to feel good. You're a undead mob. Feel bad.
 		target.visible_message(span_info("[target] begins to twitch as warmth radiates from them!"), span_notice("The pain from my wounds fade, every new one being a mere, pleasent warmth!"))
-		phy.pain_mod *= 0.5	//Literally halves your pain modifier.
-		addtimer(VARSET_CALLBACK(phy, pain_mod, phy.pain_mod /= 0.5), 1 MINUTES)	//Adds back the 0.5 of pain, basically setting it back to 1.
+		phy.pain_mult *= 0.5	//Literally halves your pain modifier.
+		addtimer(VARSET_CALLBACK(phy, pain_mult, phy.pain_mult /= 0.5), 1 MINUTES)	//Adds back the 0.5 of pain, basically setting it back to 1.
 		target.apply_status_effect(/datum/status_effect/buff/vitae)					//Basically lowers fortune by 2 but +3 speed, it's powerful. Drugs cus Baotha.
 		return TRUE
 
