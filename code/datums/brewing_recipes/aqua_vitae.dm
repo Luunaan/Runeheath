@@ -5,7 +5,7 @@
 	brew_time = 4 MINUTES
 	sell_value = 120
 	reagent_to_brew = /datum/reagent/consumable/ethanol/aqua_vitae
-	pre_reqs = /datum/reagent/consumable/ethanol/cider
+	pre_reqs = /datum/reagent/consumable/ethanol/brandy
 
 /datum/brewing_recipe/aqua_vitae/pear
 	name = "Aqua Vitae - Plum"

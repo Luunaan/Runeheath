@@ -128,7 +128,7 @@
 	icon_state = "necraflail"
 
 /obj/item/rogueweapon/flail/sflail/psyflail
-	name = "psydon's flail"
+	name = "psydonian flail"
 	desc = "An ornate flail, plated in a ceremonial veneer of silver. Its flanged head can crumple even the toughest of darksteel-maille."
 	icon_state = "psyflail"
 

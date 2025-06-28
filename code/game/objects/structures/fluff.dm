@@ -1009,6 +1009,7 @@
 	buckle_requires_restraints = 1
 	buckle_prevents_pull = 1
 	var/divine = TRUE
+	obj_flags = UNIQUE_RENAME
 
 /obj/structure/fluff/psycross/post_buckle_mob(mob/living/M)
 	..()
@@ -1045,6 +1046,28 @@
 	name = "wooden pantheon cross"
 	icon_state = "psycrosscrafted"
 	max_integrity = 80
+	chance2hear = 10
+
+/obj/structure/fluff/psycross/psycrucifix
+	name = "wooden psydonic crucifix"
+	desc = "A rarely seen symbol of absolute and devoted certainty, more common in Otava: HE yet lyves. HE yet breathes."
+	icon_state = "psycruci"
+	max_integrity = 80
+	chance2hear = 10
+
+/obj/structure/fluff/psycross/psycrucifix/stone
+	name = "stone psydonic crucifix"
+	desc = "Formed of stone, this great Psycross symbolises that HE is forever ENDURING. Considered a rare sight upon the Peaks."
+	icon_state = "psycruci_r"
+	max_integrity = 120
+	chance2hear = 10
+
+/obj/structure/fluff/psycross/psycrucifix/silver
+	name = "silver psydonic crucifix"
+	icon_state = "psycruci_s"
+	desc = "Constructed of Blessed Silver, this crucifix symbolises absolute faith in the ONE - For PSYDON WEEPS, for all mortal ilk. PSYDON WEEPS, for all who walk upon the soil. PSYDON WEEPS..."
+	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+	max_integrity = 450
 	chance2hear = 10
 
 /obj/structure/fluff/psycross/zizocross

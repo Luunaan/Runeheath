@@ -236,3 +236,13 @@
 	timer = 10 MINUTES
 	stressadd = -2
 	desc = span_green("Since my magical accident, everything just seems so funny!")
+
+/datum/stressevent/eoran_blessing
+	stressadd = -1
+	desc = span_info("An Eoran shone their brightness upon me.")
+	timer = 5 MINUTES
+
+/datum/stressevent/eoran_blessing_greater
+	stressadd = -2
+	desc = span_info("A Devout Eoran shone their brightness upon me.")
+	timer = 10 MINUTES

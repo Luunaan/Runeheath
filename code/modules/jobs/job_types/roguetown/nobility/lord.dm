@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", 3)
-	H.change_stat("endurance", 3)
+	H.change_stat("constitution", 2)
 	H.change_stat("speed", 1)
 	H.change_stat("perception", 2)
 	H.change_stat("fortune", 5)
@@ -217,7 +217,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	H.change_stat("perception", -2)
 	H.change_stat("intelligence", -2)
 	H.change_stat("constitution", -2)
-	H.change_stat("endurance", -2)
 	H.change_stat("fortune", 10) // You made it. Xylix smiles upon you!
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) // It's like valiant warrior, but you can't fight.
 

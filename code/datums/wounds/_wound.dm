@@ -72,7 +72,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/passive_healing = 0
 	/// Embed chance if this wound allows embedding
 	var/embed_chance = 0
-
+	/// Bypass bloody wound checks, used for fractures so they apply to skeleton-mobs.
+	var/bypass_bloody_wound_check = FALSE
 	/// Some wounds make no sense on a dismembered limb and need to go
 	var/qdel_on_droplimb = FALSE
 	/// If TRUE, the bleeding on this wound can be reduced to 0 on a target immune to bleeding, while still being applied

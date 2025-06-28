@@ -165,8 +165,11 @@
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if("Longsword")
+					if(HAS_TRAIT(H, TRAIT_PSYDONITE))
+						beltr = /obj/item/rogueweapon/sword/long/oldpsysword
+					else
+						beltr = /obj/item/rogueweapon/sword/long
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-					beltr = /obj/item/rogueweapon/sword/long
 				if("Mace")
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 					beltr = /obj/item/rogueweapon/mace
@@ -314,7 +317,7 @@
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic robes
 					head = /obj/item/clothing/head/roguetown/roguehood
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_MINOR)	//Minor regen, can level up to T4.
+			C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_3)	//Minor regen, capped to T3.
 	switch(H.patron?.type)
 		if(/datum/patron/old_god)
 			neck = /obj/item/clothing/neck/roguetown/psicross

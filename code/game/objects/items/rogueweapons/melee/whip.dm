@@ -109,7 +109,7 @@
 	is_silver = TRUE
 
 /obj/item/rogueweapon/whip/psywhip_lesser
-	name = "psydonite whip"
+	name = "psydonian whip"
 	desc = "An ornate whip, plated in a ceremonial veneer of silver. Crack the leather and watch as the apostates clammer aside."
 	icon_state = "psywhip_lesser"
 

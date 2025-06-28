@@ -23,7 +23,7 @@
 	var/inquisitor = FALSE
 	if(!user.mind)
 		return
-	if(user.mind.assigned_role == "Inquisitor")
+	if(HAS_TRAIT(user, TRAIT_PURITAN))
 		inquisitor = TRUE
 
 	if(!M.mind) //Stopping null lookup runtimes
@@ -87,7 +87,9 @@
 		new /obj/item/natural/cloth(user.loc)
 		qdel(src)
 	else
-		to_chat(user, span_notice("My inquisitorial training allows just enough of the poultice left for one more anointment."))
+		icon_state = "[initial(icon_state)]_half"
+		to_chat(user, span_notice("My inquisitorial training leaves just enough of the poultice left for one more anointment."))
+		
 
 	//Werewolf deconversion
 	if(Were && !Wereless) //The roundstart elder/alpha werewolf, it cannot be saved

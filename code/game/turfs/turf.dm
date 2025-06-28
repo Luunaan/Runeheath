@@ -399,6 +399,9 @@
 
 /turf/Entered(atom/movable/AM)
 	..()
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, AM)
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_TURF_ENTERED, src)
+
 	if(explosion_level && AM.ex_check(explosion_id))
 		AM.ex_act(explosion_level)
 
@@ -535,6 +538,11 @@
 	var/obj/structure/mineral_door/door = locate() in src
 	if(door && door.density && !door.locked && door.anchored) // door will have to be opened
 		. += 2 // try to avoid closed doors where possible
+
+	for(var/obj/structure/O in contents)
+		if(O.obj_flags & BLOCK_Z_OUT_DOWN)
+			return
+	. += path_weight
 
 // Like Distance_cardinal, but includes additional weighting to make A* prefer turfs that are easier to pass through.
 /turf/proc/Heuristic_cardinal(turf/T, mob/traverser)

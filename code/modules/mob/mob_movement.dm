@@ -645,7 +645,7 @@
 	if(mind)
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
 
-	if(rogue_sneaking) //If sneaking, check if they should be revealed
+	if(rogue_sneaking || reset) //If sneaking, check if they should be revealed
 		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold + (mind?.get_skill_level(/datum/skill/misc/sneaking)/200) )
 			used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
 			animate(src, alpha = initial(alpha), time =	used_time) //sneak skill makes you reveal slower but not as drastic as disappearing speed
@@ -832,6 +832,20 @@
 		to_chat(src, span_notice("I will hear all now."))
 	else
 		to_chat(src, span_info("I will hear like a mortal."))
+
+/client/proc/hearglobalLOOC()
+	set category = "Prefs - Admin"
+	set name = "Show/Hide Global LOOC"
+	if(!holder)
+		return
+	if(!prefs)
+		return
+	prefs.chat_toggles ^= CHAT_ADMINLOOC
+	prefs.save_preferences()
+	if(prefs.chat_toggles & CHAT_ADMINLOOC)
+		to_chat(src, span_notice("I will now hear all LOOC chatter."))
+	else
+		to_chat(src, span_info("I will now only hear LOOC chatter around me."))
 
 ///Moves a mob upwards in z level
 /mob/proc/ghost_up()

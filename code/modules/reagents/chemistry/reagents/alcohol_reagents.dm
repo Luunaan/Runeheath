@@ -13,6 +13,7 @@
 	nutriment_factor = 0
 	taste_description = "alcohol"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	hydration_factor = 10 // Moving hydration up a level
 	var/boozepwr = 25 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
 
 /*
@@ -76,7 +77,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "ale"
 	glass_name = "glass of beer"
 	glass_desc = ""
-	hydration_factor = 10
 
 /datum/reagent/consumable/ethanol/beer/cider
 	name = "Cider"

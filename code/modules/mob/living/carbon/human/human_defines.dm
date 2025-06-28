@@ -130,4 +130,5 @@
 	var/second_voice	// Virtue-specific. Can be swapped to / from and changed.
 	var/original_voice
 	var/gender_preferences = GENDER_PREF_NONE
-
+	/// Whether our FOV cone is overridden to be hidden. Simple bool.
+	var/viewcone_override

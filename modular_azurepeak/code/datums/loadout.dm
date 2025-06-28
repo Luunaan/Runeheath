@@ -149,6 +149,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Volf Mantle"
 	path = /obj/item/clothing/cloak/volfmantle
 
+/datum/loadout_item/eastcloak2
+	name = "Leather Cloak"
+	path = /obj/item/clothing/cloak/eastcloak2
+
+/datum/loadout_item/thief_cloak
+	name = "Rapscallion's Shawl"
+	path = /obj/item/clothing/cloak/thief_cloak
+
 //SHOES
 /datum/loadout_item/darkboots
 	name = "Dark Boots"
@@ -189,6 +197,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/exoticanklets
 	name = "Exotic Anklets"
 	path = /obj/item/clothing/shoes/roguetown/anklets
+
+/datum/loadout_item/rumaclanshoes
+	name = "Raised Sandals"
+	path = /obj/item/clothing/shoes/roguetown/armor/rumaclan
 
 //SHIRTS
 /datum/loadout_item/longcoat
@@ -287,6 +299,13 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Nun Habit"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/nun
 
+/datum/loadout_item/eastshirt1
+	name = "Black Foreign Shirt"
+	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
+
+/datum/loadout_item/eastshirt2
+	name = "White Foreign Shirt"
+	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt2
 //PANTS
 /datum/loadout_item/tights
 	name = "Cloth Tights"

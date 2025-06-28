@@ -531,15 +531,15 @@
 	name = "executioners sword"
 	desc = "A longsword with extra heft to its blade, reinforced."
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/rend, /datum/intent/sword/chop)
-	alt_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/bash)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/exe, /datum/intent/rend, /datum/intent/axe/chop)
 	icon_state = "exe"
 	minstr = 12
 	slot_flags = ITEM_SLOT_BACK //Too big for hip
 
 /datum/intent/sword/thrust/exe
 	swingdelay = 4	//Slight delay to stab; big and heavy.
-	penfactor = 30	//Slightly better pen than base longsword, which is 20. It's a heavy blade so.
+	penfactor = BLUNT_DEFAULT_PENFACTOR //Flat tip? I don't know, man. This intent is won't penetrate anything but it damages armor more.
+	intent_intdamage_factor = 1.3 //This is basically like getting hit by a mace.
 
 /obj/item/rogueweapon/sword/long/exe/astrata
 	name = "\"Solar Judge\""
@@ -572,6 +572,11 @@
 	user.visible_message(span_warning("[user] wipes [src] down with its cloth."),span_notice("I wipe [src] down with its cloth."))
 	return
 
+/obj/item/rogueweapon/sword/long/oldpsysword
+	name = "old psydonian longsword"
+	desc = "A finely made longsword, plated in a worn-down veneer of grubby silver. It's long seen better daes."
+	icon_state = "psysword"
+
 /obj/item/rogueweapon/sword/long/psysword
 	name = "psydonian longsword"
 	desc = "A finely made longsword, plated in a ceremonial veneer of ornate silver - made for felling men and monsters alike.\
@@ -581,6 +586,7 @@
 /obj/item/rogueweapon/sword/long/psysword/ComponentInitialize()
 	. = ..()							//+3 force, +100 blade int, +50 int, +1 def, make silver
 	AddComponent(/datum/component/psyblessed, FALSE, 3, 100, 50, 1, TRUE)
+	
 
 /obj/item/rogueweapon/sword/iron
 	name = "iron arming sword"
@@ -1289,3 +1295,26 @@
 	Its blade bears twin inscriptions on either side. One reads, \"THY KINGDOM COME\" while the obverse reads, \"THY WILL BE DONE\"."
 	icon_state = "declongsword"
 	sellprice = 140
+
+// kazengite content
+
+/obj/item/rogueweapon/sword/sabre/mulyeog
+	force = 25
+	name = "foreign straight sword"
+	desc = "A foreign sword used by cut-throats & thugs. There's a red tassel on the hilt."
+	icon_state = "eastsword1"
+	smeltresult = /obj/item/ingot/steel
+	wdefense = 3
+
+/obj/item/rogueweapon/sword/sabre/mulyeog/rumahench
+	name = "lenticular straight sword"
+	desc = "A steel sword with cloud patterns on the groove."
+	icon_state = "eastsword2"
+
+/obj/item/rogueweapon/sword/sabre/mulyeog/rumacaptain
+	force = 30
+	name = "Heiyundao"
+	desc = "A gold-stained with cloud patterns on the groove. One of a kind."
+	icon_state = "eastsword3"
+	max_integrity = 180
+	wdefense = 4
