@@ -76,7 +76,7 @@
 							water_overlay.layer = BELOW_MOB_LAYER
 							water_overlay.plane = GAME_PLANE
 			var/drained = get_stamina_drain(user, get_dir(src, newloc))
-			if(drained && !user.rogfat_add(drained))
+			if(drained && !user.stamina_add(drained))
 				user.Immobilize(30)
 				addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 1 SECONDS)
 
@@ -115,9 +115,9 @@
 	/// Mobs will heavily avoid pathing through this turf if their stamina is too low.
 	var/const/LOW_STAM_PENALTY = 7 // only go through this if we'd have to go offscreen otherwise
 	. = ..()
-	if(isliving(traverser) && !HAS_TRAIT(traverser, TRAIT_NOROGSTAM))
+	if(isliving(traverser) && !HAS_TRAIT(traverser, TRAIT_INFINITE_STAMINA))
 		var/mob/living/living_traverser = traverser
-		var/remaining_stamina = (living_traverser.maxrogfat - living_traverser.rogfat)
+		var/remaining_stamina = (living_traverser.max_stamina - living_traverser.stamina)
 		if(remaining_stamina < get_stamina_drain(living_traverser, travel_dir)) // not enough stamina reserved to cross
 			. += LOW_STAM_PENALTY // really want to avoid this unless we don't have any better options
 

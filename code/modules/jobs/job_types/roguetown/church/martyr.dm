@@ -271,7 +271,7 @@
 				current_holder.STAINT += stat_bonus_martyr
 				current_holder.STAPER += stat_bonus_martyr
 				current_holder.STALUC += stat_bonus_martyr
-				H.rogstam_add(9999)
+				H.energy_add(9999)
 			if(STATE_MARTYRULT)	//This is ONLY accessed during the last 30 seconds of the shorter variant.
 				current_holder.STASTR = 20
 				current_holder.STASPD = 20
@@ -279,13 +279,13 @@
 				current_holder.STAINT = 20
 				current_holder.STAPER = 20
 				current_holder.STALUC = 20
-				H.rogstam_add(9999)//Go get 'em, Martyrissimo, it's your last 30 seconds, it's a frag or be fragged world
+				H.energy_add(9999)//Go get 'em, Martyrissimo, it's your last 30 seconds, it's a frag or be fragged world
 				if(H.mind)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, FALSE)
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 6, FALSE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, FALSE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, FALSE)
-				ADD_TRAIT(current_holder, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+				ADD_TRAIT(current_holder, TRAIT_INFINITE_STAMINA, TRAIT_GENERIC)
 				current_holder.visible_message(span_warning("[current_holder] rises up, empowered once more!"), span_warningbig("I rise again! I can feel my god flow through me!"))
 				flash_lightning(current_holder)
 				current_holder.revive(full_heal = TRUE, admin_revive = TRUE)

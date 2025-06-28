@@ -188,7 +188,7 @@
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
 				to_chat(user, span_warning("Can't get a grip!"))
 				return FALSE
-			user.rogfat_add(rand(7,15))
+			user.stamina_add(rand(7,15))
 			if(M.grippedby(user))			//Aggro grip
 				bleed_suppressing = 0.5		//Better bleed suppression
 		if(/datum/intent/grab/choke)
@@ -197,7 +197,7 @@
 				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M) && M != user)
-					user.rogfat_add(rand(1,3))
+					user.stamina_add(rand(1,3))
 					var/mob/living/carbon/C = M
 					if(get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
 						if(prob(25))
@@ -243,7 +243,7 @@
 				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
-					user.rogfat_add(rand(3,8))
+					user.stamina_add(rand(3,8))
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
 			if(user.buckled)
@@ -251,13 +251,13 @@
 				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(ismob(M))
-					user.rogfat_add(rand(3,8))
+					user.stamina_add(rand(3,8))
 					twistitemlimb(user)
 		if(/datum/intent/grab/remove)
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
-			user.rogfat_add(rand(3,13))
+			user.stamina_add(rand(3,13))
 			if(isitem(sublimb_grabbed))
 				removeembeddeditem(user)
 			else
@@ -275,7 +275,7 @@
 					return
 				var/stun_dur = max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20)
 				var/pincount = 0
-				user.rogfat_add(rand(1,3))
+				user.stamina_add(rand(1,3))
 				while(M == grabbed && !(M.mobility_flags & MOBILITY_STAND) && (src in M.grabbedby))
 					if(M.IsStun())
 						if(!do_after(user, stun_dur + 1, needhand = 0, target = M))
@@ -288,18 +288,18 @@
 							break
 						M.Stun(stun_dur - pincount * 2)	
 						M.Immobilize(stun_dur)	//Made immobile for the whole do_after duration, though
-						user.rogfat_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
+						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
 						M.visible_message(span_danger("[user] keeps [M] pinned to the ground!"))
 						pincount += 2
 					else if(src in M.grabbedby)
 						M.Stun(stun_dur - 10)
 						M.Immobilize(stun_dur)
-						user.rogfat_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
+						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
 						pincount += 2
 						M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 							span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 			else
-				user.rogfat_add(rand(5,15))
+				user.stamina_add(rand(5,15))
 				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
 									span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
@@ -693,7 +693,7 @@
 							C.mind.add_antag_datum(new_antag)
 							sleep(10 SECONDS)
 							C.fully_heal()
-							C.rogstam = C.maxrogstam
+							C.energy = C.max_energy
 							C.update_health_hud()
 					if("No")
 						to_chat(user, span_warning("I decide [C] is unworthy."))

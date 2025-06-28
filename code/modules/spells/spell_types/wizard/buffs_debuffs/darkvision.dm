@@ -41,7 +41,7 @@
 		if(!do_after(user, 5 SECONDS, target = spelltarget))
 			return
 		spelltarget.apply_status_effect(/datum/status_effect/buff/darkvision, user.mind?.get_skill_level(associated_skill))
-		user.rogfat_add(80)
+		user.stamina_add(80)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and touches [spelltarget] with an arcyne focus.")
 		else

@@ -72,7 +72,7 @@
 		if (PRESTI_MOTE)
 			extra_fatigue = 15 // same deal here
 
-	user.rogfat_add(fatigue_used + extra_fatigue)
+	user.stamina_add(fatigue_used + extra_fatigue)
 
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	if (skill_level >= SKILL_LEVEL_EXPERT)

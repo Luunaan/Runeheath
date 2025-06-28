@@ -13,7 +13,7 @@
 	var/out_of_lives = FALSE
 
 	var/traits_lich = list(	
-		TRAIT_NOROGSTAM,
+		TRAIT_INFINITE_STAMINA,
 		TRAIT_NOHUNGER,
 		TRAIT_NOBREATH,
 		TRAIT_NOPAIN,

@@ -27,7 +27,7 @@
 			var/mob/living/carbon = target
 			if(carbon.patron?.type != /datum/patron/divine/abyssor)
 				var/fatdrain = user.mind?.get_skill_level(associated_skill) * base_fatdrain
-				carbon.rogfat_add(fatdrain)
+				carbon.stamina_add(fatdrain)
 		target.Dizzy(10)
 		target.blur_eyes(20)
 		target.emote("drown")
@@ -67,8 +67,8 @@
 		H.set_resting(FALSE, FALSE)
 		msg += span_warning("rises and ")
 	var/regen = (stamregenmod / 100) * H.mind?.get_skill_level(associated_skill)
-	H.rogfat_add(-(regen * H.maxrogfat))
-	H.rogstam_add(regen * H.maxrogstam)
+	H.stamina_add(-(regen * H.max_stamina))
+	H.energy_add(regen * H.max_energy)
 	msg += span_warning("becomes invigorated!")
 	H.visible_message(msg)
 	return TRUE

@@ -132,7 +132,7 @@
 			rmb_stam_penalty = EXTRA_STAMDRAIN_SWIFSTRONG
 	// Release drain on attacks besides unarmed attacks/grabs is 1, so it'll just be whatever the penalty is + 1.
 	// Unarmed attacks are the only ones right now that have differing releasedrain, see unarmed attacks for their calc.
-	user.rogfat_add(user.used_intent.releasedrain + rmb_stam_penalty)
+	user.stamina_add(user.used_intent.releasedrain + rmb_stam_penalty)
 	var/bad_guard = FALSE
 	//We have Guard / Clash active, and are hitting someone who doesn't. Cheesing a 'free' hit with a defensive buff is a no-no. You get punished.
 	if(user.has_status_effect(/datum/status_effect/buff/clash) && !M.has_status_effect(/datum/status_effect/buff/clash))
@@ -444,7 +444,7 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
@@ -471,7 +471,7 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))

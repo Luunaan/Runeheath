@@ -148,7 +148,7 @@
 		M.mind.special_role = null
 		M.emote("agony", forced = TRUE)
 		to_chat(M, span_userdanger("THE FOUL SILVER! IT QUICKENS MY HEART!"))
-		REMOVE_TRAIT(M, TRAIT_NOROGSTAM, "/datum/antagonist/vampirelord/lesser")
+		REMOVE_TRAIT(M, TRAIT_INFINITE_STAMINA, "/datum/antagonist/vampirelord/lesser")
 		REMOVE_TRAIT(M, TRAIT_NOSLEEP, "/datum/antagonist/vampirelord/lesser")
 		REMOVE_TRAIT(M, TRAIT_NOBREATH, "/datum/antagonist/vampirelord/lesser")
 		REMOVE_TRAIT(M, TRAIT_NOPAIN, "/datum/antagonist/vampirelord/lesser")

@@ -533,7 +533,7 @@
 /mob/proc/do_parry(obj/item/W, parrydrain as num, mob/living/user)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.rogfat_add(parrydrain))
+		if(H.stamina_add(parrydrain))
 			if(W)
 				playsound(get_turf(src), pick(W.parrysound), 100, FALSE)
 			if(src.client)
@@ -554,7 +554,7 @@
 /mob/proc/do_unarmed_parry(parrydrain as num, mob/living/user)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.rogfat_add(parrydrain))
+		if(H.stamina_add(parrydrain))
 			playsound(get_turf(src), pick(parry_sound), 100, FALSE)
 			src.visible_message(span_warning("<b>[src]</b> parries [user]!"))
 			if(src.client)
@@ -586,7 +586,7 @@
 		UH = user
 		I = UH.used_intent.masteritem
 	var/prob2defend = U.defprob
-	if(L.rogfat >= L.maxrogfat)
+	if(L.stamina >= L.max_stamina)
 		return FALSE
 	if(L)
 		if(H?.check_dodge_skill())
@@ -705,7 +705,7 @@
 			return FALSE
 		if(!UH?.mind) // For NPC, reduce the drained to 5 stamina
 			drained = drained_npc
-		if(!H.rogfat_add(drained))
+		if(!H.stamina_add(drained))
 			to_chat(src, span_warning("I'm too tired to dodge!"))
 			return FALSE
 	else //we are a non human
@@ -895,9 +895,9 @@
 		IU.take_damage(max(damage,1), BRUTE, IM.d_type)
 		visible_message(span_suicide("[src] ripostes [H] with \the [IM]!"))
 		playsound(src, 'sound/combat/clash_struck.ogg', 100)
-		var/rogfatdef = (rogfat * 100) / maxrogfat
-		var/rogfatatt = (H.rogfat * 100) / H.maxrogfat
-		if(rogfatdef > rogfatatt) 
+		var/staminadef = (stamina * 100) / max_stamina
+		var/staminaatt = (H.stamina * 100) / H.max_stamina
+		if(staminadef > staminaatt) 
 			H.apply_status_effect(/datum/status_effect/debuff/exposed, 2 SECONDS)
 			H.apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
 			H.Slowdown(3)
@@ -1019,9 +1019,9 @@
 	apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
 
 /mob/living/carbon/human/proc/bad_guard(msg, cheesy = FALSE)
-	rogfat_add(((maxrogfat * BAD_GUARD_FATIGUE_DRAIN) / 100))
+	stamina_add(((max_stamina * BAD_GUARD_FATIGUE_DRAIN) / 100))
 	if(cheesy)	//We tried to hit someone with Guard up. Unfortunately this must be super punishing to prevent cheese.
-		rogstam_add(-((maxrogstam * BAD_GUARD_FATIGUE_DRAIN) / 100))
+		energy_add(-((max_energy * BAD_GUARD_FATIGUE_DRAIN) / 100))
 		Immobilize(2 SECONDS)
 	if(msg)
 		to_chat(src, msg)

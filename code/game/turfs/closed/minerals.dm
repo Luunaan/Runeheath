@@ -77,7 +77,7 @@
 		// Makes more sense for the check since they always
 		// become an open tile afterwards
 		while(density && user.Adjacent(src))
-			if((L.rogstam > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
+			if((L.energy > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
 				..()
 				var/olddam = turf_integrity
 				if(turf_integrity && turf_integrity > 10)
@@ -98,7 +98,7 @@
 			if(!ismineralturf(src))
 				return
 			src.attackby(item, user, multiplier = 4)
-			user.rogfat_add(25)
+			user.stamina_add(25)
 	..()
 
 /turf/closed/mineral/turf_destruction(damage_flag)

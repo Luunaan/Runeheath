@@ -125,10 +125,10 @@
 	var/list/ownedSoullinks //soullinks we are the owner of
 	var/list/sharedSoullinks //soullinks we are a/the sharer of
 
-	var/maxrogstam = 1000
-	var/maxrogfat = 100
-	var/rogstam = 1000
-	var/rogfat = 0
+	var/max_energy = 1000
+	var/max_stamina = 100
+	var/energy = 1000
+	var/stamina = 0
 
 	var/last_fatigued = 0
 	var/last_ps = 0

@@ -53,7 +53,7 @@
 
 	HU.visible_message(span_danger("[HU] baits an attack from [HT]!"))
 	HU.apply_status_effect(/datum/status_effect/debuff/baitcd)
-	HU.rogfat_add(HU.maxrogfat * 0.2)
+	HU.stamina_add(HU.max_stamina * 0.2)
 
 	if((target_zone != user_zone) || ((target_zone == BODY_ZONE_CHEST) || (user_zone == BODY_ZONE_CHEST))) //Our zones match and it's not the chest//Our zones do not match, or we were targeting chest
 		to_chat(HU, span_danger("It didn't work! Their footing returned!"))
@@ -79,7 +79,7 @@
 	HT.bait_stacks++
 	if(HT.bait_stacks <= 1)
 		HT.Immobilize(0.5 SECONDS)
-		HT.rogfat_add(HT.maxrogfat / fatiguemod)
+		HT.stamina_add(HT.max_stamina / fatiguemod)
 		HT.Slowdown(3)
 		HT.emote("huh")
 		HU.purge_peel(BAIT_PEEL_REDUCTION)
@@ -178,7 +178,7 @@
 	L.apply_status_effect(/datum/status_effect/debuff/exposed, 7.5 SECONDS)
 	L.apply_status_effect(/datum/status_effect/debuff/clickcd, max(1.5 SECONDS + skill_factor, 2.5 SECONDS))
 	L.Immobilize(0.5 SECONDS)
-	L.rogfat_add(L.rogfat * 0.1)
+	L.stamina_add(L.stamina * 0.1)
 	L.Slowdown(2)
 	to_chat(user, span_notice("[L] fell for my feint attack!"))
 	to_chat(L, span_danger("I fall for [user]'s feint attack!"))

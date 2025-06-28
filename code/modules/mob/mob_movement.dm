@@ -697,7 +697,7 @@
 					var/mob/living/L = src
 
 					//If mob is trying to switch to run, fail if any of these are true
-					if (L.rogfat >= L.maxrogfat || L.rogstam <= 0 || HAS_TRAIT(L, TRAIT_NORUN))
+					if (L.stamina >= L.max_stamina || L.energy <= 0 || HAS_TRAIT(L, TRAIT_NORUN))
 						if (HAS_TRAIT(L, TRAIT_NORUN)) // If has trait blocker then inform them
 							to_chat(L, span_warning("My joints have decayed too much for running!"))
 						return

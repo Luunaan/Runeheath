@@ -264,7 +264,7 @@
 		to_chat(src, span_warning("Already active."))
 		return
 	VD.handle_vitae(-100)
-	rogstam_add(2000)
+	energy_add(2000)
 	apply_status_effect(/datum/status_effect/buff/celerity)
 	to_chat(src, span_greentext("! QUICKENING !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -300,7 +300,7 @@
 		to_chat(src, span_warning("Already active."))
 		return
 	VD.vitae -= 100
-	rogstam_add(2000)
+	energy_add(2000)
 	apply_status_effect(/datum/status_effect/buff/blood_fortitude)
 	to_chat(src, span_greentext("! ARMOR OF DARKNESS !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)

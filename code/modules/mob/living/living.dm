@@ -1115,7 +1115,7 @@
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
-	rogfat_add(rand(5,15))
+	stamina_add(rand(5,15))
 
 	if(!prob(resist_chance))
 		var/rchance = ""
@@ -1371,9 +1371,6 @@
 		to_chat(src, span_warning("I try to fire [G], but can't use the trigger!"))
 		return FALSE
 	return TRUE
-
-/mob/living/proc/update_stamina()
-	return
 
 /mob/living/proc/owns_soul()
 	if(mind)

@@ -40,7 +40,7 @@
 	var/tickspeed = 30 + (5 * our_holy_skill)
 
 	while (do_after(user, tickspeed, target = living_target))
-		user.rogfat_add(2.5)
+		user.stamina_add(2.5)
 
 		living_target.adjustOxyLoss(-10)
 		living_target.blood_volume = max((BLOOD_VOLUME_SURVIVE * 1.5), living_target.blood_volume)
