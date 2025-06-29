@@ -18,6 +18,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_CTF_BLUE]" = "blueteamradio"
 	))
 
+var/const/sound_dist_increment = 11 // Note: this is EUCLIDEAN distance
+var/const/sound_dist_sq_increment = sound_dist_increment * sound_dist_increment
+var/const/sound_dist_sq_increment_2 = (sound_dist_increment * 2) * (sound_dist_increment * 2)
+var/const/sound_dist_sq_increment_3 = (sound_dist_increment * 3) * (sound_dist_increment * 3)
+
+
 /atom/movable/proc/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!can_speak())
 		return
@@ -102,7 +108,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 				arrowpart += " ⇊"
 			
 			var/hidden = TRUE
-			if(HAS_TRAIT(src, TRAIT_KEENEARS))
+			var/has_keen_ears = HAS_TRAIT(src, TRAIT_KEENEARS)
+			if(has_keen_ears)
 				if(ishuman(speaker) && ishuman(src))
 					var/mob/living/carbon/human/HS = speaker
 					var/mob/living/carbon/human/HL = src
@@ -121,7 +128,17 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
 				else
 					namepart = "Unknown"
-			spanpart1 = "<span class='smallyell'>"
+			if (has_keen_ears)
+				var/dist = get_dist_euclidean_squared(speakturf, sourceturf)
+				switch (dist)
+					if (-INFINITY to sound_dist_sq_increment)
+						spanpart1 = "<span_class='smallyell'"
+					if (sound_dist_sq_increment to sound_dist_sq_increment_2)
+						spanpart1 = "<span_class='verysmallyell'"
+					if (sound_dist_sq_increment_2 to INFINITY)
+						spanpart1 = "<span_class='tinyyell'"
+			else
+				spanpart1 = "<span class='smallyell'>"
 
 	var/languageicon = ""
 	var/datum/language/D = GLOB.language_datum_instances[message_language]

@@ -469,7 +469,9 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 
 .command_headset		{font-weight: bold;	font-size: 3;}
 .small					{font-size: 50%;}
-.smallyell				{font-size: 70%;font-family: Pterra;}
+.tinyyell				{font-size: 45%;font-family: Pterra;}
+.verysmallyell			{font-size: 60%;font-family: Pterra;}
+.smallyell				{font-size: 75%;font-family: Pterra;}
 .big					{font-size: 120%;}
 .reallybig				{font-size: 180%;}
 .extremelybig			{font-size: 220%;}
