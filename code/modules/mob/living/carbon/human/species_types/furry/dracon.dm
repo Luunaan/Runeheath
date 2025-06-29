@@ -9,6 +9,8 @@
 	(+1 Strength)"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_AGELESS, TRAIT_FERTILE, TRAIT_EXTREMELY_VIRILE, TRAIT_GOODBITE, TRAIT_LARGE_MAW, TRAIT_BOOMING_VOICE)
+	burnmult = 0.5 // Dragons resist fire
+	heatmult = 0.5
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
