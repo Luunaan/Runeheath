@@ -64,6 +64,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/coldmult = 1		// multiplier for cold damage
 	var/heatmult = 1		// multiplier for heat damage
 	var/stunmult = 1		// multiplier for stun duration
+	var/hungermult = 1		// multiplier for nutrition DECREASES
 	var/attack_type = BRUTE //Type of damage attack does
 	var/punchdamagelow = 10      //lowest possible punch damage. if this is set to 0, punches will always miss
 	var/punchdamagehigh = 10      //highest possible punch damage

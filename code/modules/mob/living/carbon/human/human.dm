@@ -832,6 +832,8 @@
 /mob/living/carbon/human/adjust_nutrition(change) //Honestly FUCK the oldcoders for putting nutrition on /mob someone else can move it up because holy hell I'd have to fix SO many typechecks
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return FALSE
+	if (change < 0)
+		change *= dna.species.hungermult
 	return ..()
 
 /mob/living/carbon/human/set_nutrition(change) //Seriously fuck you oldcoders.
@@ -842,6 +844,8 @@
 /mob/living/carbon/human/adjust_hydration(change)
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return FALSE
+	if (change < 0)
+		change *= dna.species.hungermult
 	return ..()
 
 /mob/living/carbon/human/set_hydration(change)

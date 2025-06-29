@@ -11,7 +11,12 @@
 	town square or out on a well-traveled road, as even the most backwater peasant can tell the difference between a sapient one and portal-spawn. Usually.<br>\
 	(+1 Speed)" 
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
-	inherent_traits = list(TRAIT_VERY_FERTILE, TRAIT_VERY_VIRILE, TRAIT_NASTY_EATER)
+	inherent_traits = list(
+		TRAIT_VERY_FERTILE,
+		TRAIT_VERY_VIRILE,
+		TRAIT_NASTY_EATER
+		)
+	hungermult = 1.1 // Ravenous pests
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
 	skin_tone_wording = "Skin Color"
