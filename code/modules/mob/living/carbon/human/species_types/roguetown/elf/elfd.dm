@@ -40,7 +40,12 @@
 	skin_tone_wording = "Origin City-State"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
-	inherent_traits = list(TRAIT_FERTILE, TRAIT_REDUCED_VIRILITY, TRAIT_LIGHT_STEP, TRAIT_GOOD_HEARING)
+	inherent_traits = list(
+		TRAIT_FERTILE,
+		TRAIT_REDUCED_VIRILITY,
+		TRAIT_LIGHT_STEP,
+		TRAIT_DARKVISION, // Dark elves don't get good hearing like other elves - sound travels easily in the caves...
+		)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	disliked_food = NONE
