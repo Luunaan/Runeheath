@@ -17,6 +17,7 @@
 		TRAIT_GOOD_HEARING,
 		TRAIT_NOCTURNAL,
 		TRAIT_GOOD_NOSE,
+		TRAIT_LOW_LIGHT_VISION,
 		)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"

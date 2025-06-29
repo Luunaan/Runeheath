@@ -189,6 +189,7 @@
 #define TRAIT_NOCTURNAL "Nocturnal" // Get tired during day, extra inspiration for sleeping during day
 #define TRAIT_FALL_RESISTANT "Fall Resistant" // Treat fall damage as if falling one z-level less
 #define TRAIT_GOOD_NOSE "Keen Nose" // Gives information about characters on examine. Allows player to detect (but not understand) pheromones
+#define TRAIT_LOW_LIGHT_VISION "Low-Light Vision" // Like Darkvision, but not quite as good
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),

@@ -22,6 +22,7 @@
 		TRAIT_GOOD_JUMP,
 		TRAIT_NOMADIC,
 		TRAIT_FALL_RESISTANT,
+		TRAIT_LOW_LIGHT_VISION,
 		) 
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
