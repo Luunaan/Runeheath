@@ -9,7 +9,12 @@
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
-	inherent_traits = list(TRAIT_REDUCED_FERTILITY, TRAIT_REDUCED_VIRILITY, TRAIT_GOOD_HEARING)
+	inherent_traits = list(
+		TRAIT_REDUCED_FERTILITY,
+		TRAIT_REDUCED_VIRILITY,
+		TRAIT_GOOD_HEARING,
+		TRAIT_NATURAL_PERSISTENCE,
+		)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = TRUE
 	possible_ages = ALL_AGES_LIST

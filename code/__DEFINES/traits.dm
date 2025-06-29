@@ -190,6 +190,7 @@
 #define TRAIT_FALL_RESISTANT "Fall Resistant" // Treat fall damage as if falling one z-level less
 #define TRAIT_GOOD_NOSE "Keen Nose" // Gives information about characters on examine. Allows player to detect (but not understand) pheromones
 #define TRAIT_LOW_LIGHT_VISION "Low-Light Vision" // Like Darkvision, but not quite as good
+#define TRAIT_NATURAL_PERSISTENCE "Natural Persistence" // Slightly reduced stamina loss & increased stamina gain
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -332,6 +333,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NOCTURNAL = span_info("I find myself tired during the day, rather than the night."),
 	TRAIT_FALL_RESISTANT = span_info("I always land on my feet!"),
 	TRAIT_GOOD_NOSE = span_info("I have a naturally keen nose, allowing me to detect things those of other races would miss."),
+	TRAIT_LOW_LIGHT_VISION = span_info("My eyes are accustomed to low levels of light, allowing me to see better than others in such places."),
+	TRAIT_NATURAL_PERSISTENCE = span_info("Members of my race have a lot of stamina - physical activity tires us less than it does others."),
 ))
 
 // trait accessor defines
