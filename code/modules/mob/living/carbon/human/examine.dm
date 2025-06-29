@@ -773,14 +773,15 @@
 			if(-INFINITY to -5)
 				. += span_revennotice("[t_He] look[p_s()] as blunt-minded as a rock.")
 
-	// This includes people who have the infection but haven't turned yet. This is deliberate!
-	if (mind.has_antag_datum(/datum/antagonist/zombie))
-		. += span_warning("[t_He] reek[t_s] of death.")
-	
-	// In the case of a werewolf, we can detect the infection, but not once it's run its course.
-	var/datum/antagonist/werewolf/ww = mind.has_antag_datum(/datum/antagonist/werewolf)
-	if (ww && !ww.infection_complete())
-		. += span_warning("[t_He] smell[t_s] of volf saliva.")
+	if (mind)
+		// This includes people who have the infection but haven't turned yet. This is deliberate!
+		if (mind.has_antag_datum(/datum/antagonist/zombie))
+			. += span_warning("[t_He] reek[t_s] of death.")
+		
+		// In the case of a werewolf, we can detect the infection, but not once it's run its course.
+		var/datum/antagonist/werewolf/ww = mind.has_antag_datum(/datum/antagonist/werewolf)
+		if (ww && !ww.infection_complete())
+			. += span_warning("[t_He] smell[t_s] of volf saliva.")
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
