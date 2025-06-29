@@ -62,7 +62,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/brutemult = 1	// multiplier for brute damage
 	var/burnmult = 1		// multiplier for burn damage
 	var/coldmult = 1		// multiplier for cold damage
+	var/toxmult = 1			// multiplier for tox damage
+	var/oxymult = 1			// multiplier for oxy damage
 	var/heatmult = 1		// multiplier for heat damage
+	var/brainmult = 1		// multiplier for brain damage
 	var/stunmult = 1		// multiplier for stun duration
 	var/hungermult = 1		// multiplier for nutrition DECREASES
 	var/attack_type = BRUTE //Type of damage attack does
@@ -1784,10 +1787,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			else
 				H.adjustFireLoss(damage_amount)
 		if(TOX)
-			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.tox_mult
+			var/damage_amount = forced ? damage : damage * damage_mult * toxmult * H.physiology.tox_mult
 			H.adjustToxLoss(damage_amount)
 		if(OXY)
-			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.oxy_mult
+			var/damage_amount = forced ? damage : damage * damage_mult * oxymult * H.physiology.oxy_mult
 			H.adjustOxyLoss(damage_amount)
 		if(CLONE)
 			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.clone_mult
@@ -1800,7 +1803,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			else
 				H.adjustStaminaLoss(damage_amount)
 		if(BRAIN)
-			var/damage_amount = forced ? damage : damage * damage_mult * H.physiology.brain_mult
+			var/damage_amount = forced ? damage : damage * damage_mult * brainmult * H.physiology.brain_mult
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
 	return 1
 
