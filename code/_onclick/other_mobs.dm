@@ -225,6 +225,11 @@
 	var/datum/wound/caused_wound
 	if(!nodmg)
 		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
+		if (HAS_TRAIT(src, TRAIT_VILE_BLOOD))
+			user.adjustToxLoss(VILE_BLOOD_BITE_TOX_DAMAGE, 0)
+			if (user.nausea < VILE_BLOOD_MAX_NAUSEA)
+				user.nausea = min(VILE_BLOOD_MAX_NAUSEA, user.nausea + VILE_BLOOD_NAUSEA_PER_BITE)
+			to_chat(user, span_warning("Blood fills my mouth - it's disgusting!"))
 	visible_message(span_danger("[user] bites [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"), \
 					span_userdanger("[user] bites my [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"))
 

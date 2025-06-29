@@ -7,6 +7,13 @@
 #define BOOMING_VOICE_DISTANCE_INCREASE 7 // Booming Voice increases the range at which others hear one's yelling by this number of tiles.
 #define HAULER_STRENGTH_MOD 4 // Hauler increases one's strength for the purposes of carrying things by this amount.
 
+#define VILE_BLOOD_LEECH_MULT 0.66 // Multiplier for leech blood extraction with the Vile Blood trait
+#define VILE_BLOOD_LEECH_ATTACH_MULT 0.5 // Multiplier for leech attachment rate with the Vile Blood trait
+#define VILE_BLOOD_BITE_TOX_DAMAGE 2 // Only a little tox damage
+#define VILE_BLOOD_MAX_TOX_DAMAGE 20
+#define VILE_BLOOD_NAUSEA_PER_BITE 25
+#define VILE_BLOOD_MAX_NAUSEA 105
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -191,6 +198,7 @@
 #define TRAIT_GOOD_NOSE "Keen Nose" // Gives information about characters on examine. Allows player to detect (but not understand) pheromones
 #define TRAIT_LOW_LIGHT_VISION "Low-Light Vision" // Like Darkvision, but not quite as good
 #define TRAIT_NATURAL_PERSISTENCE "Natural Persistence" // Slightly reduced stamina loss & increased stamina gain
+#define TRAIT_VILE_BLOOD "Vile Blood" // Leeches less likely to attach, deal tox damage when bitten
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -335,6 +343,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOOD_NOSE = span_info("I have a naturally keen nose, allowing me to detect things those of other races would miss."),
 	TRAIT_LOW_LIGHT_VISION = span_info("My eyes are accustomed to low levels of light, allowing me to see better than others in such places."),
 	TRAIT_NATURAL_PERSISTENCE = span_info("Members of my race have a lot of stamina - physical activity tires us less than it does others."),
+	TRAIT_VILE_BLOOD = span_info("My blood repulses parasites like leeches...")
 ))
 
 // trait accessor defines

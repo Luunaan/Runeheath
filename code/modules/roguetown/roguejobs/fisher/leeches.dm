@@ -131,7 +131,12 @@
 		return FALSE
 	if(!host)
 		return FALSE
-	host.adjustToxLoss(toxin_healing)
+
+	var/blood_extract_mult = 1
+	if (HAS_TRAIT(host, TRAIT_VILE_BLOOD))
+		blood_extract_mult = VILE_BLOOD_LEECH_MULT
+
+	host.adjustToxLoss(toxin_healing * blood_extract_mult)
 	var/obj/item/bodypart/bp = loc
 	if(giving)
 		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - host.blood_volume, blood_storage, blood_sucking)
@@ -144,7 +149,11 @@
 				host.simple_remove_embedded_object(src)
 			return TRUE
 	else
-		var/blood_extracted = min(blood_maximum - blood_storage, host.blood_volume, blood_sucking)
+		var/blood_extracted = min(blood_maximum - blood_storage, host.blood_volume, blood_sucking * blood_extract_mult)
+
+		if (HAS_TRAIT(host, TRAIT_VILE_BLOOD))
+			blood_extracted *= VILE_BLOOD_LEECH_MULT
+
 		host.blood_volume = max(host.blood_volume - blood_extracted, 0)
 		blood_storage += blood_extracted
 		if((blood_storage >= blood_maximum) || (host.blood_volume <= 0))
@@ -158,7 +167,12 @@
 /obj/item/natural/worms/leech/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
 	if(!user)
 		return
-	user.adjustToxLoss(toxin_healing)
+
+	var/blood_extract_mult = 1
+	if (HAS_TRAIT(user, TRAIT_VILE_BLOOD))
+		blood_extract_mult = VILE_BLOOD_LEECH_MULT
+
+	user.adjustToxLoss(toxin_healing * blood_extract_mult)
 	if(giving)
 		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - user.blood_volume, blood_storage, blood_sucking)
 		user.blood_volume += blood_given
@@ -170,7 +184,7 @@
 				user.simple_remove_embedded_object(src)
 			return TRUE
 	else
-		var/blood_extracted = min(blood_maximum - blood_storage, user.blood_volume, blood_sucking)
+		var/blood_extracted = min(blood_maximum - blood_storage, user.blood_volume, blood_sucking * blood_extract_mult)
 		user.blood_volume = max(user.blood_volume - blood_extracted, 0)
 		blood_storage += blood_extracted
 		if((blood_storage >= blood_maximum) || (user.blood_volume <= 0))

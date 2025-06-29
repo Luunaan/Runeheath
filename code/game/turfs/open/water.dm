@@ -348,6 +348,10 @@
 				chance = 6
 			if(C.m_intent == MOVE_INTENT_SNEAK)
 				chance = 1
+			
+			if (HAS_TRAIT(AM, TRAIT_VILE_BLOOD))
+				chance *= VILE_BLOOD_LEECH_ATTACH_MULT
+
 			if(!prob(chance))
 				return
 			if(C.blood_volume <= 0)

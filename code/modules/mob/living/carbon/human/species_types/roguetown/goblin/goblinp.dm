@@ -14,7 +14,8 @@
 	inherent_traits = list(
 		TRAIT_VERY_FERTILE,
 		TRAIT_VERY_VIRILE,
-		TRAIT_NASTY_EATER
+		TRAIT_NASTY_EATER,
+		TRAIT_VILE_BLOOD,
 		)
 	toxmult = 0.66
 	hungermult = 1.1 // Ravenous pests

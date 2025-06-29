@@ -545,6 +545,12 @@
 	C.next_attack_msg.Cut()
 	user.do_attack_animation(C, "bite")
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
+		if (HAS_TRAIT(C, TRAIT_VILE_BLOOD))
+			user.adjustToxLoss(VILE_BLOOD_BITE_TOX_DAMAGE, 0)
+			if (user.nausea < VILE_BLOOD_MAX_NAUSEA)
+				user.nausea = min(VILE_BLOOD_MAX_NAUSEA, user.nausea + VILE_BLOOD_NAUSEA_PER_BITE)
+			to_chat(user, span_warning("Blood fills my mouth - it's disgusting!"))
+
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind && caused_wound)
@@ -678,6 +684,14 @@
 					span_userdanger("[user] drinks from my [parse_zone(sublimb_grabbed)]!"), span_hear("..."), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_warning("I drink from [C]'s [parse_zone(sublimb_grabbed)]."))
 	log_combat(user, C, "drank blood from ")
+
+	if (HAS_TRAIT(C, TRAIT_VILE_BLOOD))
+		user.adjustToxLoss(VILE_BLOOD_BITE_TOX_DAMAGE, 0)
+		if (iscarbon(user))
+			var/mob/living/carbon/carbon_user = user
+			if (carbon_user.nausea < VILE_BLOOD_MAX_NAUSEA)
+				carbon_user.nausea = min(VILE_BLOOD_MAX_NAUSEA, carbon_user.nausea + VILE_BLOOD_NAUSEA_PER_BITE)
+		to_chat(user, span_warning("This blood is repulsive!"))
 
 	if(ishuman(C) && C.mind)
 		var/datum/antagonist/vampirelord/VDrinker = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
