@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
-			keenears = HAS_TRAIT(H, TRAIT_KEENEARS)
+			keenears = HAS_TRAIT(H, TRAIT_KEENEARS) + HAS_TRAIT(H, TRAIT_GOOD_HEARING)
 			var/name_to_highlight = H.nickname
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
@@ -439,8 +439,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
 			if(AM.z != src.z)
 				continue
+				
+		var/has_keen_ears = HAS_TRAIT(AM, TRAIT_KEENEARS)
 		if(Zs_too && AM.z != src.z)
-			if(!Zs_yell && !HAS_TRAIT(AM, TRAIT_KEENEARS))
+			if(!Zs_yell && !has_keen_ears)
 				if(listener_turf.z < speaker_turf.z && listener_has_ceiling)	//Listener is below the speaker and has a ceiling above them
 					continue
 				if(listener_turf.z > speaker_turf.z && speaker_has_ceiling)		//Listener is above the speaker and the speaker has a ceiling above
@@ -452,7 +454,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					continue
 			var/listener_obstructed = TRUE
 			var/speaker_obstructed = TRUE
-			if(src != AM && !Zs_yell && !HAS_TRAIT(AM, TRAIT_KEENEARS))	//We always hear ourselves. Zs_yell will allow a "!" shout to bypass walls one z level up or below.
+			if(src != AM && !Zs_yell && !has_keen_ears)	//We always hear ourselves. Zs_yell will allow a "!" shout to bypass walls one z level up or below.
 				if(!speaker_has_ceiling && isliving(AM))
 					var/mob/living/M = AM
 					for(var/mob/living/MH in viewers(world.view, speaker_ceiling))
@@ -469,7 +471,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		var/keenears
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
-			keenears = HAS_TRAIT(H, TRAIT_KEENEARS)
+			keenears = has_keen_ears + HAS_TRAIT(H, TRAIT_GOOD_HEARING)
 			var/name_to_highlight = H.nickname
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
