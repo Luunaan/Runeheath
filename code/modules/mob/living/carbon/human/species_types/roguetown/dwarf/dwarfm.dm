@@ -31,6 +31,7 @@
 		TRAIT_LOW_LIGHT_VISION
 		)
 	hungermult = 0.85 // Small, slow metabolisms
+	toxmult = 0.66
 	possible_ages = ALL_AGES_LIST
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1

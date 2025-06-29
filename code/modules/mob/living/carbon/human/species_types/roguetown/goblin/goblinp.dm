@@ -16,6 +16,7 @@
 		TRAIT_VERY_VIRILE,
 		TRAIT_NASTY_EATER
 		)
+	toxmult = 0.66
 	hungermult = 1.1 // Ravenous pests
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
