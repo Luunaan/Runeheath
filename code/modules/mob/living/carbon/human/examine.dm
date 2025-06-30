@@ -31,7 +31,7 @@
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	var/datum/antagonist/skeleton/skeleton = user.mind?.has_antag_datum(/datum/antagonist/skeleton)
 
-	var/keen_nose = HAS_TRAIT(user, TRAIT_GOOD_NOSE)
+	var/keen_nose = HAS_TRAIT(user, TRAIT_GOOD_NOSE) && !HAS_TRAIT(user, TRAIT_MISSING_NOSE)
 	var/deceiving_meekness = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)
 
 	if(maniac && (user != src))
