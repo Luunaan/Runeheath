@@ -11,7 +11,7 @@
 	color = "#ff0000"
 	taste_description = "lifeblood"
 	overdose_threshold = 0
-	metabolization_rate = REAGENTS_METABOLISM
+	metabolization_rate = 0.7 * REAGENTS_METABOLISM
 	alpha = 173
 
 /datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M)
@@ -35,7 +35,7 @@
 	description = "Quickly regenerates all types of damage."
 	color = "#820000be"
 	taste_description = "rich lifeblood"
-	metabolization_rate = REAGENTS_METABOLISM * 3
+	metabolization_rate = REAGENTS_METABOLISM
 
 /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M)
 	if(volume >= 60)
