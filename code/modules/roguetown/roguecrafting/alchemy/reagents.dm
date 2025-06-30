@@ -243,6 +243,61 @@
 	return ..()
 
 
+/datum/reagent/buff/strength/no_overdose
+	overdose_threshold = 0
+	taste_description = null
+
+/datum/reagent/buff/strength/no_overdose/on_mob_life(mob/living/carbon/M)
+	if (volume >= 30)
+		M.reagents.remove_reagent(/datum/reagent/buff/strength/no_overdose, 1)
+	..()
+
+/datum/reagent/buff/perception/no_overdose
+	overdose_threshold = 0
+	taste_description = null
+
+/datum/reagent/buff/perception/no_overdose/on_mob_life(mob/living/carbon/M)
+	if (volume >= 30)
+		M.reagents.remove_reagent(/datum/reagent/buff/perception/no_overdose, 1)
+	..()
+
+/datum/reagent/buff/intelligence/no_overdose
+	overdose_threshold = 0
+	taste_description = null
+
+/datum/reagent/buff/intelligence/no_overdose/on_mob_life(mob/living/carbon/M)
+	if (volume >= 30)
+		M.reagents.remove_reagent(/datum/reagent/buff/intelligence/no_overdose, 1)
+	..()
+
+/datum/reagent/buff/constitution/no_overdose
+	overdose_threshold = 0
+	taste_description = null
+
+/datum/reagent/buff/constitution/no_overdose/on_mob_life(mob/living/carbon/M)
+	if (volume >= 30)
+		M.reagents.remove_reagent(/datum/reagent/buff/constitution/no_overdose, 1)
+	..()
+
+/datum/reagent/buff/speed/no_overdose
+	overdose_threshold = 0
+	taste_description = null
+
+/datum/reagent/buff/speed/no_overdose/on_mob_life(mob/living/carbon/M)
+	if (volume >= 30)
+		M.reagents.remove_reagent(/datum/reagent/buff/speed/no_overdose, 1)
+	..()
+
+/datum/reagent/buff/fortune/no_overdose
+	overdose_threshold = 0
+	taste_description = null
+
+/datum/reagent/buff/fortune/no_overdose/on_mob_life(mob/living/carbon/M)
+	if (volume >= 30)
+		M.reagents.remove_reagent(/datum/reagent/buff/fortune/no_overdose, 1)
+	..()
+
+
 //Poisons
 /* Tested this quite a bit. Heres the deal. Metabolism REAGENTS_SLOW_METABOLISM is 0.1 and needs to be that so poison isnt too fast working but
 still is dangerous. Toxloss of 3 at metabolism 0.1 puts you in dying early stage then stops for reference of these values.

@@ -13,6 +13,69 @@
 	sellprice = 1
 	static_price = FALSE
 	resistance_flags = FIRE_PROOF
+	var/gem_as_food = /obj/item/reagent_containers/food/snacks/gem
+
+/obj/item/reagent_containers/food/snacks/gem
+	name = "gemstone"
+	desc = ""
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	tastes = list("glass" = 1)
+	foodtype = PRECIOUS
+	faretype = FARE_LAVISH // They're gemstones, I couldn't justify any less even for the cheapest
+	bitesize = 1
+	var/quality = 0
+	var/const/quality_base = 50 // Must be above this value to be of higher than base quality
+	var/const/quality_increment = 10 // For each increment of additional value, nutriment goes up by 3
+	var/const/healthpot_base = 80 // Must be above this amount to have 60 units of health potion
+	var/const/stronghealth_base = 120 // Must be above this amount to have 60 units of STRONG health potion
+
+/obj/item/reagent_containers/food/snacks/gem/proc/set_quality_from_value(value)
+	if (value <= quality_base/2)
+		faretype = FARE_IMPOVERISHED
+		return
+	if (value < quality_base)
+		faretype = FARE_POOR
+		return
+
+	quality = floor((value - quality_base)/quality_increment)
+	var/additional_nutriment = 3 * quality
+	list_reagents[/datum/reagent/consumable/nutriment] += additional_nutriment
+	if (value > stronghealth_base)
+		reagents.add_reagent(/datum/reagent/medicine/stronghealth, 60)
+	if (value > healthpot_base)
+		reagents.add_reagent(/datum/reagent/medicine/healthpot, 60)
+
+/obj/item/reagent_containers/food/snacks/gem/green
+	tastes = list("lime" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/buff/constitution/no_overdose = 27)
+
+/obj/item/reagent_containers/food/snacks/gem/blue
+	tastes = list("plum" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/buff/intelligence/no_overdose = 27)
+
+/obj/item/reagent_containers/food/snacks/gem/yellow
+	tastes = list("banana" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/buff/perception/no_overdose = 27)
+
+/obj/item/reagent_containers/food/snacks/gem/red
+	tastes = list("spiced apple" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/buff/strength/no_overdose = 27)
+
+/obj/item/reagent_containers/food/snacks/gem/white
+	tastes = list("vanilla" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/buff/speed/no_overdose = 27)
+
+/obj/item/reagent_containers/food/snacks/gem/purple
+	tastes = list("dragonwine" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/buff/constitution/no_overdose = 27)
+
+/obj/item/roguegem/attack(mob/living/M, mob/living/user, def_zone)
+	if (user.used_intent.type != INTENT_HARM && HAS_TRAIT(M, TRAIT_GEM_EATER))
+		var/obj/item/reagent_containers/food/snacks/gem/gemfood = new gem_as_food()
+		gemfood.set_quality_from_value(sellprice)
+		if (gemfood.attack(M, user, def_zone))
+			qdel(src)
+		qdel(gemfood)
 
 /obj/item/roguegem/getonmobprop(tag)
 	. = ..()
@@ -32,6 +95,7 @@
 	icon_state = "emerald_cut"
 	sellprice = 42
 	desc = "Glints with verdant brilliance."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/green
 
 /obj/item/roguegem/green/Initialize()
 	. = ..()
@@ -47,6 +111,7 @@
 	icon_state = "quartz_cut"
 	sellprice = 88
 	desc = "Pale blue, like a frozen tear."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/blue
 
 /obj/item/roguegem/blue/Initialize()
 	. = ..()
@@ -62,6 +127,7 @@
 	icon_state = "topaz_cut"
 	sellprice = 34
 	desc = "Its amber hues remind you of the sunset."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/yellow
 
 /obj/item/roguegem/yellow/Initialize()
 	. = ..()
@@ -77,6 +143,7 @@
 	icon_state = "sapphire_cut"
 	sellprice = 56
 	desc = "This gem is admired by many wizards."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/purple
 
 /obj/item/roguegem/violet/Initialize()
 	. = ..()
@@ -92,6 +159,7 @@
 	icon_state = "ruby_cut"
 	sellprice = 100
 	desc = "Its facets shine so brightly..."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/red
 
 /obj/item/roguegem/ruby/Initialize()
 	. = ..()
@@ -107,6 +175,7 @@
 	icon_state = "diamond_cut"
 	sellprice = 121
 	desc = "Beautifully clear, it demands respect."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/white
 
 /obj/item/roguegem/diamond/Initialize()
 	. = ..()
@@ -121,6 +190,7 @@
 	name = "amythortz"
 	icon_state = "amethyst"
 	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it is worth little."
+	gem_as_food = /obj/item/reagent_containers/food/snacks/gem/purple
 
 /obj/item/roguegem/amethyst/Initialize()
 	. = ..()

@@ -199,6 +199,7 @@
 #define TRAIT_LOW_LIGHT_VISION "Low-Light Vision" // Like Darkvision, but not quite as good
 #define TRAIT_NATURAL_PERSISTENCE "Natural Persistence" // Slightly reduced stamina loss & increased stamina gain
 #define TRAIT_VILE_BLOOD "Vile Blood" // Leeches less likely to attach, deal tox damage when bitten
+#define TRAIT_GEM_EATER "Gem-Eater" // Can eat gemstones, yum
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -343,7 +344,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOOD_NOSE = span_info("I have a naturally keen nose, allowing me to detect things those of other races would miss."),
 	TRAIT_LOW_LIGHT_VISION = span_info("My eyes are accustomed to low levels of light, allowing me to see better than others in such places."),
 	TRAIT_NATURAL_PERSISTENCE = span_info("Members of my race have a lot of stamina - physical activity tires us less than it does others."),
-	TRAIT_VILE_BLOOD = span_info("My blood repulses parasites like leeches...")
+	TRAIT_VILE_BLOOD = span_info("My blood repulses parasites like leeches..."),
+	TRAIT_GEM_EATER = span_info("My people consider gemstones a delicacy - they're delicious."),
 ))
 
 // trait accessor defines

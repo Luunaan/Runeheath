@@ -847,10 +847,11 @@
 			else
 				var/taste_desc = R.taste_description
 				var/taste_amount = R.volume * R.taste_mult
-				if(taste_desc in tastes)
-					tastes[taste_desc] += taste_amount
-				else
-					tastes[taste_desc] = taste_amount
+				if (taste_desc != null && taste_desc != "")
+					if(taste_desc in tastes)
+						tastes[taste_desc] += taste_amount
+					else
+						tastes[taste_desc] = taste_amount
 		//deal with percentages
 		// TODO it would be great if we could sort these from strong to weak
 		var/total_taste = counterlist_sum(tastes)
