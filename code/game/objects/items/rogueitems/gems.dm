@@ -23,6 +23,7 @@
 	foodtype = PRECIOUS
 	faretype = FARE_LAVISH // They're gemstones, I couldn't justify any less even for the cheapest
 	bitesize = 1
+	volume = 100 // Arbitrary, but needs to be high enough to contain our dynamic nutriment value
 	var/quality = 0
 	var/const/quality_base = 50 // Must be above this value to be of higher than base quality
 	var/const/quality_increment = 10 // For each increment of additional value, nutriment goes up by 3
@@ -39,7 +40,7 @@
 
 	quality = floor((value - quality_base)/quality_increment)
 	var/additional_nutriment = 3 * quality
-	list_reagents[/datum/reagent/consumable/nutriment] += additional_nutriment
+	reagents.add_reagent(/datum/reagent/consumable/nutriment, additional_nutriment)
 	if (value > stronghealth_base)
 		reagents.add_reagent(/datum/reagent/medicine/stronghealth, 60)
 	if (value > healthpot_base)
