@@ -16,6 +16,7 @@
 		TRAIT_LARGE_MAW,
 		TRAIT_BOOMING_VOICE,
 		TRAIT_GEM_EATER,
+		TRAIT_PRECIOUS_METAL_EATER,
 		)
 	burnmult = 0.5 // Dragons resist fire
 	heatmult = 0.5

@@ -93,6 +93,17 @@
 	user.update_inv_hands()
 	playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -2)
 
+/obj/item/roguecoin/attack(mob/living/M, mob/living/user, def_zone)
+	if (user.used_intent.type != INTENT_HARM && HAS_TRAIT(M, TRAIT_PRECIOUS_METAL_EATER))
+		var/obj/item/reagent_containers/food/snacks/coin/coinfood = new()
+		coinfood.set_quality_from_value(sellprice)
+		if (coinfood.attack(M, user, def_zone))
+			if (quantity <= 1)
+				qdel(src)
+			else
+				set_quantity(quantity-1)
+		qdel(coinfood)
+
 /obj/item/roguecoin/attack_right(mob/user)
 	if(user.get_active_held_item())
 		return ..()
@@ -197,6 +208,29 @@
 			G.merge(src, user)
 		return
 	return ..()
+
+/obj/item/reagent_containers/food/snacks/coin
+	name = "coin"
+	desc = ""
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	tastes = list("metal" = 1)
+	foodtype = PRECIOUS
+	faretype = FARE_IMPOVERISHED
+	bitesize = 1
+
+/obj/item/reagent_containers/food/snacks/coin/proc/set_quality_from_value(value)
+	switch(value)
+		if (1)
+			return
+		if (5)
+			faretype = FARE_NEUTRAL
+			reagents.add_reagent(/datum/reagent/consumable/nutriment, 1)
+			reagents.reagent_list[1].data = list("sugar" = 1)
+			tastes = list("sugar" = 1)
+		if (10)
+			faretype = FARE_FINE
+			reagents.add_reagent(/datum/reagent/consumable/nutriment, 3)
+			reagents.reagent_list[1].data = list("honey" = 1)
 
 //GOLD
 /obj/item/roguecoin/gold
