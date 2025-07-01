@@ -311,7 +311,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	//time for emoting!!
 	var/datum/language/D = GLOB.language_datum_instances[message_language]
 	var/sign_verb = pick(D.signlang_verb)
-	var/chatmsg = "<b>[src]</b> " + sign_verb + "."
+	var/mob_color = "FFFFFF"
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		mob_color = H.voice_color
+	var/chatmsg = "<font color = #[mob_color]><b>[src]</b></font> " + sign_verb + "."
 	visible_message(chatmsg, runechat_message = sign_verb, log_seen = SEEN_LOG_EMOTE, ignored_mobs = understanders)
 
 	//speech bubble

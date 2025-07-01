@@ -368,19 +368,19 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	for(var/obj/item/reagent_containers/food/needed_crop as anything in selected_recipe.needed_crops)
 		if(recipe_crop_stocks[needed_crop] < selected_recipe.needed_crops[needed_crop])
 			if(user)
-				to_chat(user, span_notice("This keg lacks [initial(needed_crop.name)]!"))
+				to_chat(user, span_notice("This keg needs more [initial(needed_crop.name)]!"))
 				ready = FALSE
 
 	for(var/obj/item/needed_item as anything in selected_recipe.needed_items)
 		if(recipe_crop_stocks[needed_item] < selected_recipe.needed_items[needed_item])
 			if(user)
-				to_chat(user, span_notice("This keg lacks [initial(needed_item.name)]!"))
+				to_chat(user, span_notice("This keg needs more [initial(needed_item.name)]!"))
 				ready = FALSE
 
 	for(var/datum/reagent/required_chem as anything in selected_recipe.needed_reagents)
 		if(selected_recipe.needed_reagents[required_chem] > reagents.get_reagent_amount(required_chem))
 			if(user)
-				to_chat(user, span_notice("The keg's unable to brew well lacking [initial(required_chem.name)]!"))
+				to_chat(user, span_notice("This keg needs more [initial(required_chem.name)]!"))
 				ready = FALSE
 
 	return ready
@@ -447,19 +447,9 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 			for(bottlecaps = 0, bottlecaps < selected_recipe.brewed_amount, bottlecaps++)
 				var/obj/item/reagent_containers/glass/bottle/brewing_bottle/bottle_made = new /obj/item/reagent_containers/glass/bottle/brewing_bottle(get_turf(src))
 				bottle_made.icon_state = "[glass_colour]"
-				bottle_made.name = "brewer's bottle of [selected_recipe.name]"
+				bottle_made.name = "brewer's bottle of [selected_recipe.bottle_name]"
 				bottle_made.sellprice = round(selected_recipe.sell_value / selected_recipe.brewed_amount)
-				/*
-				if(istype(selected_recipe, /datum/brewing_recipe/custom_recipe))
-					var/datum/brewing_recipe/custom_recipe/recipe = selected_recipe
-					bottle_made.name = recipe.bottle_name
-					bottle_made.desc = recipe.bottle_desc
-					bottle_made.glass_name = recipe.glass_name
-					bottle_made.glass_desc = recipe.glass_desc
-					bottle_made.reagents.add_reagent(selected_recipe.reagent_to_brew, selected_recipe.per_brew_amount, list("reagents" = recipe.reagent_data))
-				else
-					bottle_made.reagents.add_reagent(selected_recipe.reagent_to_brew, selected_recipe.per_brew_amount)
-				*/
+				bottle_made.desc =  selected_recipe.bottle_desc || "A bottle of locally-brewed [selected_recipe.bottle_name]."
 				var/datum/reagent/brewed_reagent = selected_recipe.reagent_to_brew
 				if(selected_recipe.ages)
 					var/time = world.time - age_start_time

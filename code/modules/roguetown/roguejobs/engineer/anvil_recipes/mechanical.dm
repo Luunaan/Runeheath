@@ -75,10 +75,10 @@
 	craftdiff = 0
 
 /datum/anvil_recipe/engineering/folding_table
-	name = "Folding Table"
+	name = "Folding Table (+1 Small Log)"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/grown/log/tree/small)
-	created_item = /obj/structure/table/wood
+	created_item = /obj/item/folding_table_stored
 	craftdiff = 1
 
 /datum/anvil_recipe/engineering/bronze/lamptern

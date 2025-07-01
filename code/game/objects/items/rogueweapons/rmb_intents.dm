@@ -162,9 +162,6 @@
 	if(L.has_status_effect(/datum/status_effect/debuff/exposed))
 		perc = 0
 
-	if(HAS_TRAIT(L,TRAIT_DECEIVING_MEEKNESS))
-		perc -= 30
-
 	user.apply_status_effect(/datum/status_effect/debuff/feintcd)
 	perc = CLAMP(perc, 0, 90)
 

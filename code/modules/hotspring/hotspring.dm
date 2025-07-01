@@ -19,10 +19,11 @@
 ///the issue is they would need atleast a 2x2 to smooth proper.
 /obj/structure/hotspring
 	abstract_type = /obj/structure/hotspring
-	nomouseover = TRUE
-	plane = FLOOR_PLANE
+	name = "hot spring"
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "hotspring"
+	nomouseover = TRUE
+	plane = FLOOR_PLANE
 	object_slowdown = 5
 
 	var/edge = FALSE
@@ -205,7 +206,7 @@
 	icon = 'icons/obj/structures/sakura_tree.dmi'
 	icon_state = "sakura_tree"
 	obj_flags = CAN_BE_HIT | IGNORE_SINK
-	layer = BELOW_MOB_LAYER
+	layer = ABOVE_ALL_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 
 	bound_height = 128

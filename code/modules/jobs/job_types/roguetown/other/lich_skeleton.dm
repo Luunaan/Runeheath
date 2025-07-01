@@ -40,9 +40,9 @@ LICH SKELETONS
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -128,7 +128,7 @@ LICH SKELETONS
 
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/padagger
 	H.adjust_blindness(-3)
-	var/weapons = list("Recurve Bow","Yew Longbow","Crossbow","Sling")
+	var/weapons = list("Recurve Bow","Yew Longbow","Sling")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -140,10 +140,6 @@ LICH SKELETONS
 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 			beltl = /obj/item/quiver/paalloy
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		if("Crossbow")
-			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			beltl = /obj/item/quiver/bolts/paalloy
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 		if("Sling")
 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 			beltl = /obj/item/quiver/sling/paalloy
@@ -160,7 +156,7 @@ LICH SKELETONS
 /datum/outfit/job/roguetown/greater_skeleton/lich/bulwark/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	H.STASTR = 14
+	H.STASTR = 13
 	H.STASPD = 5
 	H.STACON = 11
 	H.STAINT = 1
@@ -171,6 +167,7 @@ LICH SKELETONS
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -189,7 +186,7 @@ LICH SKELETONS
 	shoes = /obj/item/clothing/shoes/roguetown/boots/aalloy
 
 	H.adjust_blindness(-3)
-	var/weapons = list("Greatsword","Bardiche","Grand Mace","Spear", "Warhammer + Shield")
+	var/weapons = list("Greatsword", "Bardiche", "Mace + Shield","Spear", "Warhammer + Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -199,8 +196,9 @@ LICH SKELETONS
 		if("Bardiche")
 			r_hand = /obj/item/rogueweapon/halberd/bardiche/paalloy
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		if("Grand Mace")
-			r_hand = /obj/item/rogueweapon/mace/goden/steel/paalloy
+		if("Mace + Shield")
+			r_hand = /obj/item/rogueweapon/mace/steel/palloy
+			l_hand = /obj/item/rogueweapon/shield/wood
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 		if("Spear")
 			r_hand = /obj/item/rogueweapon/spear/paalloy
