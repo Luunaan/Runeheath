@@ -475,6 +475,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			var/name_to_highlight = H.nickname
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
+		
+		// Ultimately other players will hear the message after it's filtered through compose_message()
 		if(eavesdrop_range && get_dist(source, AM) > message_range+keenears && !(the_dead[AM]))
 			AM.Hear(src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else if(highlighted_message)
