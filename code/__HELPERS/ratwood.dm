@@ -90,3 +90,19 @@
 			new_flags |= thing.flags_inv
 	
 	obscured_flags = new_flags
+	update_halo_enabled()
+	
+/mob/living/proc/update_halo_enabled()
+	if (ishuman(src))
+		var/enabled = !(obscured_flags & HIDEFACE)
+		var/mob/living/carbon/human/H = src
+		if (enabled && istype(H.dna.species, /datum/species/aasimar))
+			var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
+			if (head)
+				set_light_on(TRUE)
+				START_PROCESSING(SSobj, H)
+				return
+				
+		set_light_on(FALSE)
+		STOP_PROCESSING(SSobj, H)
+				

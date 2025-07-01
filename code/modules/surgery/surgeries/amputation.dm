@@ -50,6 +50,7 @@
 	display_results(user, target, span_notice("I sever [target]'s [parse_zone(target_zone)]."),
 		span_notice("[user] severs [target]'s [parse_zone(target_zone)]!"),
 		span_notice("[user] severs [target]'s [parse_zone(target_zone)]!"))
+	target.update_halo_enabled()
 	var/obj/item/bodypart/target_limb = target.get_bodypart(check_zone(target_zone))
 	target_limb?.drop_limb()
 	return TRUE

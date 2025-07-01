@@ -65,6 +65,7 @@
 	display_results(user, target, span_notice("I succeed transplanting [target]'s [parse_zone(target_zone)]."),
 		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)] with [tool]!"),
 		span_notice("[user] successfully transplants [target]'s [parse_zone(target_zone)]!"))
+	target.update_halo_enabled()
 	return TRUE
 
 /datum/surgery/prosthetic_removal

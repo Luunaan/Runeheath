@@ -78,6 +78,7 @@
 
 /datum/species/aasimar/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
+	apply_halo(C)
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
 
@@ -87,6 +88,7 @@
 
 /datum/species/aasimar/on_species_loss(mob/living/carbon/C)
 	. = ..()
+	remove_halo(C)
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
 /datum/species/aasimar/get_skin_list()
@@ -136,3 +138,42 @@
 
 /datum/species/aasimar/random_surname()
 	return
+
+/datum/species/aasimar/proc/apply_halo(mob/living/carbon/C)
+	var/obj/item/bodypart/head/head = C.get_bodypart(BODY_ZONE_HEAD)
+	head.light_inner_range = 2
+	head.light_outer_range = 3
+	head.light_color = LIGHT_COLOR_YELLOW
+	head.light_on = TRUE
+	head.light_system = MOVABLE_LIGHT
+	if (!head.GetComponent(/datum/component/overlay_lighting))
+		head.AddComponent(/datum/component/overlay_lighting)
+	START_PROCESSING(SSobj, head)
+
+	C.light_inner_range = 2
+	C.light_outer_range = 3
+	C.light_color = LIGHT_COLOR_YELLOW
+	C.light_on = TRUE
+	C.light_system = MOVABLE_LIGHT
+	if (!C.GetComponent(/datum/component/overlay_lighting))
+		C.AddComponent(/datum/component/overlay_lighting)
+	START_PROCESSING(SSobj, C)
+	
+
+/datum/species/aasimar/proc/remove_halo(mob/living/carbon/C)
+	var/obj/item/bodypart/head/head = C.get_bodypart(BODY_ZONE_HEAD)
+	head.light_inner_range = initial(head.light_inner_range)
+	head.light_outer_range = initial(head.light_outer_range)
+	head.light_color = initial(head.light_color)
+	head.light_on = initial(head.light_on)
+	head.light_system = initial(head.light_system)
+	head.set_light_on(FALSE)
+	STOP_PROCESSING(SSobj, head)
+
+	C.light_inner_range = initial(C.light_inner_range)
+	C.light_outer_range = initial(C.light_outer_range)
+	C.light_color = initial(C.light_color)
+	C.light_on = initial(C.light_on)
+	C.light_system = initial(C.light_system)
+	C.set_light_on(FALSE)
+	STOP_PROCESSING(SSobj, C)
