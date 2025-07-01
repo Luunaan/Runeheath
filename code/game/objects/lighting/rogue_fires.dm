@@ -764,7 +764,7 @@
 		if(istype(H))
 			H.visible_message("<span class='info'>[H] warms \his hand near the fire.</span>")
 
-			if(do_after(H, 100, target = src))
+			while(do_after(H, 100, target = src))
 				H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 				H.add_stress(/datum/stressevent/campfire)
 				to_chat(H, "<span class='info'>The warmth of the fire comforts me, affording me a short rest.</span>")
