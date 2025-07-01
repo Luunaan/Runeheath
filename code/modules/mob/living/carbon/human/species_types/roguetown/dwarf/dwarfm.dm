@@ -19,7 +19,7 @@
 	to improve their crafts, both in engineering workshops and the forges. \
 	Dwarves are hearty, but are not known for their speed or eyesight... \
 	Each dwarf hails from a ancient fortress named after the most plentiful mineral.<br>\
-	(+1 Constitution, +1 Endurance)"
+	(+1 Constitution, +1 Intelligence)"
 
 	skin_tone_wording = "Dwarf Fortress"
 

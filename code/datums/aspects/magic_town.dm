@@ -22,9 +22,9 @@
 	var/already_had_magic = FALSE
 
 	if (H.mind)
-		if (H.mind.get_skill_level(/datum/skill/magic/arcane) > 0)
+		if (H.get_skill_level(/datum/skill/magic/arcane) > 0)
 			already_had_magic = TRUE
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 
 	if (!already_had_magic)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation) // All mages get this

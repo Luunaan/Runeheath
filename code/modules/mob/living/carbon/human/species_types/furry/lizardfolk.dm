@@ -10,7 +10,7 @@
 	Taller than humans and powerfully built, sisseans are often between 6 and 7 feet tall. \
 	Sisseans have non-prehensile muscular tails that grow to three or four feet in length, and these are used for balance. \
 	They also have sharp claws and teeth.<br>\
-	(+1 Constitution, +1 Endurance)"
+	(+1 Constitution, +1 Perception)"
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_GOODBITE, TRAIT_LARGE_MAW, TRAIT_HAULER)

@@ -57,7 +57,7 @@
 	if(!user.mind || !user.mind.do_i_know(name=input))
 		to_chat(user, span_warning("I don't know anyone by that name."))
 		return
-	var/arcane_skill = user.mind.get_skill_level(/datum/skill/magic/arcane)
+	var/arcane_skill = user.get_skill_level(/datum/skill/magic/arcane)
 	if(on_cooldown())
 		if (on_extended_cooldown)
 			to_chat(user, span_warning("I've pushed the orb far enough already - this is risky..."))
@@ -73,7 +73,6 @@
 	if(!do_after(user, time_to_use, target = user))
 		to_chat(user, span_warning("I need to focus..."))
 		return
-
 	var/success_chance = 0
 	var/break_on_fail = FALSE
 	var/failure_severity = 6 - arcane_skill

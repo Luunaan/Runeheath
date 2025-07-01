@@ -13,18 +13,18 @@
 	// In future we might choose to make this a list.
 	var/highest_non_legendary_level = 0
 	var/list/datum/skill/highest_non_legendary_skill_paths = list()
-	for (var/skill in H.mind.known_skills)
-		var/level = H.mind.known_skills[skill]
+	for (var/skill in H.skills?.known_skills)
+		var/level = H.skills?.known_skills[skill]
 		if (level > highest_non_legendary_level && level < SKILL_LEVEL_LEGENDARY)
 			highest_non_legendary_level = level
 
 	// Second pass - copy any skills at the given level into the candidate list.
-	for (var/datum/skill/skill in H.mind.known_skills)
-		var/level = H.mind.known_skills[skill]
+	for (var/datum/skill/skill in H.skills?.known_skills)
+		var/level = H.skills?.known_skills[skill]
 		if (level == highest_non_legendary_level)
 			highest_non_legendary_skill_paths += skill
 	
 	if (highest_non_legendary_level < SKILL_LEVEL_LEGENDARY)
 		var/datum/skill/skill_to_raise = pick(highest_non_legendary_skill_paths)
 		if (skill_to_raise)
-			H.mind.adjust_skillrank_up_to(skill_to_raise.type, SKILL_LEVEL_LEGENDARY, TRUE)
+			H.adjust_skillrank_up_to(skill_to_raise.type, SKILL_LEVEL_LEGENDARY, TRUE)
