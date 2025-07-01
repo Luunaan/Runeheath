@@ -288,6 +288,10 @@
 		to_chat(recipient, "Your repulsiveness is cancelled out! You become normal.")
 		REMOVE_TRAIT(recipient, TRAIT_BEAUTIFUL, TRAIT_VIRTUE)
 		REMOVE_TRAIT(recipient, TRAIT_UNSEEMLY, TRAIT_VIRTUE)
+	else if (HAS_TRAIT(recipient, TRAIT_DIVINE_BEAUTY))
+		to_chat(recipient, "Your repulsiveness is cancelled out! You become normal.")
+		REMOVE_TRAIT(recipient, TRAIT_DIVINE_BEAUTY, TRAIT_VIRTUE)
+		REMOVE_TRAIT(recipient, TRAIT_UNSEEMLY, TRAIT_VIRTUE)
 
 /datum/virtue/utility/secondvoice
 	name = "Second Voice"

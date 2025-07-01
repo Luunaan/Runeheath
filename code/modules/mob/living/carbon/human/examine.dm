@@ -10,10 +10,11 @@
 		user.add_stress(/datum/stressevent/jesterphobia)
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
-		// Apply Xylix buff when examining someone with the beautiful trait
-		if(HAS_TRAIT(user, TRAIT_XYLIX) && !user.has_status_effect(/datum/status_effect/buff/xylix_joy))
-			user.apply_status_effect(/datum/status_effect/buff/xylix_joy)
-			to_chat(user, span_info("Their beauty brings a smile to my face, and fortune to my steps!"))
+		if (user != src)
+			add_stress(/datum/stressevent/beauty_appreciated)
+	if (HAS_TRAIT(src, TRAIT_DIVINE_BEAUTY))
+		user.add_stress(/datum/stressevent/divinely_beautiful)
+
 	if(HAS_TRAIT(src, TRAIT_UNSEEMLY))
 		if(!HAS_TRAIT(user, TRAIT_UNSEEMLY))
 			user.add_stress(/datum/stressevent/unseemly)
@@ -212,14 +213,16 @@
 		if(leprosy == 1)
 			. += span_necrosis("A LEPER...")
 	
-		if (HAS_TRAIT(src, TRAIT_BEAUTIFUL))
-			switch (pronouns)
-				if (HE_HIM)
-					. += span_beautiful_masc("[m1] handsome!")
-				if (SHE_HER)
-					. += span_beautiful_fem("[m1] beautiful!")
-				if (THEY_THEM, THEY_THEM_F, IT_ITS)
-					. += span_beautiful_nb("[m1] good-looking!")
+		var/has_beautiful_text = FALSE
+		if (HAS_TRAIT(src, TRAIT_DIVINE_BEAUTY))
+			if (HAS_TRAIT(src, TRAIT_BEAUTIFUL))
+				. += span_beautiful_nb("[m1] impossibly, divinely beautiful!")
+			else
+				. += span_beautiful_nb("[m1] divinely beautiful!")
+
+		if (HAS_TRAIT(src, TRAIT_BEAUTIFUL) && !has_beautiful_text)
+			. += span_beautiful_nb("[m1] beautiful!")
+				
 
 		if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
 			switch (pronouns)

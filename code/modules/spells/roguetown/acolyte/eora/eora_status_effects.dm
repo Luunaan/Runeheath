@@ -255,7 +255,9 @@
 			H.Dizzy(5)
 			H.blur_eyes(5)
 			H.adjustBruteLoss(10, 0)
-
+		else if (HAS_TRAIT(H, TRAIT_DIVINE_BEAUTY) && prob(25))
+			to_chat(H, span_good("The tree's beauty revitalizes you!"))
+			H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 		// Beautiful people might get healed
 		else if(HAS_TRAIT(H, TRAIT_BEAUTIFUL) && prob(10))
 			to_chat(H, span_good("The tree's beauty revitalizes you!"))

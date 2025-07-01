@@ -106,7 +106,17 @@
 /datum/stressevent/beautiful
 	stressadd = -2
 	desc = span_green("Their face is a work of art!")
-	timer = 2 MINUTES
+	timer = 5 MINUTES
+
+/datum/stressevent/divinely_beautiful
+	stressadd = -2
+	desc = span_green("I've seen divine beauty!")
+	timer = 5 MINUTES
+
+/datum/stressevent/beauty_appreciated
+	stressadd = -2
+	desc = span_green("It feels good to see people appreciating my looks.")
+	timer = 5 MINUTES
 
 /datum/stressevent/night_owl
 	stressadd = -3

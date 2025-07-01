@@ -201,6 +201,7 @@
 #define TRAIT_VILE_BLOOD "Vile Blood" // Leeches less likely to attach, deal tox damage when bitten
 #define TRAIT_GEM_EATER "Gem-Eater" // Can eat gemstones, yum
 #define TRAIT_PRECIOUS_METAL_EATER "Coin Eater" // Can eat precious metals (coins)
+#define TRAIT_DIVINE_BEAUTY "Divine Beauty" // Functions similarly to Beautiful virtue
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -347,7 +348,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NATURAL_PERSISTENCE = span_info("Members of my race have a lot of stamina - physical activity tires us less than it does others."),
 	TRAIT_VILE_BLOOD = span_info("My blood repulses parasites like leeches..."),
 	TRAIT_GEM_EATER = span_info("My people consider gemstones a delicacy - they're delicious."),
-	TRAIT_PRECIOUS_METAL_EATER = span_info("I can eat some metals - coins can be a nice snack, sometimes...")
+	TRAIT_PRECIOUS_METAL_EATER = span_info("I can eat some metals - coins can be a nice snack, sometimes..."),
+	TRAIT_DIVINE_BEAUTY = span_info("My divine heritage has left me more comely than others."),
 ))
 
 // trait accessor defines
