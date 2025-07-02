@@ -181,6 +181,7 @@
 #define TRAIT_NECRAS_VOW "Necra's Vow"
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
+#define TRAIT_SANCTIFIED "Sanctified" // Given to clergy & Aasimar, reserved for future content
 
 // RACIAL TRAITS
 #define TRAIT_AGELESS "Ageless" // Allows selecting roles without age restrictions, age does not appear in examine text
@@ -341,6 +342,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_STRENGTH_UNCAPPED = span_warning("MY STRENGTH IS UNBOUND!"),
 	TRAIT_MONK_ROBE = span_notice("I feel closer to the gods in my meager robes.. I feel vigorous, empowered by their light!"),
+	TRAIT_SANCTIFIED = span_info("I am closer to the divine than most."),
 	TRAIT_SIMPLESPEECH = span_info("I can not say hard words."),
 	TRAIT_AGELESS = span_info("I don't age as the shorter-lived races do."),
 	TRAIT_GOOD_JUMP = span_info("I am naturally good at jumping long distances."),
