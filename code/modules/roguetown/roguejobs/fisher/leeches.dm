@@ -134,7 +134,9 @@
 
 	var/blood_extract_mult = 1
 	if (HAS_TRAIT(host, TRAIT_VILE_BLOOD))
-		blood_extract_mult = VILE_BLOOD_LEECH_MULT
+		blood_extract_mult *= VILE_BLOOD_LEECH_MULT
+	if (HAS_TRAIT(host, TRAIT_BLESSED_BLOOD))
+		blood_extract_mult *= BLESSED_BLOOD_LEECH_MULT
 
 	host.adjustToxLoss(toxin_healing * blood_extract_mult)
 	var/obj/item/bodypart/bp = loc
@@ -150,9 +152,6 @@
 			return TRUE
 	else
 		var/blood_extracted = min(blood_maximum - blood_storage, host.blood_volume, blood_sucking * blood_extract_mult)
-
-		if (HAS_TRAIT(host, TRAIT_VILE_BLOOD))
-			blood_extracted *= VILE_BLOOD_LEECH_MULT
 
 		host.blood_volume = max(host.blood_volume - blood_extracted, 0)
 		blood_storage += blood_extracted
@@ -170,7 +169,9 @@
 
 	var/blood_extract_mult = 1
 	if (HAS_TRAIT(user, TRAIT_VILE_BLOOD))
-		blood_extract_mult = VILE_BLOOD_LEECH_MULT
+		blood_extract_mult *= VILE_BLOOD_LEECH_MULT
+	if (HAS_TRAIT(host, TRAIT_BLESSED_BLOOD))
+		blood_extract_mult *= BLESSED_BLOOD_LEECH_MULT
 
 	user.adjustToxLoss(toxin_healing * blood_extract_mult)
 	if(giving)

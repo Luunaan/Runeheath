@@ -14,6 +14,10 @@
 #define VILE_BLOOD_NAUSEA_PER_BITE 25
 #define VILE_BLOOD_MAX_NAUSEA 105
 
+#define BLESSED_BLOOD_LEECH_MULT 1.5 // Multiplier for leech blood extraction with Blessed Blood
+#define BLESSED_BLOOD_LEECH_ATTACH_MULT 2 // Multiplier for leech attachment rate with Blessed Blood
+#define BLESSED_BLOOD_HEAL_MOD 1.5 // Added to healing received by characters with Blessed Blood
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -202,6 +206,8 @@
 #define TRAIT_GEM_EATER "Gem-Eater" // Can eat gemstones, yum
 #define TRAIT_PRECIOUS_METAL_EATER "Coin Eater" // Can eat precious metals (coins)
 #define TRAIT_DIVINE_BEAUTY "Divine Beauty" // Functions similarly to Beautiful virtue
+#define TRAIT_BLESSED_BLOOD "Blessed Blood" // Tasty blood for leeches, more healing received
+#define TRAIT_DIVINE_FORTUNE "Divine Fortune" // Improves results on certain luck rolls
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -350,6 +356,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GEM_EATER = span_info("My people consider gemstones a delicacy - they're delicious."),
 	TRAIT_PRECIOUS_METAL_EATER = span_info("I can eat some metals - coins can be a nice snack, sometimes..."),
 	TRAIT_DIVINE_BEAUTY = span_info("My divine heritage has left me more comely than others."),
+	TRAIT_DIVINE_FORTUNE = span_info("I am favored by the divine, giving me better luck than others."),
 ))
 
 // trait accessor defines

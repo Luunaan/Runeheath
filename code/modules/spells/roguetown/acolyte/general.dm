@@ -103,8 +103,8 @@
 				message_out = span_info("An aura of clinical care encompasses [target]!")
 				message_self = span_notice("I'm sewn back together by sacred medicine!")
 				// pestra always heals a little more toxin damage and restores a bit more blood
-				target.adjustToxLoss(-situational_bonus)
-				target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+				target.adjustToxLoss(-10)
+				target.blood_volume += BLOOD_VOLUME_SURVIVE
 			if(/datum/patron/divine/malum)
 				message_out = span_info("A tempering heat is discharged out of [target]!")
 				message_self = span_info("I feel the heat of a forge soothing my pains!")
@@ -171,9 +171,10 @@
 				message_out = span_info("A choral sound comes from above and [target] is healed!")
 				message_self = span_notice("I am bathed in healing choral hymns!")
 
-		var/healing = 2.5
+		var/healing = 5
+		if (HAS_TRAIT(target, TRAIT_BLESSED_BLOOD))
+			healing += BLESSED_BLOOD_HEAL_MOD
 		if (conditional_buff)
-			to_chat(user, "Channeling my patron's power is easier in these conditions!")
 			healing += situational_bonus
 
 		if(ishuman(target))
