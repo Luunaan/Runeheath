@@ -203,6 +203,22 @@
 		to_chat(user, span_warning("Nothing to bite."))
 		return
 
+	var/weak_intent = istype(user.rmb_intent, /datum/rmb_intent/weak)
+	// Prevent biting ourselves on non-weak intent, or on the head or chest
+	if (src == user && (def_zone == BODY_ZONE_HEAD || def_zone == BODY_ZONE_CHEST || !weak_intent))
+		return // Can't bite ourselves there
+
+	var/fire_gland = HAS_TRAIT(user, TRAIT_FIRE_GLAND)
+	if (weak_intent && fire_gland && affecting && affecting.wounds && length(affecting.wounds) > 0)
+		if (!run_armor_check(user.zone_selected, "fire"))
+			attempt_breath_cauterisation(user, FIRE_GLAND_CAUTERISE_BASE_PROB, affecting)
+		else
+			if (src != user)
+				to_chat(user, span_warning("I can't cauterise [src]'s [affecting.name] - there's something in the way."))
+			else
+				to_chat(user, span_warning("I can't cauterise my [affecting.name] - there's something in the way."))
+		return TRUE
+
 	next_attack_msg.Cut()
 
 	user.do_attack_animation(src, "bite")
@@ -216,11 +232,15 @@
 	else
 		if(!affecting.has_wound(/datum/wound/bite))
 			nodmg = TRUE
+			
 	if(!nodmg)
 		var/armor_block = run_armor_check(user.zone_selected, "stab",blade_dulling=BCLASS_BITE)
 		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
 			nodmg = TRUE
 			next_attack_msg += span_warning("Armor stops the damage.")
+		else if (HAS_TRAIT(user, TRAIT_FIRE_GLAND)) // Damage applied, so burn the target as well.
+			armor_block = run_armor_check(user.zone_selected, "fire", blade_dulling=BCLASS_BITE)
+			apply_damage(FIRE_GLAND_DAMAGE, BURN, def_zone, armor_block, user)
 
 	var/datum/wound/caused_wound
 	if(!nodmg)
@@ -262,25 +282,49 @@
 				zombie_antag.last_bite = world.time
 				if(bite_victim.zombie_infect_attempt())   // infect_attempt on bite
 					to_chat(user, span_danger("You feel your gift trickling from your mouth into [bite_victim]'s wound..."))
-				
-	var/obj/item/grabbing/bite/B = new()
-	user.equip_to_slot_or_del(B, SLOT_MOUTH)
-	if(user.mouth == B)
-		var/used_limb = src.find_used_grab_limb(user)
-		B.name = "[src]'s [parse_zone(used_limb)]"
-		var/obj/item/bodypart/BP = get_bodypart(check_zone(used_limb))
-		BP.grabbedby += B
-		B.grabbed = src
-		B.grabbee = user
-		B.limb_grabbed = BP
-		B.sublimb_grabbed = used_limb
 
-		lastattacker = user.real_name
-		lastattackerckey = user.ckey
-		if(mind)
-			mind.attackedme[user.real_name] = world.time
-		log_combat(user, src, "bit")
+	if (!weak_intent) // weak intent won't cause us to grab
+		var/obj/item/grabbing/bite/B = new()
+		user.equip_to_slot_or_del(B, SLOT_MOUTH)
+		if(user.mouth == B)
+			var/used_limb = src.find_used_grab_limb(user)
+			B.name = "[src]'s [parse_zone(used_limb)]"
+			var/obj/item/bodypart/BP = get_bodypart(check_zone(used_limb))
+			BP.grabbedby += B
+			B.grabbed = src
+			B.grabbee = user
+			B.limb_grabbed = BP
+			B.sublimb_grabbed = used_limb
+
+			lastattacker = user.real_name
+			lastattackerckey = user.ckey
+			if(mind)
+				mind.attackedme[user.real_name] = world.time
+			log_combat(user, src, "bit")
 	return TRUE
+
+/mob/living/carbon/proc/attempt_breath_cauterisation(mob/living/carbon/human/user, success_prob, obj/item/bodypart/part)
+	if (!isnum(success_prob))
+		return
+
+	if (src != user)
+		user.visible_message("[user] gently bites [src]'s [part.name], and begins to exhale...",\
+			"I gently bite [src]'s [part.name], and begin to exhale...")
+	else
+		user.visible_message("[user] gently bites [user.p_their()] [part.name], and begins to exhale...",\
+			"I gently bite my [part.name], and begin to exhale...")
+
+	if (do_after(user, FIRE_GLAND_CAUTERISE_BASE_TIME, FALSE, src))
+		if (prob(FIRE_GLAND_CAUTERISE_BASE_PROB))
+			for(var/datum/wound/bleeder in part.wounds)
+				bleeder.cauterize_wound()
+			src.apply_damage(FIRE_GLAND_CAUTERISE_DAMAGE, BURN, part.body_zone)
+			if (!src.has_status_effect(/datum/status_effect/buff/ozium))
+				src.emote("scream")
+			else
+				src.emote("groan")
+		else
+			user.visible_message("[user] doesn't seem to achieve anything.", "I fail to stop the bleeding.")
 
 /mob/living/proc/get_jump_range()
 	if(!check_armor_skill() || get_item_by_slot(SLOT_LEGCUFFED))
@@ -410,8 +454,6 @@
 				jump_action(A)
 			if(INTENT_BITE)
 				if(!A.Adjacent(src))
-					return
-				if(A == src)
 					return
 				if(src.incapacitated())
 					return

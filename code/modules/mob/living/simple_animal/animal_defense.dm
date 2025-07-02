@@ -176,6 +176,8 @@
 			gib()
 		return
 	if(src.apply_damage(damage, BRUTE))
+		if (HAS_TRAIT(user, TRAIT_FIRE_GLAND))
+			src.apply_damage(FIRE_GLAND_DAMAGE, BURN)
 		if(istype(user, /mob/living/carbon/human/species/werewolf))
 			visible_message(span_danger("The werewolf bites into [src] and thrashes!"))
 		else

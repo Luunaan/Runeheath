@@ -17,6 +17,7 @@
 		TRAIT_BOOMING_VOICE,
 		TRAIT_GEM_EATER,
 		TRAIT_PRECIOUS_METAL_EATER,
+		TRAIT_FIRE_GLAND,
 		)
 	liked_food = PRECIOUS
 	burnmult = 0.5 // Dragons resist fire

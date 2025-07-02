@@ -20,6 +20,12 @@
 
 #define NATURAL_SWIMMER_SWIM_STAMINA_COST 0 // Stamina cost for moving into a water tile with Natural Swimmer
 
+#define FIRE_GLAND_DAMAGE 5
+#define FIRE_GLAND_CAUTERISE_DAMAGE 15
+#define FIRE_GLAND_CAUTERISE_MEDIAN 2
+#define FIRE_GLAND_CAUTERISE_BASE_TIME (3.5 SECONDS)
+#define FIRE_GLAND_CAUTERISE_BASE_PROB 50
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -212,6 +218,7 @@
 #define TRAIT_BLESSED_BLOOD "Blessed Blood" // Tasty blood for leeches, more healing received
 #define TRAIT_DIVINE_FORTUNE "Divine Fortune" // Improves results on certain luck rolls
 #define TRAIT_NATURAL_SWIMMER "Natural Swimmer" // No stamina cost when swimming
+#define TRAIT_FIRE_GLAND "Fire Gland" // Bites deal a little fire damage, weak bites function like a cautery
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -363,6 +370,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DIVINE_BEAUTY = span_info("My divine heritage has left me more comely than others."),
 	TRAIT_DIVINE_FORTUNE = span_info("I am favored by the divine, giving me better luck than others."),
 	TRAIT_NATURAL_SWIMMER = span_info("My kind naturally live in the water - moving through it is no problem for us."),
+	TRAIT_FIRE_GLAND = span_info("My fire gland means my bites are burning hot."),
 ))
 
 // trait accessor defines

@@ -578,6 +578,8 @@
 	C.next_attack_msg.Cut()
 	user.do_attack_animation(C, "bite")
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
+		if (HAS_TRAIT(user, TRAIT_FIRE_GLAND))
+			C.apply_damage(FIRE_GLAND_DAMAGE, BURN, limb_grabbed, armor_block, user)
 		if (HAS_TRAIT(C, TRAIT_VILE_BLOOD) && !HAS_TRAIT(user, TRAIT_NASTY_EATER))
 			user.adjustToxLoss(VILE_BLOOD_BITE_TOX_DAMAGE, 0)
 			if (user.nausea < VILE_BLOOD_MAX_NAUSEA)
