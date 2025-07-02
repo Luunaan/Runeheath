@@ -18,6 +18,7 @@
 		TRAIT_GEM_EATER,
 		TRAIT_PRECIOUS_METAL_EATER,
 		)
+	liked_food = PRECIOUS
 	burnmult = 0.5 // Dragons resist fire
 	heatmult = 0.5
 	hungermult = 1.1 // Drakians need a lot of energy

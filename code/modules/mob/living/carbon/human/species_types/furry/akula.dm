@@ -22,6 +22,8 @@
 		TRAIT_LARGE_MAW,
 		TRAIT_NATURAL_SWIMMER,
 		)
+	liked_food = MEAT
+	disliked_food = VEGETABLES
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
