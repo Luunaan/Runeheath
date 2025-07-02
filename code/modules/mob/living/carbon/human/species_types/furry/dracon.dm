@@ -22,6 +22,7 @@
 	liked_food = PRECIOUS
 	burnmult = 0.5 // Dragons resist fire
 	heatmult = 0.5
+	toxmult = 0.9 // Slight resistance to tox damage
 	hungermult = 1.1 // Drakians need a lot of energy
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
