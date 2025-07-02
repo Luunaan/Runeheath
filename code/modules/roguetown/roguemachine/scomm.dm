@@ -158,7 +158,7 @@
 			say("There are no rats running this jabberline.", spans = list("info"))
 			return
 		var/obj/structure/roguemachine/scomm/S = SSroguemachine.scomm_machines[nightcall]
-		if(!S)
+		if(!S || !istype(S, /obj/structure/roguemachine/scomm))
 			to_chat(user, span_warning("Nothing but rats squeaking back at you."))
 			playsound(src, 'sound/vo/mobs/rat/rat_life.ogg', 100, TRUE, -1)
 			return
