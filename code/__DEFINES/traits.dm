@@ -18,6 +18,8 @@
 #define BLESSED_BLOOD_LEECH_ATTACH_MULT 2 // Multiplier for leech attachment rate with Blessed Blood
 #define BLESSED_BLOOD_HEAL_MOD 1.5 // Added to healing received by characters with Blessed Blood
 
+#define NATURAL_SWIMMER_SWIM_STAMINA_COST 0 // Stamina cost for moving into a water tile with Natural Swimmer
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -208,6 +210,7 @@
 #define TRAIT_DIVINE_BEAUTY "Divine Beauty" // Functions similarly to Beautiful virtue
 #define TRAIT_BLESSED_BLOOD "Blessed Blood" // Tasty blood for leeches, more healing received
 #define TRAIT_DIVINE_FORTUNE "Divine Fortune" // Improves results on certain luck rolls
+#define TRAIT_NATURAL_SWIMMER "Natural Swimmer" // No stamina cost when swimming
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -357,6 +360,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PRECIOUS_METAL_EATER = span_info("I can eat some metals - coins can be a nice snack, sometimes..."),
 	TRAIT_DIVINE_BEAUTY = span_info("My divine heritage has left me more comely than others."),
 	TRAIT_DIVINE_FORTUNE = span_info("I am favored by the divine, giving me better luck than others."),
+	TRAIT_NATURAL_SWIMMER = span_info("My kind naturally live in the water - moving through it is no problem for us."),
 ))
 
 // trait accessor defines

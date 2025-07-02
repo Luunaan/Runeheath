@@ -85,6 +85,10 @@
 	var/const/MIN_STAM_DRAIN = 1
 	var/const/STAM_PER_LEVEL = 5
 	var/const/UNSKILLED_ARMOR_PENALTY = 40
+
+	if (HAS_TRAIT(swimmer, TRAIT_NATURAL_SWIMMER))
+		return NATURAL_SWIMMER_SWIM_STAMINA_COST
+	
 	if(!isliving(swimmer))
 		return 0
 	if(!swim_skill)

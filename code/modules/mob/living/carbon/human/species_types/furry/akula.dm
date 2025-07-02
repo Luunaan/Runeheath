@@ -15,7 +15,13 @@
 	(+1 Constitution, +1 Perception)"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
-	inherent_traits = list(TRAIT_WATERBREATHING, TRAIT_SEA_DRINKER, TRAIT_GOODBITE, TRAIT_LARGE_MAW)
+	inherent_traits = list(
+		TRAIT_WATERBREATHING,
+		TRAIT_SEA_DRINKER,
+		TRAIT_GOODBITE,
+		TRAIT_LARGE_MAW,
+		TRAIT_NATURAL_SWIMMER,
+		)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
