@@ -26,6 +26,9 @@
 #define FIRE_GLAND_CAUTERISE_BASE_TIME (3.5 SECONDS)
 #define FIRE_GLAND_CAUTERISE_BASE_PROB 50
 
+#define DRAGON_BLOOD_LEECH_MULT 1.25
+#define DRAGON_BLOOD_LEECH_ATTACH_MULT 1.5
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -219,6 +222,7 @@
 #define TRAIT_DIVINE_FORTUNE "Divine Fortune" // Improves results on certain luck rolls
 #define TRAIT_NATURAL_SWIMMER "Natural Swimmer" // No stamina cost when swimming
 #define TRAIT_FIRE_GLAND "Fire Gland" // Bites deal a little fire damage, weak bites function like a cautery
+#define TRAIT_DRAGON_BLOOD "Draconic Blood" // Leeches more likely to attach & drain more
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -371,6 +375,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DIVINE_FORTUNE = span_info("I am favored by the divine, giving me better luck than others."),
 	TRAIT_NATURAL_SWIMMER = span_info("My kind naturally live in the water - moving through it is no problem for us."),
 	TRAIT_FIRE_GLAND = span_info("My fire gland means my bites are burning hot."),
+	TRAIT_DRAGON_BLOOD = span_info("The blood of dragons runs through my veins."),
 ))
 
 // trait accessor defines

@@ -137,6 +137,8 @@
 		blood_extract_mult *= VILE_BLOOD_LEECH_MULT
 	if (HAS_TRAIT(host, TRAIT_BLESSED_BLOOD))
 		blood_extract_mult *= BLESSED_BLOOD_LEECH_MULT
+	if (HAS_TRAIT(AM, TRAIT_DRAGON_BLOOD))
+		blood_extract_mult *= DRAGON_BLOOD_LEECH_MULT
 
 	host.adjustToxLoss(toxin_healing * blood_extract_mult)
 	var/obj/item/bodypart/bp = loc
@@ -172,6 +174,8 @@
 		blood_extract_mult *= VILE_BLOOD_LEECH_MULT
 	if (HAS_TRAIT(host, TRAIT_BLESSED_BLOOD))
 		blood_extract_mult *= BLESSED_BLOOD_LEECH_MULT
+	if (HAS_TRAIT(AM, TRAIT_DRAGON_BLOOD))
+		blood_extract_mult *= DRAGON_BLOOD_LEECH_MULT
 
 	user.adjustToxLoss(toxin_healing * blood_extract_mult)
 	if(giving)

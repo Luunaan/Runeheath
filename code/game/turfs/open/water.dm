@@ -355,6 +355,8 @@
 				chance *= VILE_BLOOD_LEECH_ATTACH_MULT
 			if (HAS_TRAIT(AM, TRAIT_BLESSED_BLOOD))
 				chance *= BLESSED_BLOOD_LEECH_ATTACH_MULT
+			if (HAS_TRAIT(AM, TRAIT_DRAGON_BLOOD))
+				chance *= DRAGON_BLOOD_LEECH_ATTACH_MULT
 
 			if(!prob(chance))
 				return
