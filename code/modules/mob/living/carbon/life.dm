@@ -347,37 +347,41 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 				confused += 2
 			Dizzy(10)
 
+		var/tox_loss = 0
 		if(drunkenness >= 51)
-			adjustToxLoss(1)
+			tox_loss += 1
 			if(prob(3))
 				confused += 15
 				vomit() // vomiting clears toxloss, consider this a blessing
 			Dizzy(25)
 
 		if(drunkenness >= 61)
-			adjustToxLoss(1)
+			tox_loss += 1
 			if(prob(50))
 				blur_eyes(5)
 
 		if(drunkenness >= 71)
-			adjustToxLoss(1)
+			tox_loss += 1
 			if(prob(10))
 				blur_eyes(5)
 
 		if(drunkenness >= 81)
-			adjustToxLoss(3)
+			tox_loss += 3
 			if(prob(5) && !stat)
 				to_chat(src, span_warning("Maybe I should lie down for a bit..."))
 
 		if(drunkenness >= 91)
-			adjustToxLoss(5)
+			tox_loss += 5
 //			adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 			if(prob(20) && !stat)
 				to_chat(src, span_warning("Just a quick nap..."))
 				Sleeping(900)
 
 		if(drunkenness >= 101)
-			adjustToxLoss(5) //Let's be honest you shouldn't be alive by now
+			tox_loss += 5 //Let's be honest you shouldn't be alive by now
+
+		if (!HAS_TRAIT(src, TRAIT_NO_ALCOHOL_POISONING))
+			adjustToxLoss(tox_loss)
 
 //used in human and monkey handle_environment()
 /mob/living/carbon/proc/natural_bodytemperature_stabilization()

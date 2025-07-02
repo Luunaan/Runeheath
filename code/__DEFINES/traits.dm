@@ -29,6 +29,8 @@
 #define DRAGON_BLOOD_LEECH_MULT 1.25
 #define DRAGON_BLOOD_LEECH_ATTACH_MULT 1.5
 
+#define STOCKY_POINT_MOD 3
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -223,6 +225,8 @@
 #define TRAIT_NATURAL_SWIMMER "Natural Swimmer" // No stamina cost when swimming
 #define TRAIT_FIRE_GLAND "Fire Gland" // Bites deal a little fire damage, weak bites function like a cautery
 #define TRAIT_DRAGON_BLOOD "Draconic Blood" // Leeches more likely to attach & drain more
+#define TRAIT_STOCKY "Stocky" // Harder to knock prone by running or to tackle
+#define TRAIT_NO_ALCOHOL_POISONING "Natural Drinker" // No alcohol poisoning, ever
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -376,6 +380,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NATURAL_SWIMMER = span_info("My kind naturally live in the water - moving through it is no problem for us."),
 	TRAIT_FIRE_GLAND = span_info("My fire gland means my bites are burning hot."),
 	TRAIT_DRAGON_BLOOD = span_info("The blood of dragons runs through my veins."),
+	TRAIT_STOCKY = span_info("I'm hard to knock to the ground."),
+	TRAIT_NO_ALCOHOL_POISONING = span_info("Alcohol naturally agrees with me - I never need to worry about drinking too much."),
 ))
 
 // trait accessor defines

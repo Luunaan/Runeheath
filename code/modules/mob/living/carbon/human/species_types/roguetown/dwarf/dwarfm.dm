@@ -28,7 +28,9 @@
 	inherent_traits = list(
 		TRAIT_DRUNK_HEALING,
 		TRAIT_BOOMING_VOICE,
-		TRAIT_LOW_LIGHT_VISION
+		TRAIT_LOW_LIGHT_VISION,
+		TRAIT_STOCKY,
+		TRAIT_NO_ALCOHOL_POISONING,
 		)
 	hungermult = 0.85 // Small, slow metabolisms
 	toxmult = 0.66

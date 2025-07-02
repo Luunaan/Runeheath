@@ -180,6 +180,9 @@
 			var/self_points = FLOOR((STACON + STASTR)/2, 1)
 			var/target_points = FLOOR((L.STACON + L.STASTR)/2, 1)
 
+			if (HAS_TRAIT(L, TRAIT_STOCKY))
+				target_points += STOCKY_POINT_MOD
+
 			switch(sprint_distance)
 				// Point blank
 				if(0 to 1)
