@@ -52,6 +52,12 @@
 
 /datum/config_entry/flag/log_prayer	// log prayers
 
+/datum/config_entry/flag/log_direct_messages // log direct messages
+
+/datum/config_entry/flag/log_telepathy // log telepathy
+
+/datum/config_entry/flag/log_pheromones // log pheromones
+
 /datum/config_entry/flag/log_law	// log lawchanges
 
 /datum/config_entry/flag/log_game	// log game events

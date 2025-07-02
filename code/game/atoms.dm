@@ -992,6 +992,12 @@
 			log_game(log_text)
 		if(LOG_MECHA)
 			log_mecha(log_text)
+		if(LOG_DIRECT_MESSAGE)
+			log_direct_message(log_text)
+		if(LOG_TELEPATHY)
+			log_telepathy(log_text)
+		if(LOG_PHEROMONES)
+			log_pheromones(log_text)
 		else
 			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
 			log_game(log_text)

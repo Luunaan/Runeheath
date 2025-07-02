@@ -65,7 +65,7 @@
 	verbs -= /client/verb/direct_message
 	direct_message_timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/client, return_direct_message_verb)), 1200, TIMER_STOPPABLE) //2 minute cooldown
 	
-	log_admin("[key_name(src)] sent a direct message to [key_name(target)]: [msg]")
+	log_direct_message("[key_name(src)] sent a direct message to [key_name(target)]: [msg]")
 	to_chat(usr, "<font color='["#6699CC"]'><b><span class='prefix'>Direct Message to</span> <EM>[target.name]:</EM> <span class='message'>[msg]</span></b></font>")
 	to_chat(target, "<font color='["#6699CC"]'><b><span class='prefix'>Direct Message from</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
 

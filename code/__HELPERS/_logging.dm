@@ -134,6 +134,18 @@
 	if (CONFIG_GET(flag/log_prayer))
 		WRITE_LOG(GLOB.world_game_log, "\[[logtime]] PRAY: [text]")
 
+/proc/log_direct_message(text)
+	if (CONFIG_GET(flag/log_direct_messages))
+		WRITE_LOG(GLOB.world_game_log, "\[[logtime]] DIRECT MESSAGE: [text]")
+
+/proc/log_telepathy(text)
+	if (CONFIG_GET(flag/log_telepathy))
+		WRITE_LOG(GLOB.world_game_log, "\[[logtime]] TELEPATHY: [text]")
+
+/proc/log_pheromones(text)
+	if (CONFIG_GET(flag/log_pheromones))
+		WRITE_LOG(GLOB.world_game_log, "\[[logtime]] PHEROMONES: [text]")
+
 /proc/log_pda(text)
 	if (CONFIG_GET(flag/log_pda))
 		WRITE_LOG(GLOB.world_pda_log, "\[[logtime]] PDA: [text]")
