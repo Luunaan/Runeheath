@@ -24,6 +24,8 @@
 		TRAIT_FALL_RESISTANT,
 		TRAIT_LOW_LIGHT_VISION,
 		) 
+	liked_food = MEAT | FRIED | DAIRY
+	disliked_food = GROSS | FRUIT | VEGETABLES
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fma.dmi'
