@@ -1062,19 +1062,28 @@
 			color = "grey"
 		if(SEEN_LOG_ATTACK)
 			color = "red"
+		if (SEEN_LOG_DIRECT_MESSAGE)
+			color = "blue"
+		if (SEEN_LOG_TELEPATHY)
+			color = "purple"
+		if (SEEN_LOG_PHEROMONES)
+			color = "brown"
+		if (SEEN_LOG_LOOC)
+			color = "blue"
 	var/count = 0
 	var/viewer_string = ""
-	for(var/mob/viewer as anything in viewers)
-		if(viewer == user)
-			continue
-		if(!isliving(viewer))
-			continue
-		if(!viewer.client)
-			continue
-		count++
-		if(count > 1)
-			viewer_string += ", "
-		viewer_string += key_name(viewer)
+	if (viewers && length(viewers) > 0)
+		for(var/mob/viewer as anything in viewers)
+			if(viewer == user)
+				continue
+			if(!isliving(viewer))
+				continue
+			if(!viewer.client)
+				continue
+			count++
+			if(count > 1)
+				viewer_string += ", "
+			viewer_string += key_name(viewer)
 	if(target)
 		if(ismob(target))
 			var/mob/mob_target = target

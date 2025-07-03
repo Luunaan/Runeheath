@@ -227,6 +227,9 @@
 #define TRAIT_DRAGON_BLOOD "Draconic Blood" // Leeches more likely to attach & drain more
 #define TRAIT_STOCKY "Stocky" // Harder to knock prone by running or to tackle
 #define TRAIT_NO_ALCOHOL_POISONING "Natural Drinker" // No alcohol poisoning, ever
+#define TRAIT_TELEPATH "Telepath" // Can communicate with a specified player telepathically
+#define TRAIT_PHEROMONE_COMMUNICATION "Pheromones" // Can communicate with everyone nearby via pheromones (if they share the trait)
+
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -382,6 +385,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DRAGON_BLOOD = span_info("The blood of dragons runs through my veins."),
 	TRAIT_STOCKY = span_info("I'm hard to knock to the ground."),
 	TRAIT_NO_ALCOHOL_POISONING = span_info("Alcohol naturally agrees with me - I never need to worry about drinking too much."),
+	TRAIT_TELEPATH = span_info("I can project my words directly into another person's mind."),
+	TRAIT_PHEROMONE_COMMUNICATION = span_info("My body has glands that allow me to communicate through my scent."),
 ))
 
 // trait accessor defines

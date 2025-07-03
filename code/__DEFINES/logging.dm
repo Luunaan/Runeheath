@@ -45,6 +45,10 @@
 #define SEEN_LOG_SAY 1
 #define SEEN_LOG_EMOTE 2
 #define SEEN_LOG_ATTACK 3
+#define SEEN_LOG_DIRECT_MESSAGE 4
+#define SEEN_LOG_TELEPATHY 5
+#define SEEN_LOG_PHEROMONES 6
+#define SEEN_LOG_LOOC 7
 
 //Individual logging panel pages
 #define INDIVIDUAL_ATTACK_LOG		(LOG_ATTACK)
