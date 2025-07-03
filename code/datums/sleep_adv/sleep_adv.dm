@@ -119,26 +119,37 @@
 		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100
 
-	if (HAS_TRAIT(mind.current, TRAIT_NOCTURNAL) && GLOB.tod == "day")
+	var/inspiration_trait_boosted = FALSE // Prevent extra inspirations stacking (except with Inspired)
+	if (HAS_TRAIT(mind.current, TRAIT_NOCTURNAL) && GLOB.tod == "day" && !inspiration_trait_boosted)
 		++inspirations // Nocturnal characters get a bonus from sleeping during the day
-	else if (HAS_TRAIT(mind.current, TRAIT_NOMADIC))
+		inspiration_trait_boosted = TRUE
+	if (HAS_TRAIT(mind.current, TRAIT_NOMADIC))
 		var/turf/T = get_turf(src)
 		if (T)
 			var/ceiling_status = T.get_ceiling_status()
-			if (ceiling_status && ceiling_status["SKYVISIBLE"])
+			if (ceiling_status && ceiling_status["SKYVISIBLE"] && !inspiration_trait_boosted)
 				++inspirations // Nomadic characters get a bonus from sleeping outside
+				inspiration_trait_boosted = TRUE
+	if (HAS_TRAIT(mind.current, TRAIT_INSPIRED))
+		++inspirations // Inspired characters ALWAYS get extra inspiration
 
 	grant_inspiration_xp(inspirations)
 
 	stress_amount = 0
 	stress_cycles = 0
 
+	// We COULD add 100 dream dust, but if we have <100 to start with, we'd still only get one point
+	// We want to GUARANTEE that Adaptable gives an extra point no matter what
+	var/extra_dream_points = 0
+	if (HAS_TRAIT(mind.current, TRAIT_ADAPTABLE))
+		++extra_dream_points
+
 	var/dream_points = FLOOR(dream_dust / 100, 1)
 	var/dream_dust_modulo = dream_dust % 100
 
 	retained_dust = dream_dust_modulo
 
-	sleep_adv_points += dream_points + 1 //Have a dream point. Because you're awesome.
+	sleep_adv_points += dream_points + extra_dream_points + 1 //Have a dream point. Because you're awesome.
 	sleep_adv_cycle++
 
 	show_ui(mind.current)

@@ -68,6 +68,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/brainmult = 1		// multiplier for brain damage
 	var/stunmult = 1		// multiplier for stun duration
 	var/hungermult = 1		// multiplier for nutrition DECREASES
+	var/experiencemult = 1	// multiplier for experience GAIN
 	var/attack_type = BRUTE //Type of damage attack does
 	var/siemens_coeff = 1 //base electrocution coefficient
 	var/damage_overlay_type = "human" //what kind of damage overlays (if any) appear on our species when wounded?

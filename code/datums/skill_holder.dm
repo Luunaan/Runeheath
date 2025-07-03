@@ -54,6 +54,15 @@
 	set_current(destination)
 
 /datum/skill_holder/proc/adjust_experience(skill, amt, silent = FALSE)
+
+	var/mult = 1
+	if (amt > 0 && ishuman(current))
+		var/mob/living/carbon/human/H = current
+		if (H.dna?.species)
+			mult = H.dna.species.experiencemult
+
+	amt *= mult
+
 	var/datum/skill/S = GetSkillRef(skill)
 	skill_experience[S] = max(0, skill_experience[S] + amt) //Prevent going below 0
 	var/old_level = known_skills[S]
