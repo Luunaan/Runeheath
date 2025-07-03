@@ -16,6 +16,7 @@
 		TRAIT_VERY_VIRILE,
 		TRAIT_NASTY_EATER,
 		TRAIT_VILE_BLOOD,
+		TRAIT_MONSTER_DIGESTION,
 		)
 	toxmult = 0.66
 	hungermult = 1.1 // Ravenous pests

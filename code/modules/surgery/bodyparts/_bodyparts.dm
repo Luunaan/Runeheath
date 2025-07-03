@@ -166,6 +166,14 @@
 			user.fully_heal()
 			qdel(src)
 		return
+	if (HAS_TRAIT(user, TRAIT_MONSTER_DIGESTION))
+		if(do_after(user, 50, target = src))
+			user.visible_message(span_warning("[user] consumes [src]!"),\
+				span_notice("I consume [src]!"))
+			user.reagents.add_reagent(/datum/reagent/medicine/healthpot, 10)
+			playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
+			qdel(src)
+		return
 	return ..()
 
 /obj/item/bodypart/MiddleClick(mob/living/user, params)

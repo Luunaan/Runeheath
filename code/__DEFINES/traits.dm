@@ -229,6 +229,7 @@
 #define TRAIT_NO_ALCOHOL_POISONING "Natural Drinker" // No alcohol poisoning, ever
 #define TRAIT_TELEPATH "Telepath" // Can communicate with a specified player telepathically
 #define TRAIT_PHEROMONE_COMMUNICATION "Pheromones" // Can communicate with everyone nearby via pheromones (if they share the trait)
+#define TRAIT_MONSTER_DIGESTION "Monstrous Digestion" // Get a little healing from eating body parts
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -387,6 +388,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NO_ALCOHOL_POISONING = span_info("Alcohol naturally agrees with me - I never need to worry about drinking too much."),
 	TRAIT_TELEPATH = span_info("I can project my words directly into another person's mind."),
 	TRAIT_PHEROMONE_COMMUNICATION = span_info("My body has glands that allow me to communicate through my scent."),
+	TRAIT_MONSTER_DIGESTION = span_info("My monstrous ancestry allows me to eat... Forbidden meats."),
 ))
 
 // trait accessor defines
