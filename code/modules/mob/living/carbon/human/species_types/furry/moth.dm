@@ -13,6 +13,10 @@
 		TRAIT_TELEPATH,
 		TRAIT_PHEROMONE_COMMUNICATION,
 		)
+	inherent_verbs = list(
+		/mob/living/proc/pheromonal_say,
+		/mob/living/proc/telepathic_say,
+	)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/moth_male.dmi'

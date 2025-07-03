@@ -155,6 +155,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/stress_examine = FALSE
 	var/stress_desc = null
 
+	var/list/inherent_verbs = list()
+
 ///////////
 // PROCS //
 ///////////
@@ -420,6 +422,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)
+
+	C.verbs += inherent_verbs
 
 	if(TRAIT_TOXIMMUNE in inherent_traits)
 		C.setToxLoss(0, TRUE, TRUE)
