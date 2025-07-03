@@ -18,7 +18,11 @@
 	skin_tone_wording = "Progenitor"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_VERY_FERTILE, TRAIT_VERY_VIRILE)
+	inherent_traits = list(
+		TRAIT_NOMOBSWAP,
+		TRAIT_VERY_FERTILE,
+		TRAIT_VERY_VIRILE
+		)
 	burnmult = 0.5 // Infernal resistance to flames
 	heatmult = 0.5
 	default_features = MANDATORY_FEATURE_LIST
