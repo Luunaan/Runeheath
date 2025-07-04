@@ -54,7 +54,7 @@
 		)
 		if(!do_after(user, 2 SECONDS))
 			return FALSE
-	if(!istype(A, valid_sword))
+	if(!istype(A, /obj/item/rogueweapon/sword))
 		to_chat(user, span_warning("[A] won't fit in there.."))
 		return FALSE
 	if(sheathed)
@@ -104,13 +104,13 @@
 	..()
 
 /obj/item/scabbard/attackby(obj/item/I, mob/user, params)
-	if(istype(I, valid_sword))
+	if(istype(I, /obj/item/rogueweapon/sword))
 		eatsword(user, I)
 
 	..()
 
 /obj/item/scabbard/examine(mob/user)
-	..()
+	. = ..()
 	if(sheathed)
 		. += span_notice("The sheath is occupied by [sheathed].")
 
