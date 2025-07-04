@@ -139,11 +139,17 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		return
 	if(person == src || person == src.current)
 		return
+	if (QDELETED(src) || QDELETED(src.current))
+		return
 	if(istype(person, /datum/mind))
 		var/datum/mind/M = person
+		if (QDELETED(M) || QDELETED(M.current))
+			return
 		person = M.current
 	if(ishuman(person))
 		var/mob/living/carbon/human/H = person
+		if (QDELETED(H) || QDELETED(H.mind))
+			return
 		if(!known_people[H.real_name])
 			known_people[H.real_name] = list()
 		known_people[H.real_name]["VCOLOR"] = H.voice_color
@@ -173,11 +179,17 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		return
 	if(person == src || person == src.current)
 		return
+	if (QDELETED(src) || QDELETED(src.current))
+		return
 	if(ishuman(person))
 		var/mob/living/carbon/human/guy = person
+		if (QDELETED(guy) || QDELETED(guy.mind))
+			return
 		person = guy.mind
 	if(istype(person, /datum/mind))
 		var/datum/mind/M = person
+		if (QDELETED(M) || QDELETED(M.current))
+			return
 		if(M.known_people)
 			if(ishuman(current))
 				var/mob/living/carbon/human/H = current
