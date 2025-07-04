@@ -238,6 +238,7 @@
 #define TRAIT_BURNING_BLOOD "Burning Blood" // Burns anyone who gets blood on them
 #define TRAIT_BURNING_SKIN "Burning Skin" // Punches and strong grabs deal slight burning damage
 #define TRAIT_UNBLEMISHED "Unblemished" // Prevents getting dirty with others' blood
+#define TRAIT_DENSE_MUSCLE "Dense Muscle" // Increased chance of success when escaping restraints
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -402,6 +403,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BURNING_BLOOD = span_info("My blood is so hot that it can burn those who touch it."),
 	TRAIT_BURNING_SKIN = span_info("My skin is hot to the touch."),
 	TRAIT_UNBLEMISHED = span_info("Blood doesn't cling to me like it does others."),
+	TRAIT_DENSE_MUSCLE = span_info("My dense muscles allow me to break free from most restraints easily."),
 ))
 
 // trait accessor defines

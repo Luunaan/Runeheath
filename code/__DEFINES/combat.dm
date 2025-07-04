@@ -79,6 +79,8 @@
 #define FAST_CUFFBREAK 1
 #define INSTANT_CUFFBREAK 2
 
+#define FAST_CUFFBREAK_TIME_MULTIPLIER 0.5 // with FAST_CUFFBREAK, restraint break times are multiplied by this value
+
 // animation types
 #define ATTACK_ANIMATION_BONK "bonk"
 #define ATTACK_ANIMATION_SWIPE "swipe"

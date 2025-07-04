@@ -16,8 +16,12 @@
 	inherent_traits = list(
 		TRAIT_GOODBITE,
 		TRAIT_LARGE_MAW,
-		TRAIT_HAULER
+		TRAIT_HAULER,
+		TRAIT_DENSE_MUSCLE,
+		TRAIT_BOOMING_VOICE,
 		)
+	venom_reagent = /datum/reagent/lizardfolk_venom
+	hungermult = 0.9 // Cold-blooded, no energy needs spending on body heat
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'

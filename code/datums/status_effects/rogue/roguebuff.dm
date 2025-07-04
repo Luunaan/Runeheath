@@ -93,6 +93,27 @@
 	desc = ""
 	icon_state = "acid"
 
+/datum/status_effect/buff/lizardfolk_venom
+	id = "lizardfolk_high"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/lizardfolk_venom
+	effectedstats = list("intelligence" = -1, "speed" = -1, "perception" = -1)
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/lizardfolk_venom/on_apply()
+	owner.add_stress(/datum/stressevent/lizardfolk_venom_high)
+	owner.visible_message("[owner]'s pupils dilate.", span_warning("I feel happy and relaxed..."))
+	. = ..()
+
+/datum/status_effect/buff/lizardfolk_venom/on_remove()
+	owner.remove_stress(/datum/stressevent/lizardfolk_venom_high)
+	owner.visible_message("[owner]'s pupils contract.", "I come down from my high.")
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/lizardfolk_venom
+	name = "High"
+	desc = ""
+	icon_state = "acid"
+
 /datum/status_effect/buff/ozium
 	id = "ozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks

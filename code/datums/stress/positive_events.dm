@@ -48,6 +48,11 @@
 	stressadd = -4
 	desc = span_blue("I'm so high, don't take away my sky.")
 
+/datum/stressevent/lizardfolk_venom_high
+	timer = 1 MINUTES
+	stressadd = -5
+	desc = span_blue("I feel so happy and relaxed...")
+
 /datum/stressevent/stuffed
 	timer = 20 MINUTES
 	stressadd = -1
@@ -256,3 +261,23 @@
 	stressadd = -2
 	desc = span_info("A Devout Eoran shone their brightness upon me.")
 	timer = 10 MINUTES
+
+/datum/stressevent/withdrawal_minor
+	stressadd = 2
+	desc = span_warning("I need to sate my addiction...")
+	timer = 1 MINUTES
+
+/datum/stressevent/withdrawal_moderate
+	stressadd = 4
+	desc = span_warning("I <i>really</i> need to sate my addiction...")
+	timer = 1 MINUTES
+
+/datum/stressevent/withdrawal_severe
+	stressadd = 7
+	desc = span_warning("I'm suffering withdrawal...")
+	timer = 1 MINUTES
+
+/datum/stressevent/withdrawal_critical
+	stressadd = 10
+	desc = span_warning("I can't take this withdrawal anymore!")
+	timer = 1 MINUTES

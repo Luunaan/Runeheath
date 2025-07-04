@@ -209,15 +209,27 @@
 		return // Can't bite ourselves there
 
 	var/fire_gland = HAS_TRAIT(user, TRAIT_FIRE_GLAND)
-	if (weak_intent && fire_gland && affecting && affecting.wounds && length(affecting.wounds) > 0)
-		if (!run_armor_check(user.zone_selected, "fire"))
-			attempt_breath_cauterisation(user, FIRE_GLAND_CAUTERISE_BASE_PROB, affecting)
-		else
-			if (src != user)
-				to_chat(user, span_warning("I can't cauterise [src]'s [affecting.name] - there's something in the way."))
+	if (weak_intent)
+		if (fire_gland && affecting && affecting.wounds && length(affecting.wounds) > 0)
+			if (!run_armor_check(user.zone_selected, "fire"))
+				attempt_breath_cauterisation(user, FIRE_GLAND_CAUTERISE_BASE_PROB, affecting)
 			else
-				to_chat(user, span_warning("I can't cauterise my [affecting.name] - there's something in the way."))
-		return TRUE
+				if (src != user)
+					to_chat(user, span_warning("I can't cauterise [src]'s [affecting.name] - there's something in the way."))
+				else
+					to_chat(user, span_warning("I can't cauterise my [affecting.name] - there's something in the way."))
+			return TRUE
+		else if (user.dna?.species?.venom_reagent)
+			if (src == user)
+				user.visible_message("[user] gently bites [p_their()] [affecting.name]...",\
+					"I gently bite my [affecting.name], and my venom begins to flow...")
+			else
+				user.visible_message("[user] gently bites [src]'s [affecting.name]...",\
+					"I gently bite [src]'s [affecting.name], and my venom begins to flow...")
+			if (do_after(user, 8 SECONDS, FALSE, src))
+				if (reagents)
+					reagents.add_reagent(user.dna.species.venom_reagent, 7.5)
+			return TRUE
 
 	next_attack_msg.Cut()
 
@@ -245,6 +257,8 @@
 	var/datum/wound/caused_wound
 	if(!nodmg)
 		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
+		if (user.dna?.species?.venom_reagent && reagents)
+			reagents.add_reagent(user.dna.species.venom_reagent, 2)
 		if (HAS_TRAIT(src, TRAIT_VILE_BLOOD) && !HAS_TRAIT(user, TRAIT_NASTY_EATER))
 			user.adjustToxLoss(VILE_BLOOD_BITE_TOX_DAMAGE, 0)
 			if (user.nausea < VILE_BLOOD_MAX_NAUSEA)

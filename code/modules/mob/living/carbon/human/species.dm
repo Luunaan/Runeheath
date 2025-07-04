@@ -75,6 +75,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
 	var/deathsound //used to set the mobs deathsound on species change
 	var/grab_sound //Special sound for grabbing
+	var/datum/reagent/venom_reagent = null
 	var/datum/outfit/outfit_important_for_life /// A path to an outfit that is important for species life e.g. plasmaman outfit
 
 	var/flying_species = FALSE //is a flying species, just a check for some things

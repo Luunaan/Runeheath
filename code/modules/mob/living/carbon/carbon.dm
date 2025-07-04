@@ -392,14 +392,19 @@
 		return
 	I.item_flags |= BEING_REMOVED
 	breakouttime = I.slipouttime
-	if((STASTR > 10))
+
+	if(STASTR > 10)
 		var/time_mod = (STASTR - 10) * 20 SECONDS
 		breakouttime -= time_mod
-	if(mind && mind.has_antag_datum(/datum/antagonist/zombie))
-		breakouttime = 10 SECONDS
 	if(STASTR > 15)
-		cuff_break = INSTANT_CUFFBREAK
+		++cuff_break
 		breakouttime = I.breakouttime
+	if (STASTR == 20)
+		++cuff_break
+
+	if (HAS_TRAIT(src, TRAIT_DENSE_MUSCLE))
+		++cuff_break
+
 	if(!cuff_break)
 		to_chat(src, "<span class='notice'>I attempt to remove [I]...</span>")
 		if(do_after(src, breakouttime, 0, target = src))
@@ -409,12 +414,13 @@
 
 	else if(cuff_break == FAST_CUFFBREAK)
 		to_chat(src, "<span class='notice'>I attempt to break [I]...</span>")
-		if(do_after(src, breakouttime, 0, target = src))
+		if(do_after(src, breakouttime * FAST_CUFFBREAK_TIME_MULTIPLIER, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
 			to_chat(src, "<span class='danger'>I fail to break [I]!</span>")
 
-	else if(cuff_break == INSTANT_CUFFBREAK)
+	else if(cuff_break >= INSTANT_CUFFBREAK)
+		to_chat(src, "<span class='notice'>I easily break [I]!</span>")
 		clear_cuffs(I, cuff_break)
 	I.item_flags &= ~BEING_REMOVED
 
