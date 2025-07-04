@@ -139,8 +139,6 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		return
 	if(person == src || person == src.current)
 		return
-	if (QDELETED(person) || QDELETED(src))
-		return
 	if(istype(person, /datum/mind))
 		var/datum/mind/M = person
 		person = M.current
@@ -174,8 +172,6 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(!person)
 		return
 	if(person == src || person == src.current)
-		return
-	if (QDELETED(person) || QDELETED(src))
 		return
 	if(ishuman(person))
 		var/mob/living/carbon/human/guy = person
