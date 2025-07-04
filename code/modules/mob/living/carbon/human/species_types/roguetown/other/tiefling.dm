@@ -21,7 +21,9 @@
 	inherent_traits = list(
 		TRAIT_NOMOBSWAP,
 		TRAIT_VERY_FERTILE,
-		TRAIT_VERY_VIRILE
+		TRAIT_VERY_VIRILE,
+		TRAIT_BURNING_SKIN,
+		TRAIT_BURNING_BLOOD,
 		)
 	burnmult = 0.5 // Infernal resistance to flames
 	heatmult = 0.5

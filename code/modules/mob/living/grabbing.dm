@@ -200,6 +200,8 @@
 			user.stamina_add(rand(7,15))
 			if(M.grippedby(user))			//Aggro grip
 				bleed_suppressing = 0.5		//Better bleed suppression
+				if (HAS_TRAIT(user, TRAIT_BURNING_SKIN) && !M.run_armor_check(limb_grabbed.body_zone))
+					M.apply_damage(BURNING_SKIN_BURN_DAMAGE, "fire", limb_grabbed.body_zone)
 		if(/datum/intent/grab/choke)
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))

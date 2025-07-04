@@ -31,6 +31,9 @@
 
 #define STOCKY_POINT_MOD 3
 
+#define BURNING_SKIN_BURN_DAMAGE 2
+#define BURNING_BLOOD_BURN_DAMAGE 2
+
 // ROGUETRAITS (description when rmb skills button)
 #define TRAIT_WEBWALK "Webwalker"
 #define TRAIT_NOSTINK "Dead Nose"
@@ -232,6 +235,9 @@
 #define TRAIT_MONSTER_DIGESTION "Monstrous Digestion" // Get a little healing from eating body parts
 #define TRAIT_ADAPTABLE "Adaptable" // Extra point when sleeping
 #define TRAIT_INSPIRED "Inspired" // Extra skill to choose when sleeping
+#define TRAIT_BURNING_BLOOD "Burning Blood" // Burns anyone who gets blood on them
+#define TRAIT_BURNING_SKIN "Burning Skin" // Punches and strong grabs deal slight burning damage
+#define TRAIT_UNBLEMISHED "Unblemished" // Prevents getting dirty with others' blood
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -393,6 +399,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MONSTER_DIGESTION = span_info("My monstrous ancestry allows me to eat... Forbidden meats."),
 	TRAIT_ADAPTABLE = span_info("I'm very adaptable - able to learn the skills I need on the fly."),
 	TRAIT_INSPIRED = span_info("Inspiration comes freely to me when I rest."),
+	TRAIT_BURNING_BLOOD = span_info("My blood is so hot that it can burn those who touch it."),
+	TRAIT_BURNING_SKIN = span_info("My skin is hot to the touch."),
+	TRAIT_UNBLEMISHED = span_info("Blood doesn't cling to me like it does others."),
 ))
 
 // trait accessor defines

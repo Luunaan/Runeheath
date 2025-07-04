@@ -1642,22 +1642,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(istype(location))
 					H.add_splatter_floor(location)
 				if(get_dist(user, H) <= 1)	//people with TK won't get smeared with blood
-					user.add_mob_blood(H)
-
+					if (!HAS_TRAIT(user, TRAIT_UNBLEMISHED))
+						user.add_mob_blood(H)
+						var/body_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_L_LEG)
+						if (HAS_TRAIT(H, TRAIT_BURNING_BLOOD) && !user.run_armor_check(body_zone) && !HAS_TRAIT(user, TRAIT_BURNING_BLOOD))
+							if (!user.run_armor_check(BODY_ZONE_CHEST))
+								user.apply_damage(BURNING_BLOOD_BURN_DAMAGE, "fire", BODY_ZONE_CHEST)
+								if (prob(25))
+									to_chat(user, span_warning("I'm scalded by boiling blood!"))
+		
 		switch(hit_area)
 			if(BODY_ZONE_HEAD)
-//				if(!I.get_sharpness() && armor_block < 50)
-//					if(prob(I.force))
-//						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
-//						if(H.stat == CONSCIOUS)
-//							H.visible_message(span_danger("[H] is knocked senseless!"), span_danger("You're knocked senseless!"))
-//							H.confused = max(H.confused, 20)
-//							H.adjust_blurriness(10)
-//						if(prob(10))
-//							H.gain_trauma(/datum/brain_trauma/mild/concussion)
-//					else
-//						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, I.force * 0.2)
-
 				if(bloody)	//Apply blood
 					if(H.wear_mask)
 						H.wear_mask.add_mob_blood(H)
@@ -1670,11 +1665,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						H.update_inv_glasses()
 
 			if(BODY_ZONE_CHEST)
-//				if(H.stat == CONSCIOUS && !I.get_sharpness() && armor_block < 50)
-//					if(prob(I.force))
-//						H.visible_message(span_danger("[H] is knocked down!"), span_danger("You're knocked down!"))
-//						H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
-
 				if(bloody)
 					if(H.wear_armor)
 						H.wear_armor.add_mob_blood(H)
