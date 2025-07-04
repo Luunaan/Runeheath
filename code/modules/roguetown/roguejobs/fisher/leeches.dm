@@ -172,9 +172,9 @@
 	var/blood_extract_mult = 1
 	if (HAS_TRAIT(user, TRAIT_VILE_BLOOD))
 		blood_extract_mult *= VILE_BLOOD_LEECH_MULT
-	if (HAS_TRAIT(host, TRAIT_BLESSED_BLOOD))
+	if (HAS_TRAIT(user, TRAIT_BLESSED_BLOOD))
 		blood_extract_mult *= BLESSED_BLOOD_LEECH_MULT
-	if (HAS_TRAIT(host, TRAIT_DRAGON_BLOOD))
+	if (HAS_TRAIT(user, TRAIT_DRAGON_BLOOD))
 		blood_extract_mult *= DRAGON_BLOOD_LEECH_MULT
 
 	user.adjustToxLoss(toxin_healing * blood_extract_mult)
