@@ -1937,6 +1937,7 @@
 #include "code\modules\reagents\chemistry\reagents\roguetown.dm"
 #include "code\modules\reagents\chemistry\reagents\rt_alcohol_reagents.dm"
 #include "code\modules\reagents\chemistry\reagents\toxin_reagents.dm"
+#include "code\modules\reagents\chemistry\reagents\venom.dm"
 #include "code\modules\reagents\chemistry\recipes\drugs.dm"
 #include "code\modules\reagents\chemistry\recipes\medicine.dm"
 #include "code\modules\reagents\chemistry\recipes\others.dm"
